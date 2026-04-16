@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>E-Laporan Gigi Pro</title>
+  
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Frameworks -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0ea5e9; /* Light Blue Modern */
+      --primary-dark: #0284c7;
+      --bg-body: #f1f5f9;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --nav-height: 70px;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      margin: 0; padding: 0;
+      height: 100dvh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* --- APP HEADER --- */
+    .app-header {
+      background: var(--surface);
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+    .app-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin: 0; letter-spacing: -0.5px; }
+    .app-subtitle { font-size: 13px; font-weight: 500; color: var(--text-muted); margin: 0; }
+    .header-icon {
+      width: 45px; height: 45px;
+      background: #e0f2fe; color: var(--primary-dark);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+
+    /* --- TAB NAVIGATION (PILLS) --- */
+    .tab-container {
+      background: var(--surface);
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .pill-wrapper {
+      display: flex; gap: 10px; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pill-wrapper::-webkit-scrollbar { display: none; }
+    .pill-btn {
+      background: var(--bg-body); border: 1px solid transparent;
+      padding: 10px 18px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      white-space: nowrap; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .pill-btn.active {
+      background: var(--text-main); color: var(--surface);
+      box-shadow: 0 6px 15px -3px rgba(15, 23, 42, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* --- DATA CARDS --- */
+    .content-area {
+      flex: 1; overflow-y: auto; overflow-x: hidden;
+      padding: 20px 24px 100px; /* space for bottom nav */
+    }
+    .data-card {
+      background: var(--surface); border-radius: 20px;
+      padding: 24px; border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -2px rgba(0,0,0,0.02);
+    }
+    .card-header-flex {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* --- DATA TABLES CUSTOMIZATION --- */
+    .table { font-size: 13px; }
+    .table>thead { background: var(--bg-body) !important; }
+    .table>thead>tr>th { 
+      font-weight: 600; color: var(--text-muted); 
+      border-bottom: none; padding: 12px;
+      text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;
+    }
+    .table>tbody>tr>td { vertical-align: middle; padding: 12px; border-color: var(--border-color); }
+    .btn-action { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: none; font-size: 12px; transition: 0.2s; }
+    .btn-action:hover { opacity: 0.8; transform: translateY(-2px); }
+    .btn-edit { background: #fffbeb; color: #d97706; }
+    .btn-delete { background: #fef2f2; color: #dc2626; }
+    .btn-dl { background: #eff6ff; color: #2563eb; }
+
+    /* --- FLOATING ACTION BUTTON --- */
+    .fab {
+      position: fixed; bottom: 90px; right: 24px;
+      width: 60px; height: 60px; border-radius: 20px;
+      background: var(--primary-dark); color: white; border: none;
+      font-size: 22px; box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; z-index: 900;
+    }
+    .fab:active { transform: scale(0.9); box-shadow: none; }
+
+    /* --- BOTTOM NAVIGATION --- */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--nav-height); background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px); border-top: 1px solid var(--border-color);
+      display: flex; justify-content: space-around; align-items: center;
+      z-index: 1000; padding-bottom: env(safe-area-inset-bottom);
+    }
+    .nav-item {
+      flex: 1; text-align: center; background: none; border: none;
+      color: #cbd5e1; font-size: 11px; font-weight: 700; transition: 0.3s;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .nav-item i { font-size: 20px; transition: 0.3s; }
+    .nav-item.active { color: var(--primary-dark); }
+    .nav-item.active i { transform: translateY(-3px); }
+
+    /* --- VIEWER PAGE (REPORTS) --- */
+    #page-viewer { display: none; height: 100%; flex-direction: column; }
+    #page-viewer.active { display: flex; animation: fadeInfo 0.3s; }
+    .viewer-toolbar {
+      background: var(--surface); padding: 15px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    }
+    .v-select { 
+      flex: 1; min-width: 120px;
+      border: 1px solid var(--border-color); border-radius: 10px; 
+      padding: 8px 12px; font-size: 13px; font-weight: 500;
+      background: var(--bg-body); color: var(--text-main); outline: none;
+    }
+    .v-select:focus { border-color: var(--primary); background: #fff; }
+    
+    .viewer-content { flex: 1; position: relative; background: var(--bg-body); }
+    .empty-state {
+      position: absolute; inset: 0; display: flex; flex-direction: column; 
+      align-items: center; justify-content: center; color: #94a3b8; text-align: center; padding: 20px;
+    }
+    .empty-state i { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
+    iframe { width: 100%; height: 100%; border: none; display: none; background: white; }
+
+    .action-dock {
+      position: absolute; bottom: 85px; right: 24px; 
+      display: flex; flex-direction: column; gap: 12px; z-index: 10;
+    }
+    .dock-btn {
+      width: 50px; height: 50px; border-radius: 16px; border: none; color: white;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15); transition: 0.2s;
+    }
+    .dock-btn:active { transform: scale(0.9); }
+
+    /* --- FORM MODAL (GROUPED LAYOUT) --- */
+    .modal-content { border-radius: 24px; border: none; }
+    .modal-header { padding: 24px 24px 15px; border-bottom: 1px solid var(--border-color); }
+    .modal-title { font-weight: 800; font-size: 18px; color: var(--text-main); }
+    .btn-close { background-color: var(--bg-body); border-radius: 50%; opacity: 1; padding: 12px; }
+    .modal-body { background: var(--bg-body); padding: 20px; }
+    
+    /* Form Sections */
+    .form-group-card {
+      background: var(--surface); border-radius: 16px;
+      padding: 20px; margin-bottom: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .form-group-title {
+      font-size: 12px; font-weight: 700; color: var(--primary-dark);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
+    }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .form-control, .form-select {
+      border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 10px 14px; font-size: 14px; font-weight: 500;
+      background-color: var(--bg-body); transition: 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary); background-color: #fff;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+    }
+    
+    .chk-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px; max-height: 150px; overflow-y: auto;
+      padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg-body);
+    }
+    .form-check-label { font-size: 13px; font-weight: 500; color: var(--text-main); cursor: pointer;}
+    .img-prev { 
+      width: 100%; height: 120px; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      margin-top: 8px; display: flex; align-items: center; justify-content: center; 
+      overflow: hidden; background: #f8fafc; color: #94a3b8; font-size: 12px; font-weight: 600;
+    }
+    .img-prev img { width: 100%; height: 100%; object-fit: cover; }
+
+    .loader-overlay {
+      position: fixed; inset: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(5px);
+      z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    
+    @keyframes fadeInfo { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING SPINNER -->
+  <div id="loader" class="loader-overlay" style="display:none;">
+    <div class="spinner-border" style="width: 3rem; height: 3rem; color: var(--primary-dark);" role="status"></div>
+    <div class="mt-3 fw-bold text-dark" style="letter-spacing: 0.5px;">Sinkronisasi Cloud...</div>
+  </div>
+
+  <!-- APP HEADER -->
+  <header class="app-header">
+    <div>
+      <h1 class="app-title">E-Laporan Gigi</h1>
+      <p class="app-subtitle">Sistem Rekam Medis & Tugas</p>
+    </div>
+    <div class="header-icon"><i class="fas fa-tooth"></i></div>
+  </header>
+
+  <!-- PAGE 1: INPUT DATA -->
+  <main id="page-input" style="display:block;">
+    <!-- Tabs -->
+    <div class="tab-container">
+      <div class="pill-wrapper">
+        <button class="pill-btn active" onclick="switchCat('Dewasa & Lansia', this)">Dewasa & Lansia</button>
+        <button class="pill-btn" onclick="switchCat('Gigi Sekolah', this)">Gigi Anak Sekolah</button>
+        <button class="pill-btn" onclick="switchCat('Surat Tugas', this)">Surat Tugas</button>
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="content-area">
+      <div class="data-card">
+        <div class="card-header-flex">
+          <h6 class="fw-bold text-dark m-0 fs-5" id="tableTitle">Memuat Data...</h6>
+          <span class="badge rounded-pill" style="background:#e0f2fe; color:#0284c7; padding:6px 12px; font-weight:700;" id="rowCount">0 Data</span>
+        </div>
+        <div class="table-responsive">
+          <table id="dataTable" class="table w-100 align-middle">
+            <thead><tr id="tableHeader"></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <button class="fab" onclick="openModalAdd()"><i class="fas fa-plus"></i></button>
+  </main>
+
+  <!-- PAGE 2: VIEWER REPORTS -->
+  <main id="page-viewer">
+    <div class="viewer-toolbar">
+      <button class="btn btn-light border shadow-sm" style="border-radius: 10px; height: 38px; width: 38px;" onclick="openConfig()"><i class="fas fa-link text-secondary"></i></button>
+      
+      <select id="v_tahun" class="v-select" onchange="viewer.loadStaff()"></select>
+      
+      <select id="v_sheet" class="v-select" onchange="viewer.checkType()">
+        <option value="Database Bulanan">Tabel Database</option>
+        <option value="Laporan">Laporan Bulanan</option>
+        <option value="Laporan Tahunan">Laporan Tahunan</option>
+        <option value="Sterilisasi">Log Sterilisasi</option>
+        <option value="Disinfeksi">Log Disinfeksi</option>
+        <option value="Catpor">Catatan Pelaporan</option>
+        <option value="LKH Staff">LKH (Harian Staff)</option>
+      </select>
+      
+      <select id="v_bulan" class="v-select" onchange="viewer.load()">
+        <option>Januari</option><option>Februari</option><option>Maret</option><option>April</option>
+        <option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option>
+        <option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
+      </select>
+
+      <select id="v_staff" class="v-select w-100 mt-2" style="display:none;" onchange="viewer.load()"></select>
+    </div>
+
+    <div class="viewer-content">
+      <div id="v_empty" class="empty-state">
+        <i class="fas fa-file-invoice"></i>
+        <h5 class="fw-bold text-dark">Pilih Dokumen</h5>
+        <p class="small">Silakan pilih tahun, jenis laporan, dan bulan pada menu di atas.</p>
+      </div>
+      <iframe id="pub-frame" name="pub-frame" src="about:blank"></iframe>
+      
+      <!-- Dock Tools -->
+      <div class="action-dock">
+        <button class="dock-btn" style="background:#dc2626;" onclick="viewer.dl('pdf')" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
+        <button class="dock-btn" style="background:#16a34a;" onclick="viewer.dl('excel')" title="Download Excel"><i class="fas fa-file-excel"></i></button>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="navTo('input', this)">
+      <i class="fas fa-pen-to-square"></i> Input Data
+    </button>
+    <button class="nav-item" onclick="navTo('viewer', this)">
+      <i class="fas fa-chart-pie"></i> Laporan
+    </button>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- MODAL FORM (RESTRUCTURED FOR PRO UX)           -->
+  <!-- ============================================== -->
+  <div class="modal fade" id="modalForm" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content shadow-lg">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Form Input</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <div class="modal-body">
+          <form id="mainForm" onsubmit="submitForm(event)">
+            <input type="hidden" id="formType"><input type="hidden" id="editId">
+            <input type="hidden" id="old_fotoKeg"><input type="hidden" id="old_fotoPel">
+            <input type="hidden" id="old_fotoKeg_gigi"><input type="hidden" id="old_fotoPel_gigi">
+
+            <!-- FORM DEWASA & LANSIA -->
+            <div id="s-dewasa" class="d-none">
+               <!-- Kotak 1: Info Dasar -->
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-info-circle"></i> Info Kunjungan</div>
+                 <div class="row g-3">
+                   <div class="col-4"><label class="form-label">No. Reg</label><input type="text" name="no" class="form-control"></div>
+                   <div class="col-8"><label class="form-label">Tanggal</label><input type="date" name="tanggal" class="form-control"></div>
+                   <div class="col-12"><label class="form-label">Bulan Pelaporan</label><select name="bulan" class="form-select b-opt"></select></div>
+                   <div class="col-12"><label class="form-label">Tempat Kegiatan</label><input type="text" name="tempat" class="form-control" placeholder="Nama Posyandu/Desa"></div>
+                 </div>
+               </div>
+
+               <!-- Kotak 2: Kehadiran -->
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-users"></i> Kehadiran</div>
+                 <div class="row g-3">
+                   <div class="col-4"><label class="form-label">Sasaran</label><input type="number" id="ds" name="sasaran" class="form-control" oninput="calc('ds','dc','da')"></div>
+                   <div class="col-4"><label class="form-label">Capaian</label><input type="number" id="dc" name="capaian" class="form-control" oninput="calc('ds','dc','da')"></div>
+                   <div class="col-4"><label class="form-label text-danger">Absen</label><input type="number" id="da" name="absen" class="form-control" style="background:#fef2f2; border-color:#fca5a5;" readonly></div>
+                 </div>
+               </div>
+
+               <!-- Kotak 3: Medis -->
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-stethoscope"></i> Hasil Pemeriksaan</div>
+                 <div class="row g-3">
+                   <div class="col-12">
+                     <label class="form-label text-primary">Tandai Penyakit (Ceklis)</label>
+                     <div id="chk_d" class="chk-grid"></div>
+                     <input type="text" id="man_d" class="form-control mt-2" placeholder="Tulis penyakit lain (Manual)...">
+                   </div>
+                   <div class="col-12"><label class="form-label">Catatan Diagnosa Bebas (Koma)</label><textarea id="dh" name="hasil" class="form-control" rows="2" oninput="countR('dh','dr')"></textarea></div>
+                   <div class="col-12"><label class="form-label">Total Rujuk (Auto)</label><input type="number" id="dr" name="rujuk" class="form-control bg-light" readonly></div>
+                 </div>
+               </div>
+
+               <!-- Kotak 4: Lampiran -->
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-camera"></i> Dokumentasi & Petugas</div>
+                 <div class="row g-3">
+                   <div class="col-6"><label class="form-label">Foto Kegiatan</label><input type="file" name="fotoKeg" class="form-control form-control-sm" onchange="prev(this,'pkd')"><div id="pkd" class="img-prev">Preview Foto</div></div>
+                   <div class="col-6"><label class="form-label">Foto Pelayanan</label><input type="file" name="fotoPel" class="form-control form-control-sm" onchange="prev(this,'ppd')"><div id="ppd" class="img-prev">Preview Foto</div></div>
+                   <div class="col-12 mt-3"><label class="form-label">Nama Petugas</label><select name="petugas" class="form-select s-opt"></select></div>
+                 </div>
+               </div>
+            </div>
+
+            <!-- FORM GIGI SEKOLAH -->
+            <div id="s-gigi" class="d-none">
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-school"></i> Info Sekolah & Siswa</div>
+                 <div class="row g-3">
+                   <div class="col-4"><label class="form-label">No. Reg</label><input type="text" name="no_gigi" class="form-control"></div>
+                   <div class="col-8"><label class="form-label">Tanggal</label><input type="date" name="tanggal_gigi" class="form-control"></div>
+                   <div class="col-12"><label class="form-label">Bulan Pelaporan</label><select name="bulan_gigi" class="form-select b-opt"></select></div>
+                   <div class="col-12"><label class="form-label">Nama Sekolah</label><input type="text" name="tempat_gigi" class="form-control"></div>
+                   <div class="col-6"><label class="form-label">Kelas</label><input type="text" name="kelas" class="form-control"></div>
+                   <div class="col-6"><label class="form-label">Usia Siswa</label><input type="number" name="usia" class="form-control"></div>
+                 </div>
+               </div>
+
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-users"></i> Kehadiran Kelas</div>
+                 <div class="row g-3">
+                   <div class="col-4"><label class="form-label">Sasaran</label><input type="number" id="gs" name="sasaran_gigi" class="form-control" oninput="calc('gs','gc','ga')"></div>
+                   <div class="col-4"><label class="form-label">Capaian</label><input type="number" id="gc" name="capaian_gigi" class="form-control" oninput="calc('gs','gc','ga')"></div>
+                   <div class="col-4"><label class="form-label text-danger">Absen</label><input type="number" id="ga" name="absen_gigi" class="form-control" style="background:#fef2f2; border-color:#fca5a5;" readonly></div>
+                 </div>
+               </div>
+
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-tooth"></i> Kondisi Gigi Anak</div>
+                 <div class="row g-3">
+                   <div class="col-12">
+                     <label class="form-label text-success">Pilih Masalah Gigi</label>
+                     <div id="chk_g" class="chk-grid"></div>
+                     <input type="text" id="man_g" class="form-control mt-2" placeholder="Tulis masalah lain (Manual)...">
+                   </div>
+                   <div class="col-4"><label class="form-label">Karies Bawah</label><input type="text" name="kariesBawah" class="form-control"></div>
+                   <div class="col-4"><label class="form-label">Karies Atas</label><input type="text" name="kariesAtas" class="form-control"></div>
+                   <div class="col-4"><label class="form-label">Reg Karies</label><input type="text" name="noKaries" class="form-control"></div>
+                   <div class="col-12"><label class="form-label">Catatan Tambahan</label><textarea id="gh" name="hasil_gigi" class="form-control" rows="2" oninput="countR('gh','gr')"></textarea></div>
+                   <div class="col-12"><label class="form-label">Rujuk (Auto)</label><input type="number" id="gr" name="rujuk_gigi" class="form-control bg-light" readonly></div>
+                 </div>
+               </div>
+
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-camera"></i> Dokumentasi & Petugas</div>
+                 <div class="row g-3">
+                   <div class="col-6"><label class="form-label">Foto Kegiatan</label><input type="file" name="fotoKeg_gigi" class="form-control form-control-sm" onchange="prev(this,'pkg')"><div id="pkg" class="img-prev">Preview</div></div>
+                   <div class="col-6"><label class="form-label">Foto Mulut</label><input type="file" name="fotoPel_gigi" class="form-control form-control-sm" onchange="prev(this,'ppg')"><div id="ppg" class="img-prev">Preview</div></div>
+                   <div class="col-12 mt-3"><label class="form-label">Nama Petugas</label><select name="petugas_gigi" class="form-select s-opt"></select></div>
+                 </div>
+               </div>
+            </div>
+
+            <!-- FORM SURAT TUGAS -->
+            <div id="s-surat" class="d-none">
+               <div class="form-group-card">
+                 <div class="form-group-title"><i class="fas fa-envelope"></i> Detail Surat Tugas</div>
+                 <div class="row g-3">
+                   <div class="col-6"><label class="form-label">No Surat Base</label><input type="text" name="noSurat" class="form-control" list="listNoSurat" placeholder="Cth: 445/..."><datalist id="listNoSurat"><option value="445/033/UKM/2026"></datalist></div>
+                   <div class="col-6"><label class="form-label">No Urut Spesifik</label><input type="text" name="noUrut" class="form-control" placeholder="Cth: 01"></div>
+                   <div class="col-12"><label class="form-label">Pegawai Ditugaskan</label><select name="namaNip" class="form-select s-opt"></select></div>
+                   <div class="col-6"><label class="form-label">Tanggal Tugas</label><input type="date" name="tanggal_surat" class="form-control"></div>
+                   <div class="col-6"><label class="form-label">Tujuan</label><input type="text" name="tempat_surat" class="form-control" placeholder="Nama Desa/Sekolah"></div>
+                   <div class="col-12"><label class="form-label">Maksud / Agenda</label><input type="text" name="maksud" class="form-control" list="listMaksud" placeholder="Pilih atau Ketik Baru..."><datalist id="listMaksud"><option value="Deteksi dini Kesehatan Gigi dan Mulut Lansia"><option value="Upaya Kesehatan Gigi dan Mulut Sekolah"><option value="Penyuluhan Kesehatan Gigi Masyarakat"></datalist></div>
+                 </div>
+               </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="mt-4 mb-2">
+              <button type="submit" class="btn btn-primary w-100 py-3 shadow" style="border-radius: 14px; font-weight:800; font-size:15px; letter-spacing:0.5px;">
+                <i class="fas fa-cloud-arrow-up me-2"></i> SIMPAN KE CLOUD
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    // ==========================================
+    // API VERCEL KE GOOGLE APPS SCRIPT
+    // ==========================================
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbwpbX1gVIk9wL-0fmtSwU9KaJpfp7Jd3tMoh57NUQPe8CHkZoXXDKwfiRuREPLd6hMc/exec";
+
+    async function apiCall(action, payload = {}) {
+      try {
+        const response = await fetch(GAS_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ action: action, payload: payload })
+        });
+        return await response.json();
+      } catch (e) {
+        console.error("API Error:", e);
+        return { error: true, success: false, message: "Koneksi ke server gagal. Cek internet." };
+      }
+    }
+
+    // DATABASE LOKAL
+    const DB = {
+      staff: ["drg. Fakhrurrazi - 199006062019031007", "Marhamah, Amd.Kes - 197606072002122003", "Hj. Suriati, Amd.Kes - 197603132000122001", "Rafina Sari, AMKG - 199208062020122009", "Novi Ariani, STr.Kes - (Non ASN)", "Dahlia, Amd. Kes - 199601302023212006", "Meiza Utami Pratiwi. A.Md.KG - 199405142024212028"],
+      bln: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
+      d_sakit: ["Pulpitis","Gangren Radiks","Periodontitis","Abses","Persistensi","Karang Gigi","Gingivitis","Nekrose Pulpa","Impacted","Gigi Goyang"],
+      a_sakit: ["Karies Dini","Gingivitis","Stomatitis","Persistensi","Abses","Pulpitis","Gangren","Gigi Goyang","Trauma","Perubahan Warna"]
+    };
+
+    let curCat="Dewasa & Lansia", modal;
+
+    $(document).ready(()=>{
+      modal = new bootstrap.Modal(document.getElementById('modalForm'));
+      initForm(); loadTable(); viewer.init();
+    });
+
+    // NAVIGATION
+    function navTo(p,el) {
+      $('#page-input, #page-viewer').removeClass('active').hide();
+      $('#page-'+p).addClass('active').show();
+      $('.nav-item').removeClass('active'); $(el).addClass('active');
+      if(p==='viewer') viewer.load();
+    }
+
+    function switchCat(c,el) {
+      curCat=c; $('.pill-btn').removeClass('active'); $(el).addClass('active'); loadTable();
+    }
+
+    // INIT FORM OPTIONS
+    function initForm(){
+      let s=''; DB.staff.forEach(x=>s+=`<option value="${x}">${x}</option>`); $('.s-opt').html('<option value="">-- Pilih Nama Pegawai --</option>'+s);
+      let b=''; DB.bln.forEach(x=>b+=`<option value="${x}">${x}</option>`); $('.b-opt').html(b);
+      chk('chk_d',DB.d_sakit); chk('chk_g',DB.a_sakit);
+    }
+    function chk(id,l){ let h=''; l.forEach(x=>h+=`<div class="form-check"><input class="form-check-input c-${id}" type="checkbox" value="${x}"><label class="form-check-label">${x}</label></div>`); $('#'+id).html(h); }
+
+    // --- DATA LOAD (TABLE) ---
+    function loadTable(){
+      $('#tableTitle').text('Memuat...');
+      if($.fn.DataTable.isDataTable('#dataTable')) $('#dataTable').DataTable().destroy();
+      $('#tableBody').empty();
+
+      apiCall('getDataTable', { type: curCat }).then(res => {
+        $('#tableTitle').text(curCat); $('#rowCount').text((res.data ? res.data.length : 0) + ' Data');
+        let tb=$('#tableBody'), th=$('#tableHeader'), c=[];
+        if(!res.data || res.data.length===0){ tb.html('<tr><td colspan="5" class="text-center p-5 text-muted border-0"><i>Data belum tersedia di cloud</i></td></tr>'); return;}
+
+        if(curCat==="Dewasa & Lansia"){ th.html('<th>Aksi</th><th>Tanggal</th><th>Tempat</th><th>Petugas</th>'); c=[2,4,13,14]; }
+        else if(curCat==="Gigi Sekolah"){ th.html('<th>Aksi</th><th>Tanggal</th><th>Sekolah</th><th>Petugas</th>'); c=[2,4,18,19]; }
+        else { th.html('<th>Aksi</th><th>No Urut</th><th>Pegawai</th><th>Tujuan</th>'); c=[1,3,5,7]; }
+
+        res.data.reverse().forEach(r=>{ // Show newest first
+           let j=encodeURIComponent(JSON.stringify(r)), p=r[c[3]], downloadUrl=p;
+           if(p && p.includes('drive.google.com') && p.includes('/view')) {
+               let m = p.match(/\/d\/(.+?)(\/|$)/); if(m) downloadUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
+           }
+           let pb = (p && p.includes('http')) ? `<a href="${downloadUrl}" target="_blank" class="btn-action btn-dl ms-1" title="Download Laporan"><i class="fas fa-file-pdf"></i></a>` : '';
+           let tr=`<tr><td style="white-space:nowrap"><button class="btn-action btn-edit" onclick="edit('${j}')" title="Edit"><i class="fas fa-pen"></i></button><button class="btn-action btn-delete ms-1" onclick="del('${r[0]}')" title="Hapus"><i class="fas fa-trash"></i></button>${pb}</td>`;
+           c.slice(0,3).forEach(i=>tr+=`<td class="fw-medium">${r[i]||'-'}</td>`); tb.append(tr+'</tr>');
+        });
+        $('#dataTable').DataTable({responsive:true, pageLength:10, lengthChange:false, language:{search:"Cari:"}, info:false});
+      });
+    }
+
+    // --- FORM ACTIONS ---
+    function openModalAdd(){
+       $('#mainForm')[0].reset(); $('#editId').val(''); 
+       $('.img-prev').html('Preview').css('background', '#f8fafc'); 
+       $('.form-check-input').prop('checked',false);
+       $('#formType').val(curCat); $('#modalTitle').text((curCat.includes('Surat') ? 'Buat ' : 'Input Data ') + curCat);
+       $('#s-dewasa,#s-gigi,#s-surat').addClass('d-none');
+       if(curCat.includes("Dewasa")) $('#s-dewasa').removeClass('d-none');
+       else if(curCat.includes("Gigi")) $('#s-gigi').removeClass('d-none');
+       else $('#s-surat').removeClass('d-none');
+       modal.show();
+    }
+
+    async function submitForm(e){
+       e.preventDefault(); $('#loader').show(); modal.hide();
+       let f=document.forms['mainForm'], t=$('#formType').val(), d={formType:t, editId:$('#editId').val()};
+       const v=n=>f[n].value, i=async(n,o)=>f[n].files[0]?await cmp(f[n].files[0]):$('#'+o).val();
+       const gc=(d,m)=>{let a=[];$(`.c-${d}:checked`).each(function(){a.push($(this).val())}); if($('#'+m).val())a.push($('#'+m).val()); return a.join(", ");};
+
+       if(t.includes("Dewasa")){
+          d.no=v('no');d.tanggal=v('tanggal');d.bulan=v('bulan');d.tempat=v('tempat');d.sasaran=v('sasaran');d.capaian=v('capaian');
+          d.absen=v('absen');d.hasil=v('hasil');d.rujuk=v('rujuk');d.petugas=v('petugas');d.ket=gc('chk_d','man_d');
+          d.fotoKeg=await i('fotoKeg','old_fotoKeg'); d.fotoPel=await i('fotoPel','old_fotoPel');
+       } else if(t.includes("Gigi")){
+          d.no_gigi=v('no_gigi');d.tanggal_gigi=v('tanggal_gigi');d.bulan_gigi=v('bulan_gigi');d.tempat_gigi=v('tempat_gigi');d.usia=v('usia');d.kelas=v('kelas');
+          d.sasaran_gigi=v('sasaran_gigi');d.capaian_gigi=v('capaian_gigi');d.absen_gigi=v('absen_gigi');d.hasil_gigi=v('hasil_gigi');d.rujuk_gigi=v('rujuk_gigi');d.ket=gc('chk_g','man_g');
+          d.kariesBawah=v('kariesBawah');d.kariesAtas=v('kariesAtas');d.noKaries=v('noKaries');d.petugas_gigi=v('petugas_gigi');
+          d.fotoKeg_gigi=await i('fotoKeg_gigi','old_fotoKeg_gigi'); d.fotoPel_gigi=await i('fotoPel_gigi','old_fotoPel_gigi');
+       } else { d.noSurat=v('noSurat');d.noUrut=v('noUrut');d.namaNip=v('namaNip');d.tanggal_surat=v('tanggal_surat');d.tempat_surat=v('tempat_surat');d.maksud=v('maksud'); }
+
+       apiCall('submitData', { form: d }).then(r => {
+          $('#loader').hide(); if(r.success){Swal.fire('Sukses',r.message,'success'); loadTable();}else Swal.fire('Gagal',r.message,'error');
+       });
+    }
+    
+    function edit(j){
+       let r=JSON.parse(decodeURIComponent(j)); openModalAdd(); $('#editId').val(r[0]); let f=document.forms['mainForm'];
+       const sc=(d,v)=>{if(!v)return;let a=v.split(',').map(s=>s.trim());$(`.c-${d}`).each(function(){if(a.includes($(this).val()))$(this).prop('checked',true)})};
+       if(curCat.includes("Dewasa")){
+          f.no.value=r[1];f.tanggal.value=r[2];f.bulan.value=r[3];f.tempat.value=r[4];f.sasaran.value=r[5];f.capaian.value=r[6];f.absen.value=r[7];f.hasil.value=r[8];sc('chk_d',r[9]);f.rujuk.value=r[10];
+          $('#old_fotoKeg').val(r[11]);if(r[11]&&r[11].includes('http')){$('#pkd').html(`<img src="${r[11]}">`).css('background','transparent');}
+          $('#old_fotoPel').val(r[12]);if(r[12]&&r[12].includes('http')){$('#ppd').html(`<img src="${r[12]}">`).css('background','transparent');} f.petugas.value=r[13];
+       } else if(curCat.includes("Gigi")){
+          f.no_gigi.value=r[1];f.tanggal_gigi.value=r[2];f.bulan_gigi.value=r[3];f.tempat_gigi.value=r[4];f.usia.value=r[5];f.kelas.value=r[6];f.sasaran_gigi.value=r[7];f.capaian_gigi.value=r[8];f.absen_gigi.value=r[9];f.hasil_gigi.value=r[10];sc('chk_g',r[11]);f.rujuk_gigi.value=r[12];
+          f.kariesBawah.value=r[13];f.kariesAtas.value=r[14];f.noKaries.value=r[15];
+          $('#old_fotoKeg_gigi').val(r[16]);if(r[16]&&r[16].includes('http')){$('#pkg').html(`<img src="${r[16]}">`).css('background','transparent');}
+          $('#old_fotoPel_gigi').val(r[17]);if(r[17]&&r[17].includes('http')){$('#ppg').html(`<img src="${r[17]}">`).css('background','transparent');} f.petugas_gigi.value=r[18];
+       } else { f.noSurat.value=r[1];f.noUrut.value=r[2];f.namaNip.value=r[3];f.tanggal_surat.value=r[4];f.tempat_surat.value=r[5];f.maksud.value=r[6]; }
+    }
+    
+    function del(id){
+       Swal.fire({title:'Hapus Data?', text: "Data tidak bisa dikembalikan setelah dihapus.", icon:'warning',showCancelButton:true,confirmButtonColor:'#dc2626', confirmButtonText:'Ya, Hapus!'}).then(r=>{if(r.isConfirmed){
+          $('#loader').show(); 
+          apiCall('deleteData', { id: id, type: curCat }).then(res => {
+             $('#loader').hide(); if(res.success)loadTable(); else Swal.fire('Error',res.message,'error');
+          });
+       }});
+    }
+
+    // --- VIEWER REPORTS ---
+    const viewer={
+       init:function(){ apiCall('getYearList').then(y=>{let h='';y.forEach(x=>h+=`<option value="${x}">${x}</option>`);$('#v_tahun').html(h);this.loadStaff()}); },
+       loadStaff:function(){ let y=$('#v_tahun').val(); if(!y)return; apiCall('getStaffList', { year: y }).then(s=>{let h='<option value="">Pilih Staff...</option>';s.forEach(x=>h+=`<option value="${x}">${x}</option>`);$('#v_staff').html(h)}); },
+       checkType:function(){ let t=$('#v_sheet').val(); if(t==='LKH Staff')$('#v_staff').show();else $('#v_staff').hide(); this.load(); },
+       load:function(){
+          let t=$('#v_sheet').val(),y=$('#v_tahun').val(),b=$('#v_bulan').val(),s=$('#v_staff').val();
+          if(t==='LKH Staff'&&!s){$('#v_empty').show(); $('#pub-frame').hide();return;}
+          if(!y)return;
+          $('#v_empty').hide();$('#pub-frame').show();$('#loader').show();
+          apiCall('updateAndGetView', { sheetName: t, bulan: b, staffName: s, year: y }).then(r=>{
+             if(r.status){$('#pub-frame').attr('src',`https://docs.google.com/spreadsheets/d/${r.fileId}/htmlembed?gid=${r.gid}&widget=false&chrome=false`); setTimeout(()=>$('#loader').hide(),1500);}
+             else{$('#loader').hide();Swal.fire('Info',r.message,'info');}
+          });
+       },
+       dl:function(k){
+          let t=$('#v_sheet').val(),y=$('#v_tahun').val(),b=$('#v_bulan').val(),s=$('#v_staff').val();
+          Swal.fire({title:'Menyiapkan File...', text:'Mengambil data dari Google Cloud', didOpen:()=>Swal.showLoading()});
+          apiCall('generateDownloadUrl', { type: k, sheetName: t, bulan: b, staffName: s, year: y }).then(r=>{
+             Swal.close();if(r.status)window.open(r.url,'_blank');else Swal.fire('Error',r.message,'error');
+          });
+       }
+    };
+    function openConfig(){
+       Swal.fire({title:'Link Database Tahunan', html:'<input id="cy" class="swal2-input" placeholder="Tahun (Contoh: 2026)" type="number"><input id="cu" class="swal2-input" placeholder="URL Google Sheets">', showCancelButton:true, confirmButtonText:'Simpan', preConfirm:()=>{return{y:$('#cy').val(),u:$('#cu').val()}}}).then(r=>{
+          if(r.isConfirmed){
+             $('#loader').show();
+             apiCall('saveNewYear', { year: r.value.y, url: r.value.u }).then(x=>{
+                $('#loader').hide(); if(x.status){Swal.fire('Berhasil',x.message,'success');viewer.init()}else Swal.fire('Gagal',x.message,'error')
+             });
+          }
+       });
+    }
+
+    // --- FORM CALCULATIONS & IMAGE UTILS ---
+    function calc(s,c,a){$('#'+a).val(($('#'+s).val()||0)-($('#'+c).val()||0))}
+    function countR(t,r){let v=$('#'+t).val();$('#'+r).val(v.trim()?v.split(',').length:0)}
+    function prev(i,d){if(i.files[0]){let r=new FileReader();r.onload=e=>{$('#'+d).html(`<img src="${e.target.result}">`).css('background','transparent');};r.readAsDataURL(i.files[0])}}
+    function cmp(f){return new Promise(r=>{let R=new FileReader();R.readAsDataURL(f);R.onload=e=>{let I=new Image();I.src=e.target.result;I.onload=()=>{let c=document.createElement('canvas'),w=I.width,h=I.height,m=800;if(w>m){h=Math.round(h*m/w);w=m}c.width=w;c.height=h;c.getContext('2d').drawImage(I,0,0,w,h);r(c.toDataURL('image/jpeg',0.7))}}})}
+  </script>
+</body>
+</html>
