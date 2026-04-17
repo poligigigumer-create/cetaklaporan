@@ -277,7 +277,9 @@
       <select id="v_tahun" class="v-select" onchange="viewer.loadStaff()"></select>
       
       <select id="v_sheet" class="v-select" onchange="viewer.checkType()">
-        <option value="Database Bulanan">Tabel Database</option>
+        <option value="Database Bulanan">Tabel Database Umum</option>
+        <!-- OPSI BARU DITAMBAHKAN UNTUK MENGAKSES DATABASE KHUSUS GIGI -->
+        <option value="Gigi Sekolah">Tabel Database Gigi (Khusus)</option>
         <option value="Laporan">Laporan Bulanan</option>
         <option value="Laporan Tahunan">Laporan Tahunan</option>
         <option value="Sterilisasi">Log Sterilisasi</option>
@@ -473,6 +475,7 @@
   <script>
     // ==========================================
     // API VERCEL KE GOOGLE APPS SCRIPT
+    // (Penting: Pastikan link GAS_URL ini merujuk ke Deploy API Backend Anda yang terbaru)
     // ==========================================
     const GAS_URL = "https://script.google.com/macros/s/AKfycbwpbX1gVIk9wL-0fmtSwU9KaJpfp7Jd3tMoh57NUQPe8CHkZoXXDKwfiRuREPLd6hMc/exec";
 
@@ -531,14 +534,17 @@
       if($.fn.DataTable.isDataTable('#dataTable')) $('#dataTable').DataTable().destroy();
       $('#tableBody').empty();
 
-      apiCall('getDataTable', { type: curCat }).then(res => {
+      // Penambahan Year Param
+      let currentYear = new Date().getFullYear().toString();
+      
+      apiCall('getDataTable', { type: curCat, year: currentYear }).then(res => {
         $('#tableTitle').text(curCat); $('#rowCount').text((res.data ? res.data.length : 0) + ' Data');
         let tb=$('#tableBody'), th=$('#tableHeader'), c=[];
         if(!res.data || res.data.length===0){ tb.html('<tr><td colspan="5" class="text-center p-5 text-muted border-0"><i>Data belum tersedia di cloud</i></td></tr>'); return;}
 
         if(curCat==="Dewasa & Lansia"){ th.html('<th>Aksi</th><th>Tanggal</th><th>Tempat</th><th>Petugas</th>'); c=[2,4,13,14]; }
         else if(curCat==="Gigi Sekolah"){ th.html('<th>Aksi</th><th>Tanggal</th><th>Sekolah</th><th>Petugas</th>'); c=[2,4,18,19]; }
-        else { th.html('<th>Aksi</th><th>No Urut</th><th>Pegawai</th><th>Tujuan</th>'); c=[1,3,5,7]; }
+        else { th.html('<th>Aksi</th><th>No Surat</th><th>Pegawai</th><th>Tujuan</th>'); c=[1,3,5,7]; } // Header No Surat diperbaiki
 
         res.data.reverse().forEach(r=>{ // Show newest first
            let j=encodeURIComponent(JSON.stringify(r)), p=r[c[3]], downloadUrl=p;
@@ -569,6 +575,10 @@
     async function submitForm(e){
        e.preventDefault(); $('#loader').show(); modal.hide();
        let f=document.forms['mainForm'], t=$('#formType').val(), d={formType:t, editId:$('#editId').val()};
+       
+       // Tambahkan parameter tahun untuk identifikasi DB di backend
+       d.year = new Date().getFullYear().toString(); 
+       
        const v=n=>f[n].value, i=async(n,o)=>f[n].files[0]?await cmp(f[n].files[0]):$('#'+o).val();
        const gc=(d,m)=>{let a=[];$(`.c-${d}:checked`).each(function(){a.push($(this).val())}); if($('#'+m).val())a.push($('#'+m).val()); return a.join(", ");};
 
@@ -606,7 +616,8 @@
     function del(id){
        Swal.fire({title:'Hapus Data?', text: "Data tidak bisa dikembalikan setelah dihapus.", icon:'warning',showCancelButton:true,confirmButtonColor:'#dc2626', confirmButtonText:'Ya, Hapus!'}).then(r=>{if(r.isConfirmed){
           $('#loader').show(); 
-          apiCall('deleteData', { id: id, type: curCat }).then(res => {
+          let currentYear = new Date().getFullYear().toString();
+          apiCall('deleteData', { id: id, type: curCat, year: currentYear }).then(res => {
              $('#loader').hide(); if(res.success)loadTable(); else Swal.fire('Error',res.message,'error');
           });
        }});
@@ -635,6 +646,7 @@
           });
        }
     };
+    
     function openConfig(){
        Swal.fire({title:'Link Database Tahunan', html:'<input id="cy" class="swal2-input" placeholder="Tahun (Contoh: 2026)" type="number"><input id="cu" class="swal2-input" placeholder="URL Google Sheets">', showCancelButton:true, confirmButtonText:'Simpan', preConfirm:()=>{return{y:$('#cy').val(),u:$('#cu').val()}}}).then(r=>{
           if(r.isConfirmed){
