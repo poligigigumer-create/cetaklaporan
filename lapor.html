@@ -106,6 +106,7 @@
     .btn-action:hover { opacity: 0.8; transform: translateY(-2px); }
     .btn-edit { background: #fffbeb; color: #d97706; }
     .btn-delete { background: #fef2f2; color: #dc2626; }
+    .btn-print { background: #f0fdf4; color: #16a34a; }
     .btn-dl { background: #eff6ff; color: #2563eb; }
 
     /* --- FLOATING ACTION BUTTON --- */
@@ -171,14 +172,13 @@
     }
     .dock-btn:active { transform: scale(0.9); }
 
-    /* --- FORM MODAL (GROUPED LAYOUT) --- */
+    /* --- FORM MODAL --- */
     .modal-content { border-radius: 24px; border: none; }
     .modal-header { padding: 24px 24px 15px; border-bottom: 1px solid var(--border-color); }
     .modal-title { font-weight: 800; font-size: 18px; color: var(--text-main); }
     .btn-close { background-color: var(--bg-body); border-radius: 50%; opacity: 1; padding: 12px; }
     .modal-body { background: var(--bg-body); padding: 20px; }
     
-    /* Form Sections */
     .form-group-card {
       background: var(--surface); border-radius: 16px;
       padding: 20px; margin-bottom: 16px;
@@ -241,7 +241,6 @@
 
   <!-- PAGE 1: INPUT DATA -->
   <main id="page-input" style="display:block;">
-    <!-- Tabs -->
     <div class="tab-container">
       <div class="pill-wrapper">
         <button class="pill-btn active" onclick="switchCat('Dewasa & Lansia', this)">Dewasa & Lansia</button>
@@ -250,7 +249,6 @@
       </div>
     </div>
 
-    <!-- Data Table -->
     <div class="content-area">
       <div class="data-card">
         <div class="card-header-flex">
@@ -273,10 +271,7 @@
   <main id="page-viewer">
     <div class="viewer-toolbar">
       <button class="btn btn-light border shadow-sm" style="border-radius: 10px; height: 38px; width: 38px;" onclick="openConfig()"><i class="fas fa-link text-secondary"></i></button>
-      
       <select id="v_tahun" class="v-select" onchange="viewer.loadStaff()"></select>
-      
-      <!-- MENU VIEWER DISINKRONKAN DENGAN TAB SHEET -->
       <select id="v_sheet" class="v-select" onchange="viewer.checkType()">
         <optgroup label="Database Input">
           <option value="Dewasa & Lansia">Tabel: Dewasa & Lansia</option>
@@ -292,13 +287,11 @@
           <option value="LKH Staff">LKH (Harian Staff)</option>
         </optgroup>
       </select>
-      
       <select id="v_bulan" class="v-select" onchange="viewer.load()">
         <option>Januari</option><option>Februari</option><option>Maret</option><option>April</option>
         <option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option>
         <option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
       </select>
-
       <select id="v_staff" class="v-select w-100 mt-2" style="display:none;" onchange="viewer.load()"></select>
     </div>
 
@@ -309,8 +302,6 @@
         <p class="small">Silakan pilih tahun, jenis laporan, dan bulan pada menu di atas.</p>
       </div>
       <iframe id="pub-frame" name="pub-frame" src="about:blank"></iframe>
-      
-      <!-- Dock Tools -->
       <div class="action-dock">
         <button class="dock-btn" style="background:#dc2626;" onclick="viewer.dl('pdf')" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
         <button class="dock-btn" style="background:#16a34a;" onclick="viewer.dl('excel')" title="Download Excel"><i class="fas fa-file-excel"></i></button>
@@ -328,27 +319,21 @@
     </button>
   </nav>
 
-  <!-- ============================================== -->
-  <!-- MODAL FORM (RESTRUCTURED FOR PRO UX)           -->
-  <!-- ============================================== -->
+  <!-- MODAL FORM -->
   <div class="modal fade" id="modalForm" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
       <div class="modal-content shadow-lg">
-        
         <div class="modal-header">
           <h5 class="modal-title" id="modalTitle">Form Input</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        
         <div class="modal-body">
           <form id="mainForm" onsubmit="submitForm(event)">
             <input type="hidden" id="formType"><input type="hidden" id="editId">
             <input type="hidden" id="old_fotoKeg"><input type="hidden" id="old_fotoPel">
             <input type="hidden" id="old_fotoKeg_gigi"><input type="hidden" id="old_fotoPel_gigi">
 
-            <!-- FORM DEWASA & LANSIA -->
             <div id="s-dewasa" class="d-none">
-               <!-- Kotak 1: Info Dasar -->
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-info-circle"></i> Info Kunjungan</div>
                  <div class="row g-3">
@@ -358,8 +343,6 @@
                    <div class="col-12"><label class="form-label">Tempat Kegiatan</label><input type="text" name="tempat" class="form-control" placeholder="Nama Posyandu/Desa"></div>
                  </div>
                </div>
-
-               <!-- Kotak 2: Kehadiran -->
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-users"></i> Kehadiran</div>
                  <div class="row g-3">
@@ -368,22 +351,14 @@
                    <div class="col-4"><label class="form-label text-danger">Absen</label><input type="number" id="da" name="absen" class="form-control" style="background:#fef2f2; border-color:#fca5a5;" readonly></div>
                  </div>
                </div>
-
-               <!-- Kotak 3: Medis -->
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-stethoscope"></i> Hasil Pemeriksaan</div>
                  <div class="row g-3">
-                   <div class="col-12">
-                     <label class="form-label text-primary">Tandai Penyakit (Ceklis)</label>
-                     <div id="chk_d" class="chk-grid"></div>
-                     <input type="text" id="man_d" class="form-control mt-2" placeholder="Tulis penyakit lain (Manual)...">
-                   </div>
+                   <div class="col-12"><label class="form-label text-primary">Tandai Penyakit (Ceklis)</label><div id="chk_d" class="chk-grid"></div><input type="text" id="man_d" class="form-control mt-2" placeholder="Tulis penyakit lain (Manual)..."></div>
                    <div class="col-12"><label class="form-label">Catatan Diagnosa Bebas (Koma)</label><textarea id="dh" name="hasil" class="form-control" rows="2" oninput="countR('dh','dr')"></textarea></div>
                    <div class="col-12"><label class="form-label">Total Rujuk (Auto)</label><input type="number" id="dr" name="rujuk" class="form-control bg-light" readonly></div>
                  </div>
                </div>
-
-               <!-- Kotak 4: Lampiran -->
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-camera"></i> Dokumentasi & Petugas</div>
                  <div class="row g-3">
@@ -394,7 +369,6 @@
                </div>
             </div>
 
-            <!-- FORM GIGI SEKOLAH -->
             <div id="s-gigi" class="d-none">
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-school"></i> Info Sekolah & Siswa</div>
@@ -407,7 +381,6 @@
                    <div class="col-6"><label class="form-label">Usia Siswa</label><input type="number" name="usia" class="form-control"></div>
                  </div>
                </div>
-
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-users"></i> Kehadiran Kelas</div>
                  <div class="row g-3">
@@ -416,15 +389,10 @@
                    <div class="col-4"><label class="form-label text-danger">Absen</label><input type="number" id="ga" name="absen_gigi" class="form-control" style="background:#fef2f2; border-color:#fca5a5;" readonly></div>
                  </div>
                </div>
-
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-tooth"></i> Kondisi Gigi Anak</div>
                  <div class="row g-3">
-                   <div class="col-12">
-                     <label class="form-label text-success">Pilih Masalah Gigi</label>
-                     <div id="chk_g" class="chk-grid"></div>
-                     <input type="text" id="man_g" class="form-control mt-2" placeholder="Tulis masalah lain (Manual)...">
-                   </div>
+                   <div class="col-12"><label class="form-label text-success">Pilih Masalah Gigi</label><div id="chk_g" class="chk-grid"></div><input type="text" id="man_g" class="form-control mt-2" placeholder="Tulis masalah lain (Manual)..."></div>
                    <div class="col-4"><label class="form-label">Karies Bawah</label><input type="text" name="kariesBawah" class="form-control"></div>
                    <div class="col-4"><label class="form-label">Karies Atas</label><input type="text" name="kariesAtas" class="form-control"></div>
                    <div class="col-4"><label class="form-label">Reg Karies</label><input type="text" name="noKaries" class="form-control"></div>
@@ -432,7 +400,6 @@
                    <div class="col-12"><label class="form-label">Rujuk (Auto)</label><input type="number" id="gr" name="rujuk_gigi" class="form-control bg-light" readonly></div>
                  </div>
                </div>
-
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-camera"></i> Dokumentasi & Petugas</div>
                  <div class="row g-3">
@@ -443,7 +410,6 @@
                </div>
             </div>
 
-            <!-- FORM SURAT TUGAS -->
             <div id="s-surat" class="d-none">
                <div class="form-group-card">
                  <div class="form-group-title"><i class="fas fa-envelope"></i> Detail Surat Tugas</div>
@@ -458,7 +424,6 @@
                </div>
             </div>
 
-            <!-- SUBMIT BUTTON -->
             <div class="mt-4 mb-2">
               <button type="submit" class="btn btn-primary w-100 py-3 shadow" style="border-radius: 14px; font-weight:800; font-size:15px; letter-spacing:0.5px;">
                 <i class="fas fa-cloud-arrow-up me-2"></i> SIMPAN KE CLOUD
@@ -478,9 +443,6 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    // ==========================================
-    // API VERCEL KE GOOGLE APPS SCRIPT
-    // ==========================================
     const GAS_URL = "https://script.google.com/macros/s/AKfycbwpbX1gVIk9wL-0fmtSwU9KaJpfp7Jd3tMoh57NUQPe8CHkZoXXDKwfiRuREPLd6hMc/exec";
 
     async function apiCall(action, payload = {}) {
@@ -497,7 +459,6 @@
       }
     }
 
-    // DATABASE LOKAL
     const DB = {
       staff: ["drg. Fakhrurrazi - 199006062019031007", "Marhamah, Amd.Kes - 197606072002122003", "Hj. Suriati, Amd.Kes - 197603132000122001", "Rafina Sari, AMKG - 199208062020122009", "Novi Ariani, STr.Kes - (Non ASN)", "Dahlia, Amd. Kes - 199601302023212006", "Meiza Utami Pratiwi. A.Md.KG - 199405142024212028"],
       bln: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
@@ -512,7 +473,6 @@
       initForm(); loadTable(); viewer.init();
     });
 
-    // NAVIGATION
     function navTo(p,el) {
       $('#page-input, #page-viewer').removeClass('active').hide();
       $('#page-'+p).addClass('active').show();
@@ -524,7 +484,6 @@
       curCat=c; $('.pill-btn').removeClass('active'); $(el).addClass('active'); loadTable();
     }
 
-    // INIT FORM OPTIONS
     function initForm(){
       let s=''; DB.staff.forEach(x=>s+=`<option value="${x}">${x}</option>`); $('.s-opt').html('<option value="">-- Pilih Nama Pegawai --</option>'+s);
       let b=''; DB.bln.forEach(x=>b+=`<option value="${x}">${x}</option>`); $('.b-opt').html(b);
@@ -532,13 +491,10 @@
     }
     function chk(id,l){ let h=''; l.forEach(x=>h+=`<div class="form-check"><input class="form-check-input c-${id}" type="checkbox" value="${x}"><label class="form-check-label">${x}</label></div>`); $('#'+id).html(h); }
 
-    // --- DATA LOAD (TABLE) ---
     function loadTable(){
       $('#tableTitle').text('Memuat...');
       if($.fn.DataTable.isDataTable('#dataTable')) $('#dataTable').DataTable().destroy();
       $('#tableBody').empty();
-
-      // Penambahan Year Param
       let currentYear = new Date().getFullYear().toString();
       
       apiCall('getDataTable', { type: curCat, year: currentYear }).then(res => {
@@ -550,20 +506,25 @@
         else if(curCat==="Gigi Sekolah"){ th.html('<th>Aksi</th><th>Tanggal</th><th>Sekolah</th><th>Petugas</th>'); c=[2,4,18,19]; }
         else { th.html('<th>Aksi</th><th>No Surat</th><th>Pegawai</th><th>Tujuan</th>'); c=[1,3,5,7]; } 
 
-        res.data.reverse().forEach(r=>{ // Show newest first
+        res.data.reverse().forEach(r=>{ 
            let j=encodeURIComponent(JSON.stringify(r)), p=r[c[3]], downloadUrl=p;
            if(p && p.includes('drive.google.com') && p.includes('/view')) {
                let m = p.match(/\/d\/(.+?)(\/|$)/); if(m) downloadUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
            }
-           let pb = (p && p.includes('http')) ? `<a href="${downloadUrl}" target="_blank" class="btn-action btn-dl ms-1" title="Download Laporan"><i class="fas fa-file-pdf"></i></a>` : '';
-           let tr=`<tr><td style="white-space:nowrap"><button class="btn-action btn-edit" onclick="edit('${j}')" title="Edit"><i class="fas fa-pen"></i></button><button class="btn-action btn-delete ms-1" onclick="del('${r[0]}')" title="Hapus"><i class="fas fa-trash"></i></button>${pb}</td>`;
+           let pb = (p && p.includes('http')) ? `<a href="${downloadUrl}" target="_blank" class="btn-action btn-dl ms-1" title="Buka PDF"><i class="fas fa-file-pdf"></i></a>` : '';
+           
+           let tr=`<tr><td style="white-space:nowrap">
+             <button class="btn-action btn-edit" onclick="edit('${j}')" title="Edit"><i class="fas fa-pen"></i></button>
+             <button class="btn-action btn-print ms-1" onclick="printRow('${r[0]}')" title="Cetak Laporan"><i class="fas fa-print"></i></button>
+             <button class="btn-action btn-delete ms-1" onclick="del('${r[0]}')" title="Hapus"><i class="fas fa-trash"></i></button>
+             ${pb}
+           </td>`;
            c.slice(0,3).forEach(i=>tr+=`<td class="fw-medium">${r[i]||'-'}</td>`); tb.append(tr+'</tr>');
         });
         $('#dataTable').DataTable({responsive:true, pageLength:10, lengthChange:false, language:{search:"Cari:"}, info:false});
       });
     }
 
-    // --- FORM ACTIONS ---
     function openModalAdd(){
        $('#mainForm')[0].reset(); $('#editId').val(''); 
        $('.img-prev').html('Preview').css('background', '#f8fafc'); 
@@ -579,10 +540,7 @@
     async function submitForm(e){
        e.preventDefault(); $('#loader').show(); modal.hide();
        let f=document.forms['mainForm'], t=$('#formType').val(), d={formType:t, editId:$('#editId').val()};
-       
-       // Tambahkan parameter tahun untuk identifikasi DB di backend
        d.year = new Date().getFullYear().toString(); 
-       
        const v=n=>f[n].value, i=async(n,o)=>f[n].files[0]?await cmp(f[n].files[0]):$('#'+o).val();
        const gc=(d,m)=>{let a=[];$(`.c-${d}:checked`).each(function(){a.push($(this).val())}); if($('#'+m).val())a.push($('#'+m).val()); return a.join(", ");};
 
@@ -600,6 +558,35 @@
        apiCall('submitData', { form: d }).then(r => {
           $('#loader').hide(); if(r.success){Swal.fire('Sukses',r.message,'success'); loadTable();}else Swal.fire('Gagal',r.message,'error');
        });
+    }
+
+    function printRow(id) {
+      Swal.fire({
+        title: 'Mencetak Laporan...',
+        text: 'Harap tunggu, file PDF sedang dibuat berdasarkan template.',
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
+      
+      let currentYear = new Date().getFullYear().toString();
+      apiCall('printReport', { id: id, type: curCat, year: currentYear }).then(res => {
+        Swal.close();
+        if (res.success) {
+          Swal.fire({
+            title: 'Berhasil!',
+            text: 'Laporan telah dicetak ulang.',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'Buka PDF',
+            cancelButtonText: 'Tutup'
+          }).then((result) => {
+            if (result.isConfirmed) window.open(res.url, '_blank');
+            loadTable(); // Refresh tabel untuk update link PDF terbaru
+          });
+        } else {
+          Swal.fire('Gagal', res.message, 'error');
+        }
+      });
     }
     
     function edit(j){
@@ -627,7 +614,6 @@
        }});
     }
 
-    // --- VIEWER REPORTS ---
     const viewer={
        init:function(){ apiCall('getYearList').then(y=>{let h='';y.forEach(x=>h+=`<option value="${x}">${x}</option>`);$('#v_tahun').html(h);this.loadStaff()}); },
        loadStaff:function(){ let y=$('#v_tahun').val(); if(!y)return; apiCall('getStaffList', { year: y }).then(s=>{let h='<option value="">Pilih Staff...</option>';s.forEach(x=>h+=`<option value="${x}">${x}</option>`);$('#v_staff').html(h)}); },
@@ -662,7 +648,6 @@
        });
     }
 
-    // --- FORM CALCULATIONS & IMAGE UTILS ---
     function calc(s,c,a){$('#'+a).val(($('#'+s).val()||0)-($('#'+c).val()||0))}
     function countR(t,r){let v=$('#'+t).val();$('#'+r).val(v.trim()?v.split(',').length:0)}
     function prev(i,d){if(i.files[0]){let r=new FileReader();r.onload=e=>{$('#'+d).html(`<img src="${e.target.result}">`).css('background','transparent');};r.readAsDataURL(i.files[0])}}
