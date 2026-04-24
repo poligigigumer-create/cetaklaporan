@@ -313,6 +313,18 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
 .info-chart-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 12px; border-bottom: 1px solid var(--bg); padding-bottom: 8px; }
 #pdf-content { background: var(--surface); padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); }
 
+/* Nomenklatur Gigi Interaktif */
+.odontogram-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; margin-top: 8px; overflow-x: auto; }
+.odonto-title { font-size: 11px; font-weight: 700; color: var(--ink-3); text-align: center; margin-bottom: 8px; letter-spacing: 1px; }
+.odonto-row { display: flex; justify-content: center; min-width: 400px; }
+.odonto-quad { display: flex; gap: 4px; }
+.odonto-quad.right { border-right: 2px solid var(--ink-4); padding-right: 6px; margin-right: 6px; }
+.odonto-quad.left { padding-left: 6px; }
+.odonto-row.top { border-bottom: 2px solid var(--ink-4); padding-bottom: 6px; margin-bottom: 6px; }
+.tooth-btn { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); font-size: 11px; font-weight: 600; color: var(--ink-2); cursor: pointer; transition: 0.15s; user-select: none; }
+.tooth-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-lt); }
+.tooth-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+
 </style>
 </head>
 <body>
@@ -581,9 +593,80 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
           <div class="fsec-hdr"><div class="fsec-num bg-danger-lt text-danger">2</div><div class="fsec-title">Klinis & Terapi</div></div>
           <div class="fsec-body">
             <div class="row g-3">
-              <div class="col-md-12"><div class="fld mb-0"><label>Diagnosa Utama <span class="text-danger">*</span></label><input class="inp" list="list-diagnosa-dl" id="e-diagnosa" placeholder="Diagnosa ICD-10..." required><datalist id="list-diagnosa-dl"><option value="Mobiliti"><option value="Pulpitis"><option value="Abses"><option value="Radix"><option value="Persistensi"><option value="Penyakit Rongga Mulut"><option value="Periodontitis"><option value="Ginggivitis"><option value="Stomatitis"><option value="Karies Gigi"><option value="Angular Chelitis"></datalist></div></div>
-              <div class="col-md-12"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="e-terapi" placeholder="Tindakan..."><datalist id="list-terapi"><option value="Premedikasi"><option value="DHE/ Konsultasi"><option value="Pencabutan Gigi Tetap"><option value="Pencabutan Gigi Susu"><option value="Tumpatan Sementara"><option value="Tumpatan Gigi Tetap"><option value="Tumpatan Gigi Susu"><option value="Scaling / Pembersihan Karang Gigi"></datalist></div></div>
-              <div class="col-md-6"><div class="fld mb-0"><label>Gigi</label><input type="text" id="e-gigi" class="inp mono" placeholder="Cth: 46"></div></div>
+              <div class="col-md-12"><div class="fld mb-0"><label>Diagnosa Utama <span class="text-danger">*</span></label><input class="inp" list="list-diagnosa-dl" id="e-diagnosa" placeholder="Diagnosa ICD-10..." required><datalist id="list-diagnosa-dl">
+  <option value="Abses">
+  <option value="Karies Gigi">
+  <option value="Mobiliti">
+  <option value="Periodontitis">
+  <option value="Persistensi">
+  <option value="Penyakit Rongga Mulut">
+  <option value="Pulpitis">
+  <option value="Impaksi">
+  <option value="Radix">
+  <option value="Ginggivitis">
+  <option value="Supernumarery Teeth">
+  <option value="Penyakit Kelenjar Ludah">
+  <option value="Keluhan Dento Fasial">
+</datalist></div></div>
+              <div class="col-md-12"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="e-terapi" placeholder="Tindakan..."><datalist id="list-terapi">
+  <option value="Premedikasi">
+  <option value="Pencabutan Gigi Tetap">
+  <option value="Pencabutan Gigi Susu">
+  <option value="DHE/Konsultasi">
+  <option value="Pengobatan Abses">
+  <option value="Tumpatan Gigi Tetap">
+  <option value="Tumpatan Gigi Susu">
+  <option value="Tambalan Sementara">
+  <option value="Rujukan">
+  <option value="Premedikasi Pengobatan Abses">
+</datalist></div></div>
+              <div class="col-md-12">
+  <div class="fld mb-0">
+    <label>Elemen Gigi (Pilih pada bagan)</label>
+    <div class="d-flex gap-2">
+      <input type="text" id="e-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
+      <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-e').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
+    </div>
+    
+    <div id="odonto-e" class="odontogram-box" style="display:none;">
+      <div class="odonto-title">GIGI TETAP (DEWASA)</div>
+      <div class="odonto-row top">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">11</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">28</div>
+        </div>
+      </div>
+      <div class="odonto-row mb-3">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">41</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">38</div>
+        </div>
+      </div>
+      
+      <div class="odonto-title">GIGI SUSU (ANAK)</div>
+      <div class="odonto-row top">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">51</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">65</div>
+        </div>
+      </div>
+      <div class="odonto-row">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">81</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
               <div class="col-md-6"><div class="fld mb-0"><label>Anastesi</label><input class="inp" list="list-anastesi" id="e-anastesi" placeholder="Bahan..."><datalist id="list-anastesi"><option value="Lidocain"><option value="Pehacain"><option value="Chloretil"><option value="Topikal Gel"><option value="Artikain"><option value="Mepivacain"></datalist></div></div>
             </div>
           </div>
@@ -918,7 +1001,53 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
             <div class="row g-2">
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Diagnosa *</label><input class="inp" list="list-diagnosa-dl" id="mp-diagnosa" placeholder="Diagnosa..."></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="mp-terapi" placeholder="Tindakan..."></div></div>
-              <div class="col-4 col-md-2"><div class="fld mb-0"><label>Gigi</label><input type="text" id="mp-gigi" class="inp mono" placeholder="Misal: 46"></div></div>
+              <div class="col-12 col-md-12">
+  <div class="fld mb-0">
+    <label>Elemen Gigi</label>
+    <div class="d-flex gap-2">
+      <input type="text" id="mp-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
+      <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-mp').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
+    </div>
+    
+    <div id="odonto-mp" class="odontogram-box" style="display:none;">
+      <div class="odonto-title">GIGI TETAP (DEWASA)</div>
+      <div class="odonto-row top">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">11</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">28</div>
+        </div>
+      </div>
+      <div class="odonto-row mb-3">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">41</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">38</div>
+        </div>
+      </div>
+      
+      <div class="odonto-title">GIGI SUSU (ANAK)</div>
+      <div class="odonto-row top">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">51</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">65</div>
+        </div>
+      </div>
+      <div class="odonto-row">
+        <div class="odonto-quad right">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">81</div>
+        </div>
+        <div class="odonto-quad left">
+          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
               <div class="col-8 col-md-4"><div class="fld mb-0"><label>Anastesi</label><input class="inp" list="list-anastesi" id="mp-anastesi" placeholder="Bahan..."></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Obat</label><input type="text" id="mp-obat" class="inp" placeholder="Koma"></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Keterangan</label><input type="text" id="mp-ket" class="inp" placeholder="Opsional..."></div></div>
@@ -1020,31 +1149,6 @@ let chartObjects = {};
 const MONTHS = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 let isOffline = !navigator.onLine;
 
-// ==========================================
-// GEMINI AI INTEGRATION
-// ==========================================
-const apiKey = "";
-
-async function fetchGeminiAPI(prompt, retries = 5) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-  const payload = {
-    contents: [{ parts: [{ text: prompt }] }],
-    systemInstruction: { parts: [{ text: "Anda adalah asisten AI medis ahli untuk dokter gigi. Berikan jawaban ringkas, profesional, dan langsung ke intinya. Gunakan format HTML dasar (seperti <b>, <ul>, <li>) untuk merapikan teks." }] }
-  };
-
-  for (let i = 0; i < retries; i++) {
-    try {
-      const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const result = await response.json();
-      return result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, tidak ada respons dari AI.";
-    } catch (error) {
-      const delay = Math.pow(2, i) * 1000; 
-      if (i === retries - 1) throw error;
-      await new Promise(res => setTimeout(res, delay));
-    }
-  }
-}
 
 async function loadAIQuote() {
   const cachedQuote = sessionStorage.getItem('ai_health_quote');
@@ -1388,7 +1492,16 @@ async function loadDB() {
 }
 
 async function openAddPasien() { $('#mdlPasienTitle').text('Pasien Baru'); $('#mp-act').val('add'); $('#mp-rowid').val(''); $('#mdlPasien input:not([type=hidden]), #mdlPasien select').val('').prop('selectedIndex',0); document.getElementById('mp-tgl').valueAsDate = new Date(); mpSetBulan(); try { $('#mp-no').val(await apiCall('getLastNoPasien')); } catch(e){} new bootstrap.Modal('#mdlPasien').show(); }
-function editPasienModal(enc) { const { rowData: r, rowId: rid } = JSON.parse(decodeURIComponent(enc)); $('#mdlPasienTitle').text('Edit Pasien'); $('#mp-act').val('edit'); $('#mp-rowid').val(rid); $('#mp-no').val(r[0]); $('#mp-tgl').val(r[2]); $('#mp-bln').val(r[3]); $('#mp-rm').val(r[4]); $('#mp-nama').val(r[5]); $('#mp-umur').val(r[6]); $('#mp-jk').val(r[7]); $('#mp-keadaan').val(r[8]); $('#mp-alamat').val(r[9]); $('#mp-faskes').val(r[10]); $('#mp-jenis').val(r[11]); $('#mp-diagnosa').val(r[12]); $('#mp-gigi').val(r[13]); $('#mp-terapi').val(r[14]); $('#mp-anastesi').val(r[15]); $('#mp-obat').val(r[16]); $('#mp-ket').val(r[17]); $('#mp-pj').val(r[18]); $('#mp-odon').val(r[19]); $('#mp-surat').val(r[20]); new bootstrap.Modal('#mdlPasien').show(); }
+function editPasienModal(enc) { const { rowData: r, rowId: rid } = JSON.parse(decodeURIComponent(enc)); $('#mdlPasienTitle').text('Edit Pasien'); $('#mp-act').val('edit'); $('#mp-rowid').val(rid); $('#mp-no').val(r[0]); $('#mp-tgl').val(r[2]); $('#mp-bln').val(r[3]); $('#mp-rm').val(r[4]); $('#mp-nama').val(r[5]); $('#mp-umur').val(r[6]); $('#mp-jk').val(r[7]); $('#mp-keadaan').val(r[8]); $('#mp-alamat').val(r[9]); $('#mp-faskes').val(r[10]); $('#mp-jenis').val(r[11]); $('#mp-diagnosa').val(r[12]); $('#mp-gigi').val(r[13]); $('#mp-terapi').val(r[14]);// Sinkronisasi tombol Odontogram saat Edit Pasien
+  $('#odonto-mp .tooth-btn').removeClass('selected'); // Reset papan
+  if(r[13]) {
+    let gigiArr = r[13].toString().split(',').map(s => s.trim());
+    $('#odonto-mp .tooth-btn').each(function() {
+      if(gigiArr.includes($(this).text())) {
+        $(this).addClass('selected'); // Nyalakan tombol yang sesuai
+      }
+    });
+  } $('#mp-anastesi').val(r[15]); $('#mp-obat').val(r[16]); $('#mp-ket').val(r[17]); $('#mp-pj').val(r[18]); $('#mp-odon').val(r[19]); $('#mp-surat').val(r[20]); new bootstrap.Modal('#mdlPasien').show(); }
 function previewPasienModal(enc) { const { rowData: r } = JSON.parse(decodeURIComponent(enc)); const sv = (val) => (val === undefined || val === null || String(val).trim() === '') ? '-' : val; $('#prev-rm').text('RM: ' + sv(r[4])); $('#prev-nama').text(sv(r[5])); $('#prev-umurjk').text(sv(r[6]) + ' Tahun / ' + sv(r[7])); $('#prev-tgl').text(sv(r[2])); $('#prev-alamat').text(sv(r[9])); $('#prev-kondisi').text(sv(r[8])); $('#prev-status').text(sv(r[11]) + ' - ' + sv(r[10])); $('#prev-diagnosa').text(sv(r[12])); $('#prev-terapi').text(sv(r[14])); $('#prev-gigi').text(sv(r[13])); $('#prev-anastesi').text(sv(r[15])); $('#prev-obat').text(sv(r[16])); $('#prev-ket').text(sv(r[17])); $('#prev-pj').text(sv(r[18])); $('#prev-odon').text(sv(r[19])); $('#prev-surat').text(sv(r[20])); $('#btn-edit-from-prev').off('click').on('click', function() { $('#mdlPreviewPasien').modal('hide'); editPasienModal(enc); }); new bootstrap.Modal('#mdlPreviewPasien').show(); }
 
 async function savePasien() {
@@ -1521,6 +1634,28 @@ function downloadPDF() {
 async function dl(nm, tp) { showLoader('Ekstraksi...'); try { const u = await apiCall('generateDownloadUrl', [tp, nm, $('#dl-bln').val(), null]); hideLoader(); window.open(u); } catch(e) { hideLoader(); } }
 async function dlLKH() { const s=$('#dl-staff').val(), b=$('#dl-bln-lkh').val(); if (!s) return Swal.fire('Info','Pilih nama staf.','warning'); showLoader('Ekstraksi...'); try { const u = await apiCall('generateDownloadUrl', ['excel', 'LKH Staff', b, s]); hideLoader(); window.open(u); } catch(e) { hideLoader(); } }
 function revealAndCopy(btn) { const num = "085277479990"; const el = document.getElementById('donasi-number'); if (el.innerText.includes('•')) { el.innerText = "0852-7747-9990"; btn.innerHTML = '<i class="fas fa-copy"></i>'; } else { navigator.clipboard.writeText(num).then(() => { btn.innerHTML = '<i class="fas fa-check text-success"></i>'; setTimeout(()=>{ btn.innerHTML='<i class="fas fa-copy"></i>'; }, 2000); }); } }
+
+// Logika Pilihan Nomenklatur Gigi
+function toggleTooth(element, targetId) {
+  // Toggle status aktif pada tombol gigi yang diklik
+  $(element).toggleClass('selected');
+  
+  // Kumpulkan semua nomor gigi yang aktif di dalam boks odontogram yang sama
+  let selectedTeeth = [];
+  $(element).closest('.odontogram-box').find('.tooth-btn.selected').each(function() {
+    selectedTeeth.push($(this).text());
+  });
+  
+  // Masukkan hasilnya ke input teks dengan dipisahkan koma
+  $('#' + targetId).val(selectedTeeth.join(', '));
+}
+
+// Reset pilihan gigi setiap kali Form Entri disimpan
+$('#formEntri').on('reset', function() {
+  $('.tooth-btn').removeClass('selected');
+  $('#odonto-e').slideUp();
+});
+
 </script>
 </body>
 </html>
