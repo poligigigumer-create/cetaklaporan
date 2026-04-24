@@ -3,440 +3,423 @@
 <head>
   <base target="_top">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#f1f5f9">
-  <title>E-Laporan Gigi Pro</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>E-Laporan Gigi Pro | Cetak Laporan</title>
   
-  <!-- Font & Icons -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232563eb'/><stop offset='100%' stop-color='%234f46e5'/></linearGradient></defs><path fill='url(%23g)' d='M445.8 81C409.1 36.3 350.5 14.8 296 32.5c-26.6 8.6-53.4 8.6-80 0C161.5 14.8 102.9 36.3 66.2 81 22.8 133.7 15.3 207 43 266.6l54.8 118.2c11.6 24.9 35.8 41.2 63.3 41.2 46.9 0 76.5-47.5 54.9-89.2L192 288c-10.2-19.3 1.5-43 22.7-47.2 24.7-4.9 47.9 13.5 49.3 38.6l3.5 61.1c2 35.2 30.7 63.5 65.9 63.5 34.6 0 63.2-27.4 65.8-61.9l4.5-60.8c1.5-25.1 24.7-43.5 49.3-38.6 21.2 4.2 32.9 27.9 22.7 47.2l-24 48.8c-21.6 41.7 8 89.2 54.9 89.2 27.5 0 51.7-16.3 63.3-41.2l54.8-118.2c27.7-59.6 20.2-132.9-23.2-185.6z'/></svg>">
+
+  <!-- Frameworks & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  
-  <!-- Frameworks -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
-  <style>
-    /* ═══════════════════════════════════════════════════════════════
-       DESIGN TOKENS
-    ═══════════════════════════════════════════════════════════════ */
-    :root {
-      --bg:          #f1f5f9;      
-      --surface:     #ffffff;
-      --border:      #e2e8f0;
-      --border-focus:#cbd5e1;
-      
-      --ink:         #0f172a;
-      --ink-2:       #334155;
-      --ink-3:       #64748B;
-      --ink-4:       #94A3B8;
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS (Merged from index.html)
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --bg:          #fafafa;      
+  --surface:     #ffffff;
+  --border:      #e4e4e7;
+  --border-focus:#a1a1aa;
+  
+  --ink:         #09090b;
+  --ink-2:       #3f3f46;
+  --ink-3:       #71717a;
+  --ink-4:       #a1a1aa;
 
-      --primary:     #2563eb;      
-      --primary-hv:  #1d4ed8;
-      --primary-lt:  #eff6ff;
-      
-      --success:     #10b981;      
-      --success-lt:  #ecfdf5;
-      
-      --warning:     #f59e0b;      
-      --warning-lt:  #fffbeb;
-      
-      --danger:      #ef4444;      
-      --danger-lt:   #fef2f2;
-      
-      --indigo:      #6366f1;
-      --indigo-lt:   #eef2ff;
+  --primary:     #2563eb;      
+  --primary-hv:  #1d4ed8;
+  --primary-lt:  #eff6ff;
+  
+  --success:     #16a34a;      
+  --success-lt:  #f0fdf4;
+  
+  --warning:     #d97706;      
+  --warning-lt:  #fffbeb;
+  
+  --danger:      #dc2626;      
+  --danger-lt:   #fef2f2;
+  
+  --indigo:      #4f46e5;
+  --indigo-lt:   #eef2ff;
 
-      --nav-height:  65px;
-      
-      --radius-sm:   6px;
-      --radius:      10px;
-      --radius-lg:   14px;
-      --radius-xl:   18px;
+  --sidebar-w:   240px;
+  --nav-height:  64px;
+  
+  --radius-sm:   6px;
+  --radius:      8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
 
-      --shadow-sm:   0 1px 3px rgba(15, 23, 42, 0.05);
-      --shadow:      0 4px 12px -4px rgba(15, 23, 42, 0.08);
-      --shadow-glow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
-    
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      margin: 0; padding: 0;
-      height: 100dvh;
-      display: flex; flex-direction: column;
-      overflow: hidden;
-      font-size: 13px;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, h4, h5, h6, .font-heading {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      letter-spacing: -0.01em;
-    }
-    .mono { font-family: 'JetBrains Mono', monospace; }
-    button { cursor: pointer; transition: all 0.2s ease; }
-    a { text-decoration: none; transition: all 0.2s ease; }
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow:      0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg:   0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
 
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13px; 
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+a { text-decoration: none; transition: color 0.15s ease; }
+button { cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border 0.15s ease; font-family: 'Inter', sans-serif; }
 
-    /* --- APP HEADER --- */
-    .mob-bar { 
-      display: flex; align-items: center; justify-content: space-between; 
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
-      padding: 12px 20px; border-bottom: 1px solid var(--border); 
-      position: sticky; top: 0; z-index: 900; 
-    }
-    .mb-brand { display: flex; align-items: center; gap: 10px; }
-    .mb-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: var(--shadow-sm); }
-    .mb-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.1; margin: 0;}
-    .mb-subtitle { font-size: 11px; color: var(--ink-3); font-weight: 500; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
 
-    /* --- TAB NAVIGATION --- */
-    .tab-container {
-      background: var(--surface);
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .pill-wrapper {
-      display: flex; gap: 8px; overflow-x: auto;
-      scrollbar-width: none; padding-bottom: 2px;
-    }
-    .pill-wrapper::-webkit-scrollbar { display: none; }
-    .pill-btn {
-      background: var(--bg); border: 1px solid var(--border);
-      padding: 8px 16px; border-radius: 100px;
-      font-size: 12px; font-weight: 600; color: var(--ink-3);
-      white-space: nowrap; transition: all 0.2s;
-    }
-    .pill-btn:hover { background: var(--border); color: var(--ink); }
-    .pill-btn.active {
-      background: var(--primary-lt); border-color: var(--primary-lt);
-      color: var(--primary); font-weight: 700;
-    }
+/* Custom Colors */
+.bg-primary-lt { background-color: var(--primary-lt) !important; }
+.text-primary { color: var(--primary) !important; }
+.border-primary { border-color: var(--primary) !important; }
+.bg-success-lt { background-color: var(--success-lt) !important; }
+.text-success { color: var(--success) !important; }
+.bg-warning-lt { background-color: var(--warning-lt) !important; }
+.text-warning { color: var(--warning) !important; }
+.bg-danger-lt { background-color: var(--danger-lt) !important; }
+.text-danger { color: var(--danger) !important; }
+.bg-surface { background-color: var(--surface) !important; }
+.bg-bg { background-color: var(--bg) !important; }
+.bg-ink { background-color: var(--ink) !important; }
 
-    /* --- DATA CARDS & MAIN CONTENT --- */
-    .content-area {
-      flex: 1; overflow-y: auto; overflow-x: hidden;
-      padding: 20px 20px 90px;
-    }
-    .wg-card { background: var(--surface); border-radius: var(--radius-lg); padding: 16px 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .wg-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-lt); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .wg-info h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; color: var(--ink); margin: 0; line-height: 1; }
-    .wg-info span { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+/* Loader */
+#loader { position: fixed; inset: 0; z-index: 99999; background: rgba(255, 255, 255, 0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; transition: opacity 0.15s ease; }
+.spin { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-    .data-card {
-      background: var(--surface); border-radius: var(--radius-lg);
-      padding: 20px; border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-    .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .card-header-flex h6 { font-size: 15px !important; color: var(--ink); margin: 0; }
+/* ═══════════════════════════════════════════════════════════════
+   LAYOUT (Sidebar & Topbar)
+═══════════════════════════════════════════════════════════════ */
+#sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; display: flex; flex-direction: column; padding: 24px 16px; }
+.sb-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
+.sb-icon { width: 32px; height: 32px; border-radius: var(--radius); background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; }
+.sb-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1; }
+.sb-ver { font-size: 11px; color: var(--ink-3); }
 
-    /* --- DATA TABLES --- */
-    table.dataTable { border-collapse: collapse !important; margin-top: 12px !important; width: 100% !important; }
-    table.dataTable thead th { background: var(--bg) !important; color: var(--ink-3) !important; font-size: 11px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 0.05em; padding: 12px 16px !important; border-bottom: none !important; border-radius: 0; }
-    table.dataTable thead th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
-    table.dataTable thead th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
-    table.dataTable tbody td { padding: 14px 16px !important; vertical-align: middle; border-bottom: 1px solid var(--border) !important; color: var(--ink); font-size: 13px; font-weight: 500; }
-    table.dataTable tbody tr:hover td { background: var(--bg) !important; }
-    .dataTables_wrapper .dataTables_filter input { border: 1px solid var(--border-focus); border-radius: 8px; padding: 6px 12px; height: 34px; font-size: 12px; outline: none; background: var(--surface); transition: all 0.2s;}
-    .dataTables_wrapper .dataTables_filter input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-lt); }
+.nav-group { margin-bottom: 24px; }
+.sb-sec-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--ink-4); letter-spacing: 0.05em; margin-bottom: 8px; display: block; padding-left: 8px; }
+.nav-lnk { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--radius-sm); color: var(--ink-3); font-size: 13px; font-weight: 500; margin-bottom: 2px; cursor: pointer; border: 1px solid transparent; }
+.nav-lnk i { width: 18px; text-align: center; font-size: 14px; }
+.nav-lnk:hover { color: var(--primary); background: var(--primary-lt); }
+.nav-lnk.active { background: var(--primary-lt); color: var(--primary); font-weight: 600; border-color: transparent; }
 
-    .btn-action { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: none; font-size: 13px; transition: 0.2s; cursor: pointer; }
-    .btn-action:hover { opacity: 0.8; transform: translateY(-1px); }
-    .btn-edit { background: var(--warning-lt); color: var(--warning); }
-    .btn-delete { background: var(--danger-lt); color: var(--danger); }
-    .btn-print { background: var(--success-lt); color: var(--success); }
-    .btn-dl { background: var(--indigo-lt); color: var(--indigo); }
+#content { margin-left: var(--sidebar-w); padding: 32px; min-height: 100vh; padding-bottom: 40px; display: flex; flex-direction: column; }
+.pg-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.pg-title h2 { font-size: 20px; font-weight: 700; color: var(--ink); margin: 0; line-height: 1.2; }
+.pg-subtitle { font-size: 13px; color: var(--ink-3); margin-bottom: 0; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.clock-chip { display: flex; align-items: center; gap: 6px; background: var(--surface); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--border); }
 
-    /* --- FAB --- */
-    .fab {
-      position: fixed; bottom: 85px; right: 20px;
-      width: 54px; height: 54px; border-radius: 16px;
-      background: var(--primary); color: white; border: none;
-      font-size: 22px; box-shadow: var(--shadow-glow);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; z-index: 900;
-    }
-    .fab:active { transform: scale(0.9); }
+/* ═══════════════════════════════════════════════════════════════
+   PAGE COMPONENTS (Tabs, Forms, DataTables)
+═══════════════════════════════════════════════════════════════ */
+.page-section { flex: 1; display: flex; flex-direction: column; }
+.fade-in { animation: fadeIn 0.15s ease-in-out forwards; opacity: 0; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* --- BOTTOM NAVIGATION --- */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: var(--nav-height); background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-around; align-items: center;
-      z-index: 1000; padding-bottom: env(safe-area-inset-bottom);
-    }
-    .nav-item {
-      flex: 1; text-align: center; background: none; border: none;
-      color: var(--ink-4); font-size: 10px; font-weight: 600; transition: all 0.2s;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-      width: 56px; height: 56px; border-radius: 14px; text-decoration: none;
-    }
-    .nav-item i { font-size: 18px; transition: transform 0.2s; }
-    .nav-item.active { color: var(--primary); }
-    .nav-item.active i { transform: translateY(-2px); }
+/* Pills & Tab Wrapper */
+.tab-container { background: var(--bg); padding-bottom: 16px; margin-bottom: 8px; }
+.pill-wrapper { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.pill-wrapper::-webkit-scrollbar { display: none; }
+.pill-btn { background: var(--surface); border: 1px solid var(--border); padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--ink-3); white-space: nowrap; transition: all 0.2s; }
+.pill-btn:hover { background: var(--bg); border-color: var(--border-focus); color: var(--ink); }
+.pill-btn.active { background: var(--primary-lt); border-color: var(--primary); color: var(--primary); font-weight: 700; }
 
-    /* --- VIEWER PAGE (REPORTS) --- */
-    #page-viewer { display: none; height: 100%; flex-direction: column; background: var(--bg); }
-    #page-viewer.active { display: flex; animation: fadeInfo 0.2s ease-out; }
-    
-    .viewer-toolbar {
-      background: var(--surface); padding: 12px 20px;
-      border-bottom: 1px solid var(--border);
-      display: grid; grid-template-columns: auto 1fr 1fr; gap: 10px; align-items: center;
-      box-shadow: var(--shadow-sm); z-index: 10;
-    }
-    .v-select { 
-      width: 100%; border: 1px solid var(--border); border-radius: 10px; 
-      padding: 8px 14px; font-size: 13px; font-weight: 500; height: 40px;
-      background: #f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath stroke='%2364748B' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center;
-      color: var(--ink); outline: none; appearance: none; cursor: pointer; transition: 0.2s;
-    }
-    .v-select:focus { border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px var(--primary-lt); }
-    .btn-config { height: 40px; width: 40px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-3); transition: 0.2s; }
-    .btn-config:hover { background: var(--bg); color: var(--ink); }
+/* Data Cards */
+.wg-card { background: var(--surface); border-radius: var(--radius-lg); padding: 16px 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.wg-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-lt); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.wg-info h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; color: var(--ink); margin: 0; line-height: 1; }
+.wg-info span { font-size: 12px; font-weight: 500; color: var(--ink-3); }
 
-    .viewer-content { flex: 1; position: relative; background: var(--bg); }
-    .empty-state {
-      position: absolute; inset: 0; display: flex; flex-direction: column; 
-      align-items: center; justify-content: center; color: var(--ink-4); text-align: center; padding: 20px;
-    }
-    .es-icon { width: 72px; height: 72px; border-radius: 18px; background: var(--surface); box-shadow: var(--shadow-sm); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--primary); margin-bottom: 16px; }
-    .empty-state h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .empty-state p { font-size: 13px; max-width: 260px; line-height: 1.5; }
-    iframe { width: 100%; height: 100%; border: none; display: none; background: white; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 24px; overflow: hidden; box-shadow: none; }
+.card-header { background: var(--surface); padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.card-body { padding: 20px; }
+.ch-title { font-size: 15px !important; font-weight: 700; color: var(--ink); margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;}
 
-    .action-dock {
-      position: absolute; bottom: 85px; right: 20px; 
-      display: flex; flex-direction: column; gap: 10px; z-index: 10;
-    }
-    .dock-btn {
-      width: 48px; height: 48px; border-radius: 14px; border: none; color: white;
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s;
-    }
-    .dock-btn:active { transform: scale(0.9); }
+/* Tables */
+table.dataTable { border-collapse: collapse !important; margin-top: 12px !important; width: 100% !important; }
+table.dataTable thead th { background: var(--bg) !important; color: var(--ink-3) !important; font-size: 11px !important; font-weight: 600 !important; text-transform: uppercase; padding: 12px 16px !important; border-bottom: 1px solid var(--border) !important; border-top: 1px solid var(--border) !important; }
+table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle; border-bottom: 1px solid var(--border) !important; color: var(--ink); font-size: 13px; font-weight: 400; }
+.dataTables_wrapper .dataTables_filter input { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 4px 10px; height: 32px; font-size: 12px; outline: none; background: var(--surface); transition: all 0.2s;}
+.dataTables_wrapper .dataTables_filter input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-lt); }
 
-    /* --- FORM & MODALS --- */
-    .modal-content { border: none; border-radius: 20px; box-shadow: var(--shadow-lg); overflow: hidden; }
-    .modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--surface); }
-    .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin: 0; }
-    .btn-close { filter: opacity(0.6); transition: 0.2s; font-size: 12px; }
-    .btn-close:hover { filter: opacity(1); }
-    .modal-body { background: var(--bg); padding: 24px; }
-    
-    .fsec { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden; }
-    .fsec-hdr { padding: 14px 20px; border-bottom: 1px dashed var(--border); display: flex; align-items: center; gap: 10px; background: var(--surface); }
-    .fsec-title { font-size: 14px; font-weight: 700; color: var(--ink); }
-    .fsec-body { padding: 20px; }
+.btn-action { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: none; font-size: 12px; transition: 0.2s; cursor: pointer; }
+.btn-action:hover { opacity: 0.8; transform: translateY(-1px); }
+.btn-edit { background: var(--warning-lt); color: var(--warning); border: 1px solid transparent; }
+.btn-delete { background: var(--danger-lt); color: var(--danger); border: 1px solid transparent; }
+.btn-print { background: var(--success-lt); color: var(--success); border: 1px solid transparent; }
+.btn-dl { background: var(--indigo-lt); color: var(--indigo); border: 1px solid transparent; }
 
-    .fld { margin-bottom: 0; position: relative; }
-    .fld label { display: block; font-size: 11px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
-    .inp, .sel {
-      width: 100%; height: 40px; padding: 0 12px;
-      background: #f8fafc; border: 1px solid var(--border-focus);
-      border-radius: 8px; font-size: 13px; color: var(--ink); font-weight: 500;
-      transition: all 0.2s ease; outline: none; appearance: none;
-    }
-    textarea.inp { height: auto; padding: 10px 12px; }
-    .inp:focus, .sel:focus { border-color: var(--primary); background: var(--surface); box-shadow: 0 0 0 3px var(--primary-lt); }
-    
-    .chk-grid {
-      display: flex; flex-wrap: wrap; gap: 8px; max-height: 140px; overflow-y: auto;
-      padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #f8fafc;
-    }
-    .form-check { margin: 0; padding: 0; display: inline-block; }
-    .form-check-input { display: none; }
-    .form-check-label { 
-      padding: 8px 14px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border-focus); 
-      font-size: 12px; font-weight: 500; color: var(--ink-3); cursor: pointer; transition: all 0.2s; 
-    }
-    .form-check-label:hover { border-color: var(--primary); color: var(--ink); }
-    .form-check-input:checked + .form-check-label { background: var(--primary); border-color: var(--primary); color: #fff; }
-    
-    .img-prev { 
-      width: 100%; height: 110px; border: 1px dashed #cbd5e1; border-radius: 8px; 
-      margin-top: 8px; display: flex; align-items: center; justify-content: center; 
-      overflow: hidden; background: #f8fafc; color: var(--ink-4); font-size: 12px; font-weight: 600;
-    }
-    .img-prev img { width: 100%; height: 100%; object-fit: cover; }
+/* Modals & Forms */
+.modal-content { border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; }
+.modal-header { padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); margin: 0; }
+.modal-body { padding: 24px; background: var(--bg); }
+.btn-close { filter: opacity(0.5); font-size: 12px; transition: 0.2s; }
+.btn-close:hover { filter: opacity(1); }
 
-    .loader-overlay {
-      position: fixed; inset: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);
-      z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-    }
-    .spin-lg { width: 44px; height: 44px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
-    
-    @keyframes fadeInfo { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fsec { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden; box-shadow: var(--shadow-sm); }
+.fsec-hdr { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--bg); }
+.fsec-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+.fsec-body { padding: 16px 20px; }
 
-    /* ═══════════════════════════════════════════════════════════════
-       SMARTPHONE ADAPTIVE GRID (Responsive Fixes)
-    ═══════════════════════════════════════════════════════════════ */
-    @media (max-width: 576px) {
-      .content-area { padding: 12px 12px 90px; }
-      .data-card { padding: 16px; border-radius: 16px; }
-      .wg-card { padding: 12px 16px; border-radius: 12px; }
-      
-      .mob-bar { padding: 10px 16px; }
-      .mb-title { font-size: 15px; }
-      
-      .pill-container { padding: 10px 16px; }
-      .pill-btn { padding: 6px 14px; font-size: 11px; }
+.fld { margin-bottom: 12px; position: relative; }
+.fld label { display: block; font-size: 11px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;}
+.inp, .sel {
+  width: 100%; height: 40px; padding: 0 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 13px; color: var(--ink); font-weight: 500;
+  outline: none; appearance: none; transition: all 0.2s;
+}
+textarea.inp { height: auto; padding: 10px 12px; }
+.inp:focus, .sel:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-lt); }
+.inp::placeholder { color: var(--ink-4); font-weight: 400; }
+.sel { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath stroke='%23a1a1aa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
 
-      .viewer-toolbar { grid-template-columns: 1fr; gap: 8px; padding: 12px 16px; }
-      .viewer-toolbar .btn-config { grid-column: span 1; width: 100%; }
-      .viewer-toolbar .v-select { grid-column: span 1 !important; }
+/* Custom Chekbox Grid inside Forms */
+.chk-grid { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); max-height: 140px; overflow-y: auto;}
+.form-check { margin: 0; padding: 0; display: inline-block; }
+.form-check-input { display: none; }
+.form-check-label { padding: 6px 12px; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); font-size: 12px; font-weight: 500; color: var(--ink-3); cursor: pointer; transition: all 0.2s; }
+.form-check-label:hover { border-color: var(--border-focus); color: var(--ink); }
+.form-check-input:checked + .form-check-label { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-      .modal-content { border-radius: 16px; }
-      .modal-header { padding: 16px; }
-      .modal-body { padding: 16px; }
-      
-      .fsec { border-radius: 12px; margin-bottom: 16px; }
-      .fsec-hdr { padding: 12px 16px; }
-      .fsec-body { padding: 16px; }
+.img-prev { width: 100%; height: 100px; border: 1px dashed var(--border-focus); border-radius: var(--radius-sm); margin-top: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--surface); color: var(--ink-4); font-size: 12px; font-weight: 600; }
+.img-prev img { width: 100%; height: 100%; object-fit: cover; }
 
-      /* Tabel Responsive Tweaks */
-      table.dataTable thead th { font-size: 10px !important; padding: 10px !important; }
-      table.dataTable tbody td { font-size: 12px !important; padding: 12px 10px !important; }
-      .btn-action { width: 28px; height: 28px; font-size: 12px; }
+/* --- FAB --- */
+.fab { position: fixed; bottom: 85px; right: 32px; width: 54px; height: 54px; border-radius: 16px; background: var(--primary); color: white; border: none; font-size: 20px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 900; }
+.fab:hover { transform: translateY(-2px); background: var(--primary-hv); }
+.fab:active { transform: scale(0.95); }
 
-      /* FAB Tweaks */
-      .fab { right: 16px; bottom: 80px; width: 50px; height: 50px; font-size: 20px; }
-    }
-  </style>
+/* --- VIEWER TOOLBAR --- */
+.viewer-toolbar { background: var(--surface); padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); display: grid; grid-template-columns: auto 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 16px;}
+.v-select { width: 100%; height: 38px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 12px; font-size: 13px; background: var(--bg); outline: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath stroke='%2364748B' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.v-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-lt); }
+.btn-config { height: 38px; width: 38px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--ink-3); display: flex; justify-content: center; align-items: center; transition: 0.2s; }
+.btn-config:hover { background: var(--bg); color: var(--ink); }
+
+.viewer-content { flex: 1; position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; min-height: 50vh; display: flex; flex-direction: column;}
+iframe { flex: 1; width: 100%; border: none; display: none; background: white; }
+.empty-state { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink-4); text-align: center; padding: 20px; }
+.es-icon { width: 64px; height: 64px; border-radius: var(--radius-lg); background: var(--primary-lt); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--primary); margin-bottom: 16px; }
+.empty-state h5 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+
+.action-dock { position: absolute; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 10; }
+.dock-btn { width: 44px; height: 44px; border-radius: var(--radius-sm); border: none; color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: var(--shadow); transition: all 0.2s; }
+.dock-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SMARTPHONE RESPONSIVE (Strictly Precise)
+═══════════════════════════════════════════════════════════════ */
+.mob-bar { display: none; align-items: center; justify-content: space-between; background: var(--surface); padding: 12px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 900; margin: -16px -16px 16px -16px; }
+.mb-brand { display: flex; align-items: center; gap: 8px; }
+.mb-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.mb-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; line-height: 1;}
+
+.bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1040; height: var(--nav-height); background: var(--surface); border-top: 1px solid var(--border); justify-content: space-around; align-items: center; padding-bottom: env(safe-area-inset-bottom); }
+.bn-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--ink-4); font-size: 10px; font-weight: 500; width: 50px; height: 50px; border-radius: var(--radius-sm); }
+.bn-item i { font-size: 18px; }
+.bn-item.active { color: var(--primary); font-weight: 600; }
+
+@media (max-width: 992px) {
+  #sidebar { display: none; }
+  #content { margin-left: 0; padding: 16px; padding-bottom: 80px; }
+  .bottom-nav, .mob-bar { display: flex; }
+  .d-desktop { display: none !important; }
+  
+  .viewer-toolbar { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+  .viewer-toolbar .btn-config { grid-column: span 1; width: 100%; }
+  .viewer-toolbar .v-select { grid-column: span 1 !important; }
+  .fab { bottom: 85px; right: 16px; }
+}
+
+.d-none { display: none !important; }
+</style>
 </head>
 <body>
 
   <!-- LOADING SPINNER -->
-  <div id="loader" class="loader-overlay" style="display:none;">
-    <div class="spin-lg"></div>
-    <div class="font-heading fw-bold text-primary mt-1" style="font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;">Sinkronisasi...</div>
+  <div id="loader" class="d-none">
+    <div class="spin"></div>
+    <div class="font-heading fw-bold text-primary mt-2" style="font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;">Sinkronisasi...</div>
   </div>
 
-  <!-- APP HEADER (Topbar) -->
-  <header class="mob-bar">
-    <div class="mb-brand">
-      <div class="mb-icon"><i class="fas fa-file-signature"></i></div>
-      <div>
-        <h1 class="mb-title">E-Laporan Gigi</h1>
-        <div class="mb-subtitle">Sistem Rekam Medis & Tugas</div>
-      </div>
-    </div>
-  </header>
-
-  <!-- PAGE 1: INPUT DATA -->
-  <main id="page-input" style="display:block;">
-    <!-- NATIVE PILLS TAB -->
-    <div class="tab-container">
-      <div class="pill-wrapper">
-        <button class="pill-btn active" onclick="switchCat('Dewasa & Lansia', this)">Dewasa & Lansia</button>
-        <button class="pill-btn" onclick="switchCat('Gigi Sekolah', this)">Gigi Anak Sekolah</button>
-        <button class="pill-btn" onclick="switchCat('Surat Tugas', this)">Surat Tugas</button>
-      </div>
-    </div>
-
-    <div class="content-area">
-      <!-- Mini Dashboard Info -->
-      <div class="wg-card">
-        <div class="wg-icon"><i class="fas fa-layer-group"></i></div>
-        <div class="wg-info">
-          <h4 id="rowCountTitle">0</h4>
-          <span id="tableTitleStr">Data Terdaftar Bulan Ini</span>
+  <div id="app-interface">
+    
+    <!-- SIDEBAR (DESKTOP) -->
+    <nav id="sidebar">
+      <div class="sb-brand">
+        <div class="sb-icon"><i class="fas fa-file-signature"></i></div>
+        <div>
+          <div class="sb-name">E-Laporan Gigi</div>
+          <div class="sb-ver">Modul Cetak Laporan</div>
         </div>
       </div>
 
-      <!-- Data Table Card -->
-      <div class="data-card">
-        <div class="card-header-flex">
-          <h6 class="fw-bold text-dark font-heading" id="tableTitle">Arsip Data</h6>
-          <span class="badge" style="background:var(--primary-lt); color:var(--primary); padding:6px 12px; border-radius:100px; font-weight:600; font-size:11px;" id="rowCount">0 Data</span>
+      <div class="nav-group">
+        <span class="sb-sec-label">Navigasi Laporan</span>
+        <a onclick="navTo('input', this)" class="nav-lnk active"><i class="fas fa-pen-to-square"></i> Input Arsip Laporan</a>
+        <a onclick="navTo('viewer', this)" class="nav-lnk"><i class="fas fa-file-pdf"></i> Viewer & Cetak Laporan</a>
+      </div>
+
+      <div class="nav-group">
+        <span class="sb-sec-label">Aplikasi Utama E-Reg</span>
+        <a href="index.html#dashboard" class="nav-lnk transition-link"><i class="fas fa-border-all"></i> Dashboard E-Reg</a>
+        <a href="index.html#entri" class="nav-lnk transition-link"><i class="fas fa-user-edit"></i> Entri Pasien</a>
+        <a href="index.html#database" class="nav-lnk transition-link"><i class="fas fa-server"></i> Database Pasien</a>
+        <a href="index.html#infografis" class="nav-lnk transition-link"><i class="fas fa-chart-pie"></i> Analitik Visual</a>
+      </div>
+
+      <div class="nav-group mt-auto">
+        <a href="index.html#user" class="nav-lnk transition-link"><i class="fas fa-users-cog"></i> Kelola Staff</a>
+      </div>
+    </nav>
+
+    <!-- CONTENT AREA -->
+    <div id="content">
+      
+      <!-- Mobile Topbar -->
+      <div class="mob-bar">
+        <div class="mb-brand">
+          <div class="mb-icon"><i class="fas fa-file-signature"></i></div>
+          <div class="mb-title">Cetak Laporan</div>
         </div>
-        <div class="table-responsive">
-          <table id="dataTable" class="table w-100 align-middle">
-            <thead><tr id="tableHeader"></tr></thead>
-            <tbody id="tableBody"></tbody>
-          </table>
+      </div>
+
+      <!-- Desktop Header -->
+      <div class="pg-hdr d-desktop fade-in">
+        <div class="pg-title">
+          <div class="pg-subtitle">Sistem Rekam Medis & Tugas</div>
+          <h2 id="pg-title">Laporan Terintegrasi</h2>
+        </div>
+        <div class="header-actions">
+          <div class="clock-chip bg-primary-lt text-primary border-primary"><i class="fas fa-check-circle"></i> Sinkronisasi Aktif</div>
         </div>
       </div>
-    </div>
 
-    <button class="fab" onclick="openModalAdd()"><i class="fas fa-plus"></i></button>
-  </main>
+      <!-- ─── PAGE 1: INPUT DATA (Arsip) ────────────────────────────── -->
+      <main id="page-input" class="page-section fade-in">
+        <!-- NATIVE PILLS TAB -->
+        <div class="tab-container">
+          <div class="pill-wrapper">
+            <button class="pill-btn active" onclick="switchCat('Dewasa & Lansia', this)">Dewasa & Lansia</button>
+            <button class="pill-btn" onclick="switchCat('Gigi Sekolah', this)">Gigi Anak Sekolah</button>
+            <button class="pill-btn" onclick="switchCat('Surat Tugas', this)">Surat Tugas</button>
+          </div>
+        </div>
 
-  <!-- PAGE 2: VIEWER REPORTS -->
-  <main id="page-viewer">
-    <div class="viewer-toolbar">
-      <button class="btn-config" onclick="openConfig()" title="Pengaturan URL Laporan"><i class="fas fa-link"></i></button>
-      <select id="v_tahun" class="v-select" onchange="viewer.loadStaff()"></select>
-      <select id="v_sheet" class="v-select" onchange="viewer.checkType()">
-        <optgroup label="Database Input">
-          <option value="Dewasa & Lansia">Tabel: Dewasa & Lansia</option>
-          <option value="Gigi Sekolah">Tabel: Gigi Sekolah</option>
-          <option value="Surat Tugas">Tabel: Surat Tugas</option>
-        </optgroup>
-        <optgroup label="Laporan Tambahan">
-          <option value="Laporan">Laporan Bulanan</option>
-          <option value="Laporan Tahunan">Laporan Tahunan</option>
-          <option value="Sterilisasi">Log Sterilisasi</option>
-          <option value="Disinfeksi">Log Disinfeksi</option>
-          <option value="Catpor">Catatan Pelaporan</option>
-          <option value="LKH Staff">LKH (Harian Staff)</option>
-        </optgroup>
-      </select>
-      <select id="v_bulan" class="v-select" style="grid-column: span 3;" onchange="viewer.load()">
-        <option>Januari</option><option>Februari</option><option>Maret</option><option>April</option>
-        <option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option>
-        <option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
-      </select>
-      <select id="v_staff" class="v-select" style="display:none; grid-column: span 3;" onchange="viewer.load()"></select>
-    </div>
+        <!-- Mini Dashboard Info -->
+        <div class="wg-card">
+          <div class="wg-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="wg-info">
+            <h4 id="rowCountTitle">0</h4>
+            <span id="tableTitleStr">Data Terdaftar Bulan Ini</span>
+          </div>
+        </div>
 
-    <div class="viewer-content">
-      <div id="v_empty" class="empty-state">
-        <div class="es-icon"><i class="fas fa-file-contract"></i></div>
-        <h5>Pilih Dokumen</h5>
-        <p>Silakan sesuaikan filter tahun, jenis laporan, dan bulan pada menu di atas untuk menampilkan data.</p>
+        <!-- Data Table Card -->
+        <div class="card data-card border-0">
+          <div class="card-header bg-transparent border-bottom">
+            <div class="ch-title" id="tableTitle">Arsip Data</div>
+            <span class="badge bg-primary-lt text-primary px-3 py-2 rounded-pill" id="rowCount">0 Data</span>
+          </div>
+          <div class="card-body p-0 pt-2">
+            <div class="table-responsive px-3 pb-3">
+              <table id="dataTable" class="table w-100 align-middle">
+                <thead><tr id="tableHeader"></tr></thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <button class="fab" onclick="openModalAdd()"><i class="fas fa-plus"></i></button>
+      </main>
+
+      <!-- ─── PAGE 2: VIEWER REPORTS ────────────────────────────── -->
+      <main id="page-viewer" class="page-section d-none fade-in">
+        <div class="viewer-toolbar">
+          <button class="btn-config" onclick="openConfig()" title="Pengaturan URL Laporan"><i class="fas fa-link"></i></button>
+          <select id="v_tahun" class="v-select sel" onchange="viewer.loadStaff()"></select>
+          <select id="v_sheet" class="v-select sel" onchange="viewer.checkType()">
+            <optgroup label="Database Input">
+              <option value="Dewasa & Lansia">Tabel: Dewasa & Lansia</option>
+              <option value="Gigi Sekolah">Tabel: Gigi Sekolah</option>
+              <option value="Surat Tugas">Tabel: Surat Tugas</option>
+            </optgroup>
+            <optgroup label="Laporan Tambahan">
+              <option value="Laporan">Laporan Bulanan</option>
+              <option value="Laporan Tahunan">Laporan Tahunan</option>
+              <option value="Sterilisasi">Log Sterilisasi</option>
+              <option value="Disinfeksi">Log Disinfeksi</option>
+              <option value="Catpor">Catatan Pelaporan</option>
+              <option value="LKH Staff">LKH (Harian Staff)</option>
+            </optgroup>
+          </select>
+          <select id="v_bulan" class="v-select sel" style="grid-column: span 3;" onchange="viewer.load()">
+            <option>Januari</option><option>Februari</option><option>Maret</option><option>April</option>
+            <option>Mei</option><option>Juni</option><option>Juli</option><option>Agustus</option>
+            <option>September</option><option>Oktober</option><option>November</option><option>Desember</option>
+          </select>
+          <select id="v_staff" class="v-select sel" style="display:none; grid-column: span 3;" onchange="viewer.load()"></select>
+        </div>
+
+        <div class="viewer-content">
+          <div id="v_empty" class="empty-state">
+            <div class="es-icon"><i class="fas fa-file-contract"></i></div>
+            <h5>Pilih Dokumen Laporan</h5>
+            <p>Sesuaikan filter tahun, jenis, dan bulan untuk memuat data laporan dari Cloud.</p>
+          </div>
+          <iframe id="pub-frame" name="pub-frame" src="about:blank"></iframe>
+          <div class="action-dock">
+            <button class="dock-btn bg-danger" onclick="viewer.dl('pdf')" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
+            <button class="dock-btn bg-success" onclick="viewer.dl('excel')" title="Download Excel"><i class="fas fa-file-excel"></i></button>
+          </div>
+        </div>
+      </main>
+
+    </div><!-- /content -->
+
+    <!-- BOTTOM NAVIGATION (MOBILE) -->
+    <nav class="bottom-nav">
+      <a href="index.html#dashboard" class="bn-item text-decoration-none transition-link">
+        <i class="fas fa-home"></i> Beranda
+      </a>
+      <div onclick="navTo('input', this)" class="bn-item active">
+        <i class="fas fa-pen-to-square"></i> Input Arsip
       </div>
-      <iframe id="pub-frame" name="pub-frame" src="about:blank"></iframe>
-      <div class="action-dock">
-        <button class="dock-btn" style="background:var(--danger);" onclick="viewer.dl('pdf')" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
-        <button class="dock-btn" style="background:var(--success);" onclick="viewer.dl('excel')" title="Download Excel"><i class="fas fa-file-excel"></i></button>
+      <div onclick="navTo('viewer', this)" class="bn-item">
+        <i class="fas fa-chart-pie"></i> Laporan
       </div>
-    </div>
-  </main>
+    </nav>
+  </div>
 
-  <!-- BOTTOM NAVIGATION -->
-  <nav class="bottom-nav">
-    <a href="index.html" class="nav-item text-decoration-none">
-      <i class="fas fa-home"></i> Beranda
-    </a>
-    <button class="nav-item active" onclick="navTo('input', this)">
-      <i class="fas fa-pen-to-square"></i> Input Data
-    </button>
-    <button class="nav-item" onclick="navTo('viewer', this)">
-      <i class="fas fa-chart-pie"></i> Laporan
-    </button>
-  </nav>
-
-  <!-- MODAL FORM (Consistent Native Structure + Adaptive Grid) -->
+  <!-- ═══════════════════════════════════════════════════════════════
+     MODAL FORMS (Standardized `.fsec` structure)
+  ═══════════════════════════════════════════════════════════════ -->
   <div class="modal fade" id="modalForm" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Form Input</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-ink py-3 border-bottom-0">
+          <h5 class="modal-title font-heading text-white" id="modalTitle">Form Input</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body p-3">
           <form id="mainForm" onsubmit="submitForm(event)">
             <input type="hidden" id="formType"><input type="hidden" id="editId">
             <input type="hidden" id="old_fotoKeg"><input type="hidden" id="old_fotoPel">
@@ -444,125 +427,131 @@
 
             <!-- Form Dewasa -->
             <div id="s-dewasa" class="d-none">
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-info-circle text-primary me-2"></i>Info Kunjungan</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
-                     <div class="col-5 col-md-4"><div class="fld"><label>No. Reg</label><input type="text" name="no" class="inp"></div></div>
-                     <div class="col-7 col-md-8"><div class="fld"><label>Tanggal</label><input type="date" name="tanggal" class="inp"></div></div>
-                     <div class="col-12"><div class="fld"><label>Bulan Pelaporan</label><select name="bulan" class="sel b-opt"></select></div></div>
-                     <div class="col-12"><div class="fld"><label>Tempat Kegiatan</label><input type="text" name="tempat" class="inp" placeholder="Nama Posyandu/Desa"></div></div>
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-primary"><i class="fas fa-info-circle me-2"></i>1. Info Kunjungan</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
+                     <div class="col-5 col-md-3"><div class="fld"><label>No. Reg</label><input type="text" name="no" class="inp"></div></div>
+                     <div class="col-7 col-md-3"><div class="fld"><label>Tanggal</label><input type="date" name="tanggal" class="inp"></div></div>
+                     <div class="col-12 col-md-6"><div class="fld"><label>Bulan Pelaporan</label><select name="bulan" class="sel b-opt"></select></div></div>
+                     <div class="col-12"><div class="fld"><label>Tempat Kegiatan</label><input type="text" name="tempat" class="inp fw-bold" placeholder="Nama Posyandu/Desa"></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-users text-primary me-2"></i>Kehadiran</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
+               
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-primary"><i class="fas fa-users me-2"></i>2. Kehadiran</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
                      <div class="col-4"><div class="fld"><label>Sasaran</label><input type="number" id="ds" name="sasaran" class="inp" oninput="calc('ds','dc','da')"></div></div>
                      <div class="col-4"><div class="fld"><label>Capaian</label><input type="number" id="dc" name="capaian" class="inp" oninput="calc('ds','dc','da')"></div></div>
                      <div class="col-4"><div class="fld"><label class="text-danger">Absen</label><input type="number" id="da" name="absen" class="inp fw-bold" style="background:var(--danger-lt); color:var(--danger); border-color:#fca5a5;" readonly></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-stethoscope text-primary me-2"></i>Hasil Pemeriksaan</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
+               
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-primary"><i class="fas fa-stethoscope me-2"></i>3. Hasil Pemeriksaan</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
                      <div class="col-12">
                        <div class="fld"><label class="text-primary">Tandai Penyakit</label><div id="chk_d" class="chk-grid"></div></div>
                        <input type="text" id="man_d" class="inp mt-2" placeholder="Penyakit lain (Manual)...">
                      </div>
-                     <div class="col-12"><div class="fld"><label>Catatan Diagnosa Bebas</label><textarea id="dh" name="hasil" class="inp" rows="2" placeholder="Pisahkan dengan koma..." oninput="countR('dh','dr')"></textarea></div></div>
-                     <div class="col-12"><div class="fld"><label>Total Rujuk (Auto)</label><input type="number" id="dr" name="rujuk" class="inp fw-bold" style="background:#f1f5f9;" readonly></div></div>
+                     <div class="col-12"><div class="fld mt-2"><label>Catatan Diagnosa Bebas</label><textarea id="dh" name="hasil" class="inp" rows="2" placeholder="Pisahkan dengan koma..." oninput="countR('dh','dr')"></textarea></div></div>
+                     <div class="col-12"><div class="fld mt-2"><label>Total Rujuk (Auto)</label><input type="number" id="dr" name="rujuk" class="inp fw-bold bg-bg" readonly></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-camera text-primary me-2"></i>Dokumentasi & Petugas</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
-                     <div class="col-6"><div class="fld"><label>Foto Kegiatan</label><input type="file" name="fotoKeg" class="inp" style="padding: 8px;" onchange="prev(this,'pkd')"><div id="pkd" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
-                     <div class="col-6"><div class="fld"><label>Foto Pelayanan</label><input type="file" name="fotoPel" class="inp" style="padding: 8px;" onchange="prev(this,'ppd')"><div id="ppd" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
-                     <div class="col-12"><div class="fld"><label>Nama Petugas</label><select name="petugas" class="sel s-opt"></select></div></div>
+               
+               <div class="fsec border-0 shadow-none mb-0 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-primary"><i class="fas fa-camera me-2"></i>4. Dokumentasi & Petugas</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
+                     <div class="col-6"><div class="fld"><label>Foto Kegiatan</label><input type="file" name="fotoKeg" class="inp p-2" onchange="prev(this,'pkd')"><div id="pkd" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
+                     <div class="col-6"><div class="fld"><label>Foto Pelayanan</label><input type="file" name="fotoPel" class="inp p-2" onchange="prev(this,'ppd')"><div id="ppd" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
+                     <div class="col-12 mt-2"><div class="fld"><label>Nama Petugas</label><select name="petugas" class="sel s-opt"></select></div></div>
                    </div>
                  </div>
                </div>
             </div>
 
-            <!-- Form Gigi -->
+            <!-- Form Gigi Sekolah -->
             <div id="s-gigi" class="d-none">
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-school text-primary me-2"></i>Info Sekolah & Siswa</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
-                     <div class="col-5 col-md-4"><div class="fld"><label>No. Reg</label><input type="text" name="no_gigi" class="inp"></div></div>
-                     <div class="col-7 col-md-8"><div class="fld"><label>Tanggal</label><input type="date" name="tanggal_gigi" class="inp"></div></div>
-                     <div class="col-12"><div class="fld"><label>Bulan Pelaporan</label><select name="bulan_gigi" class="sel b-opt"></select></div></div>
-                     <div class="col-12"><div class="fld"><label>Nama Sekolah</label><input type="text" name="tempat_gigi" class="inp"></div></div>
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-success"><i class="fas fa-school me-2"></i>1. Info Sekolah & Siswa</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
+                     <div class="col-5 col-md-3"><div class="fld"><label>No. Reg</label><input type="text" name="no_gigi" class="inp"></div></div>
+                     <div class="col-7 col-md-3"><div class="fld"><label>Tanggal</label><input type="date" name="tanggal_gigi" class="inp"></div></div>
+                     <div class="col-12 col-md-6"><div class="fld"><label>Bulan Pelaporan</label><select name="bulan_gigi" class="sel b-opt"></select></div></div>
+                     <div class="col-12"><div class="fld"><label>Nama Sekolah</label><input type="text" name="tempat_gigi" class="inp fw-bold"></div></div>
                      <div class="col-6"><div class="fld"><label>Kelas</label><input type="text" name="kelas" class="inp"></div></div>
                      <div class="col-6"><div class="fld"><label>Usia Siswa</label><input type="number" name="usia" class="inp"></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-users text-primary me-2"></i>Kehadiran Kelas</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
+               
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-success"><i class="fas fa-users me-2"></i>2. Kehadiran Kelas</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
                      <div class="col-4"><div class="fld"><label>Sasaran</label><input type="number" id="gs" name="sasaran_gigi" class="inp" oninput="calc('gs','gc','ga')"></div></div>
                      <div class="col-4"><div class="fld"><label>Capaian</label><input type="number" id="gc" name="capaian_gigi" class="inp" oninput="calc('gs','gc','ga')"></div></div>
-                     <div class="col-4"><div class="fld"><label class="text-danger">Absen</label><input type="number" id="ga" name="absen_gigi" class="inp" style="background:var(--danger-lt); color:var(--danger); border-color:#fca5a5;" readonly></div></div>
+                     <div class="col-4"><div class="fld"><label class="text-danger">Absen</label><input type="number" id="ga" name="absen_gigi" class="inp fw-bold" style="background:var(--danger-lt); color:var(--danger); border-color:#fca5a5;" readonly></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-tooth text-primary me-2"></i>Kondisi Gigi Anak</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
+               
+               <div class="fsec border-0 shadow-none mb-3 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-success"><i class="fas fa-tooth me-2"></i>3. Kondisi Gigi Anak</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
                      <div class="col-12">
                        <div class="fld"><label class="text-success">Pilih Masalah Gigi</label><div id="chk_g" class="chk-grid"></div></div>
                        <input type="text" id="man_g" class="inp mt-2" placeholder="Masalah lain (Manual)...">
                      </div>
-                     <div class="col-4"><div class="fld"><label>Karies Bawah</label><input type="text" name="kariesBawah" class="inp"></div></div>
-                     <div class="col-4"><div class="fld"><label>Karies Atas</label><input type="text" name="kariesAtas" class="inp"></div></div>
-                     <div class="col-4"><div class="fld"><label>Reg Karies</label><input type="text" name="noKaries" class="inp"></div></div>
-                     <div class="col-12"><div class="fld"><label>Catatan Tambahan</label><textarea id="gh" name="hasil_gigi" class="inp" rows="2" oninput="countR('gh','gr')"></textarea></div></div>
-                     <div class="col-12"><div class="fld"><label>Rujuk (Auto)</label><input type="number" id="gr" name="rujuk_gigi" class="inp fw-bold" style="background:#f1f5f9;" readonly></div></div>
+                     <div class="col-4 mt-2"><div class="fld"><label>Karies Bawah</label><input type="text" name="kariesBawah" class="inp"></div></div>
+                     <div class="col-4 mt-2"><div class="fld"><label>Karies Atas</label><input type="text" name="kariesAtas" class="inp"></div></div>
+                     <div class="col-4 mt-2"><div class="fld"><label>Reg Karies</label><input type="text" name="noKaries" class="inp"></div></div>
+                     <div class="col-12"><div class="fld mt-2"><label>Catatan Tambahan</label><textarea id="gh" name="hasil_gigi" class="inp" rows="2" oninput="countR('gh','gr')"></textarea></div></div>
+                     <div class="col-12"><div class="fld mt-2"><label>Rujuk (Auto)</label><input type="number" id="gr" name="rujuk_gigi" class="inp fw-bold bg-bg" readonly></div></div>
                    </div>
                  </div>
                </div>
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-camera text-primary me-2"></i>Dokumentasi & Petugas</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
-                     <div class="col-6"><div class="fld"><label>Foto Kegiatan</label><input type="file" name="fotoKeg_gigi" class="inp" style="padding: 8px;" onchange="prev(this,'pkg')"><div id="pkg" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
-                     <div class="col-6"><div class="fld"><label>Foto Mulut</label><input type="file" name="fotoPel_gigi" class="inp" style="padding: 8px;" onchange="prev(this,'ppg')"><div id="ppg" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
-                     <div class="col-12"><div class="fld"><label>Nama Petugas</label><select name="petugas_gigi" class="sel s-opt"></select></div></div>
+               
+               <div class="fsec border-0 shadow-none mb-0 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-success"><i class="fas fa-camera me-2"></i>4. Dokumentasi & Petugas</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
+                     <div class="col-6"><div class="fld"><label>Foto Kegiatan</label><input type="file" name="fotoKeg_gigi" class="inp p-2" onchange="prev(this,'pkg')"><div id="pkg" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
+                     <div class="col-6"><div class="fld"><label>Foto Mulut</label><input type="file" name="fotoPel_gigi" class="inp p-2" onchange="prev(this,'ppg')"><div id="ppg" class="img-prev"><i class="fas fa-image opacity-50"></i></div></div></div>
+                     <div class="col-12 mt-2"><div class="fld"><label>Nama Petugas</label><select name="petugas_gigi" class="sel s-opt"></select></div></div>
                    </div>
                  </div>
                </div>
             </div>
 
-            <!-- Form Surat -->
+            <!-- Form Surat Tugas -->
             <div id="s-surat" class="d-none">
-               <div class="fsec">
-                 <div class="fsec-hdr"><div class="fsec-title"><i class="fas fa-envelope text-primary me-2"></i>Detail Surat Tugas</div></div>
-                 <div class="fsec-body">
-                   <div class="row g-3">
+               <div class="fsec border-0 shadow-none mb-0 p-0">
+                 <div class="fsec-hdr px-0 bg-transparent border-0"><div class="fsec-title text-warning"><i class="fas fa-envelope me-2"></i>Detail Surat Tugas</div></div>
+                 <div class="fsec-body px-0 py-2">
+                   <div class="row g-2">
                      <div class="col-7 col-md-6"><div class="fld"><label>No Surat Base</label><input type="text" name="noSurat" class="inp" list="listNoSurat" placeholder="Cth: 445/..."><datalist id="listNoSurat"><option value="445/033/UKM/2026"></datalist></div></div>
                      <div class="col-5 col-md-6"><div class="fld"><label>No Urut</label><input type="text" name="noUrut" class="inp" placeholder="Cth: 01"></div></div>
-                     <div class="col-12"><div class="fld"><label>Pegawai Ditugaskan</label><select name="namaNip" class="sel s-opt"></select></div></div>
-                     <div class="col-5 col-md-6"><div class="fld"><label>Tgl Tugas</label><input type="date" name="tanggal_surat" class="inp"></div></div>
-                     <div class="col-7 col-md-6"><div class="fld"><label>Tujuan</label><input type="text" name="tempat_surat" class="inp" placeholder="Desa/Sekolah"></div></div>
-                     <div class="col-12"><div class="fld"><label>Maksud / Agenda</label><input type="text" name="maksud" class="inp" list="listMaksud" placeholder="Pilih atau Ketik..."><datalist id="listMaksud"><option value="Deteksi dini Kesehatan Gigi dan Mulut Lansia"><option value="Upaya Kesehatan Gigi dan Mulut Sekolah"><option value="Penyuluhan Kesehatan Gigi Masyarakat"></datalist></div></div>
+                     <div class="col-12 mt-2"><div class="fld"><label>Pegawai Ditugaskan</label><select name="namaNip" class="sel s-opt"></select></div></div>
+                     <div class="col-5 col-md-6 mt-2"><div class="fld"><label>Tgl Tugas</label><input type="date" name="tanggal_surat" class="inp"></div></div>
+                     <div class="col-7 col-md-6 mt-2"><div class="fld"><label>Tujuan</label><input type="text" name="tempat_surat" class="inp" placeholder="Desa/Sekolah"></div></div>
+                     <div class="col-12 mt-2"><div class="fld"><label>Maksud / Agenda</label><input type="text" name="maksud" class="inp fw-bold" list="listMaksud" placeholder="Pilih atau Ketik..."><datalist id="listMaksud"><option value="Deteksi dini Kesehatan Gigi dan Mulut Lansia"><option value="Upaya Kesehatan Gigi dan Mulut Sekolah"><option value="Penyuluhan Kesehatan Gigi Masyarakat"></datalist></div></div>
                    </div>
                  </div>
                </div>
             </div>
 
-            <div class="mt-2 mb-1">
-              <button type="submit" class="btn btn-primary btn-full" style="height: 48px; border-radius: 12px; font-weight:700; font-size:14px; box-shadow: var(--shadow-sm);">
-                <i class="fas fa-cloud-arrow-up me-2"></i> SIMPAN KE CLOUD
+            <div class="mt-4 mb-2">
+              <button type="submit" class="btn btn-primary btn-full" style="height: 44px;">
+                <i class="fas fa-save me-2"></i> Simpan Data Laporan
               </button>
             </div>
           </form>
@@ -607,12 +596,49 @@
     $(document).ready(()=>{
       modal = new bootstrap.Modal(document.getElementById('modalForm'));
       initForm(); loadTable(); viewer.init();
+
+      // Transisi mulus ke Aplikasi Utama E-Reg
+      $('.transition-link').on('click', function(e) {
+        e.preventDefault();
+        let targetUrl = $(this).attr('href');
+        
+        // Tampilkan loader dan ubah teksnya
+        $('#loader').removeClass('d-none');
+        $('#loader .font-heading').text('Membuka E-Reg...');
+        
+        // Jeda sedikit untuk menampilkan animasi sebelum redirect
+        setTimeout(() => {
+          try {
+            window.location.href = targetUrl;
+          } catch (err) {
+            // Penanganan error untuk lingkungan pratinjau (sandbox)
+            $('#loader').addClass('d-none');
+            Swal.fire('Info Pratinjau', 'Fitur navigasi ke halaman <b>' + targetUrl + '</b> disimulasikan karena Anda berada di lingkungan pratinjau (sandbox). Di server sungguhan, ini akan membuka file tersebut.', 'info');
+          }
+        }, 300);
+      });
     });
 
-    function navTo(p,el) {
-      $('#page-input, #page-viewer').removeClass('active').hide();
-      $('#page-'+p).addClass('active').show();
-      $('.nav-item').removeClass('active'); $(el).addClass('active');
+    function navTo(p, el) {
+      $('.page-section').addClass('d-none').removeClass('active');
+      $('#page-'+p).removeClass('d-none').addClass('active fade-in');
+      
+      // Hapus status aktif dari semua menu navigasi (desktop & mobile)
+      $('.bn-item').removeClass('active'); 
+      $('#sidebar .nav-lnk').removeClass('active');
+      
+      // Tambahkan status aktif ke menu yang diklik (sinkron antara mobile & desktop)
+      $(`[onclick="navTo('${p}', this)"]`).addClass('active');
+
+      // Ubah judul halaman secara dinamis
+      if(p === 'input') {
+        $('#pg-title').text('Laporan Terintegrasi');
+        $('.mb-title').text('Cetak Laporan');
+      } else {
+        $('#pg-title').text('Viewer Dokumen Laporan');
+        $('.mb-title').text('Viewer Laporan');
+      }
+
       if(p==='viewer') viewer.load();
     }
 
@@ -672,11 +698,17 @@
        if(curCat.includes("Dewasa")) $('#s-dewasa').removeClass('d-none');
        else if(curCat.includes("Gigi")) $('#s-gigi').removeClass('d-none');
        else $('#s-surat').removeClass('d-none');
+       
+       const localISOTime = new Date().toLocaleDateString('en-CA');
+       if(curCat.includes("Dewasa")) { $('input[name="tanggal"]').val(localISOTime); }
+       else if(curCat.includes("Gigi")) { $('input[name="tanggal_gigi"]').val(localISOTime); }
+       else { $('input[name="tanggal_surat"]').val(localISOTime); }
+
        modal.show();
     }
 
     async function submitForm(e){
-       e.preventDefault(); $('#loader').show(); modal.hide();
+       e.preventDefault(); $('#loader').removeClass('d-none'); modal.hide();
        let f=document.forms['mainForm'], t=$('#formType').val(), d={formType:t, editId:$('#editId').val()};
        d.year = new Date().getFullYear().toString(); 
        const v=n=>f[n].value, i=async(n,o)=>f[n].files[0]?await cmp(f[n].files[0]):$('#'+o).val();
@@ -694,7 +726,7 @@
        } else { d.noSurat=v('noSurat');d.noUrut=v('noUrut');d.namaNip=v('namaNip');d.tanggal_surat=v('tanggal_surat');d.tempat_surat=v('tempat_surat');d.maksud=v('maksud'); }
 
        apiCall('submitData', { form: d }).then(r => {
-          $('#loader').hide(); if(r.success){Swal.fire({title:'Sukses',text:r.message,icon:'success',confirmButtonColor:'var(--primary)'}); loadTable();}else Swal.fire('Gagal',r.message,'error');
+          $('#loader').addClass('d-none'); if(r.success){Swal.fire({title:'Sukses',text:r.message,icon:'success',confirmButtonColor:'var(--primary)'}); loadTable();}else Swal.fire('Gagal',r.message,'error');
        });
     }
 
@@ -720,7 +752,7 @@
             cancelButtonText: 'Tutup'
           }).then((result) => {
             if (result.isConfirmed) window.open(res.url, '_blank');
-            loadTable(); // Refresh tabel untuk update link PDF terbaru
+            loadTable();
           });
         } else {
           Swal.fire('Gagal', res.message, 'error');
@@ -745,10 +777,10 @@
     
     function del(id){
        Swal.fire({title:'Hapus Data?', text: "Data tidak bisa dikembalikan setelah dihapus.", icon:'warning',showCancelButton:true,confirmButtonColor:'var(--danger)', confirmButtonText:'Ya, Hapus!'}).then(r=>{if(r.isConfirmed){
-          $('#loader').show(); 
+          $('#loader').removeClass('d-none'); 
           let currentYear = new Date().getFullYear().toString();
           apiCall('deleteData', { id: id, type: curCat, year: currentYear }).then(res => {
-             $('#loader').hide(); if(res.success)loadTable(); else Swal.fire('Error',res.message,'error');
+             $('#loader').addClass('d-none'); if(res.success)loadTable(); else Swal.fire('Error',res.message,'error');
           });
        }});
     }
@@ -761,10 +793,10 @@
           let t=$('#v_sheet').val(),y=$('#v_tahun').val(),b=$('#v_bulan').val(),s=$('#v_staff').val();
           if(t==='LKH Staff'&&!s){$('#v_empty').show(); $('#pub-frame').hide();return;}
           if(!y)return;
-          $('#v_empty').hide();$('#pub-frame').show();$('#loader').show();
+          $('#v_empty').hide();$('#pub-frame').show();$('#loader').removeClass('d-none');
           apiCall('updateAndGetView', { sheetName: t, bulan: b, staffName: s, year: y }).then(r=>{
-             if(r.status){$('#pub-frame').attr('src',`https://docs.google.com/spreadsheets/d/${r.fileId}/htmlembed?gid=${r.gid}&widget=false&chrome=false`); setTimeout(()=>$('#loader').hide(),1500);}
-             else{$('#loader').hide();Swal.fire('Info',r.message,'info');}
+             if(r.status){$('#pub-frame').attr('src',`https://docs.google.com/spreadsheets/d/${r.fileId}/htmlembed?gid=${r.gid}&widget=false&chrome=false`); setTimeout(()=>$('#loader').addClass('d-none'),1500);}
+             else{$('#loader').addClass('d-none');Swal.fire('Info',r.message,'info');}
           });
        },
        dl:function(k){
@@ -779,9 +811,9 @@
     function openConfig(){
        Swal.fire({title:'Link Database Tahunan', html:'<input id="cy" class="swal2-input" placeholder="Tahun (Contoh: 2026)" type="number" style="font-size:13px; height:40px;"><input id="cu" class="swal2-input" placeholder="URL Google Sheets" style="font-size:13px; height:40px;">', showCancelButton:true, confirmButtonText:'Simpan', confirmButtonColor:'var(--primary)', preConfirm:()=>{return{y:$('#cy').val(),u:$('#cu').val()}}}).then(r=>{
           if(r.isConfirmed){
-             $('#loader').show();
+             $('#loader').removeClass('d-none');
              apiCall('saveNewYear', { year: r.value.y, url: r.value.u }).then(x=>{
-                $('#loader').hide(); if(x.status){Swal.fire('Berhasil',x.message,'success');viewer.init()}else Swal.fire('Gagal',x.message,'error')
+                $('#loader').addClass('d-none'); if(x.status){Swal.fire('Berhasil',x.message,'success');viewer.init()}else Swal.fire('Gagal',x.message,'error')
              });
           }
        });
