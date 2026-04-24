@@ -10,25 +10,20 @@
   <meta name="description" content="E-Register Gigi v5.4 adalah aplikasi Rekam Medis Elektronik (EMR) dan manajemen klinik gigi profesional. Dilengkapi odontogram interaktif, ICD-10, dan analitik visual real-time.">
   <meta name="keywords" content="e-register gigi, rekam medis elektronik, aplikasi klinik gigi, EMR gigi, odontogram digital, software dokter gigi, manajemen faskes, drg. Fakhrurrazi, aplikasi medis">
   <meta name="author" content="drg. Fakhrurrazi">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="Indonesian">
   
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://e-register-gigi.com/"> <meta property="og:title" content="E-Register Gigi | Sistem Klinik Digital">
-  <meta property="og:description" content="Tingkatkan efisiensi pelayanan faskes gigi Anda dengan E-Register Gigi. Aman, cepat, dan responsif.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80"> 
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="E-Register Gigi | Sistem Rekam Medis Terpadu">
-  <meta name="twitter:description" content="Aplikasi rekam medis elektronik (EMR) dan manajemen klinik gigi dengan odontogram interaktif dan analitik visual.">
-  
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="E-Reg Gigi">
-  <meta name="application-name" content="E-Reg Gigi">
-
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%232563eb'/><stop offset='100%' stop-color='%234f46e5'/></linearGradient></defs><path fill='url(%23g)' d='M445.8 81C409.1 36.3 350.5 14.8 296 32.5c-26.6 8.6-53.4 8.6-80 0C161.5 14.8 102.9 36.3 66.2 81 22.8 133.7 15.3 207 43 266.6l54.8 118.2c11.6 24.9 35.8 41.2 63.3 41.2 46.9 0 76.5-47.5 54.9-89.2L192 288c-10.2-19.3 1.5-43 22.7-47.2 24.7-4.9 47.9 13.5 49.3 38.6l3.5 61.1c2 35.2 30.7 63.5 65.9 63.5 34.6 0 63.2-27.4 65.8-61.9l4.5-60.8c1.5-25.1 24.7-43.5 49.3-38.6 21.2 4.2 32.9 27.9 22.7 47.2l-24 48.8c-21.6 41.7 8 89.2 54.9 89.2 27.5 0 51.7-16.3 63.3-41.2l54.8-118.2c27.7-59.6 20.2-132.9-23.2-185.6z'/></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%232563eb' d='M445.8 81C409.1 36.3 350.5 14.8 296 32.5c-26.6 8.6-53.4 8.6-80 0C161.5 14.8 102.9 36.3 66.2 81 22.8 133.7 15.3 207 43 266.6l54.8 118.2c11.6 24.9 35.8 41.2 63.3 41.2 46.9 0 76.5-47.5 54.9-89.2L192 288c-10.2-19.3 1.5-43 22.7-47.2 24.7-4.9 47.9 13.5 49.3 38.6l3.5 61.1c2 35.2 30.7 63.5 65.9 63.5 34.6 0 63.2-27.4 65.8-61.9l4.5-60.8c1.5-25.1 24.7-43.5 49.3-38.6 21.2 4.2 32.9 27.9 22.7 47.2l-24 48.8c-21.6 41.7 8 89.2 54.9 89.2 27.5 0 51.7-16.3 63.3-41.2l54.8-118.2c27.7-59.6 20.2-132.9-23.2-185.6z'/></svg>">
+
+  <!-- DEPENDENSI YANG DIPERBAIKI / DITAMBAHKAN -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 
 <style>
 /* ═══════════════════════════════════════════════════════════════
@@ -69,7 +64,6 @@
   --radius-lg:   12px;
   --radius-xl:   16px;
 
-  /* Flattened shadows for extreme performance */
   --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow:      0 4px 6px -1px rgba(0, 0, 0, 0.05);
   --shadow-lg:   0 10px 15px -3px rgba(0, 0, 0, 0.05);
@@ -96,11 +90,29 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 a { text-decoration: none; transition: color 0.15s ease; }
 button { cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border 0.15s ease; font-family: 'Inter', sans-serif; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
+
+/* Helpers Color Classes */
+.bg-primary-lt { background-color: var(--primary-lt) !important; }
+.text-primary { color: var(--primary) !important; }
+.border-primary { border-color: var(--primary) !important; }
+.bg-success-lt { background-color: var(--success-lt) !important; }
+.text-success { color: var(--success) !important; }
+.border-success { border-color: var(--success) !important; }
+.bg-warning-lt { background-color: var(--warning-lt) !important; }
+.text-warning { color: var(--warning) !important; }
+.bg-danger-lt { background-color: var(--danger-lt) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-ink { color: var(--ink) !important; }
+.text-ink-2 { color: var(--ink-2) !important; }
+.text-ink-3 { color: var(--ink-3) !important; }
+.text-ink-4 { color: var(--ink-4) !important; }
+.bg-surface { background-color: var(--surface) !important; }
+.bg-bg { background-color: var(--bg) !important; }
+.bg-ink { background-color: var(--ink) !important; }
 
 /* ═══════════════════════════════════════════════════════════════
    LOADER
@@ -172,12 +184,13 @@ button { cursor: pointer; transition: background 0.15s ease, color 0.15s ease, b
 .btn-full { width: 100%; }
 
 /* ═══════════════════════════════════════════════════════════════
-   APP INTERFACE (Fixed, Precise, Colorful)
+   APP INTERFACE
 ═══════════════════════════════════════════════════════════════ */
 #sidebar { width: var(--sidebar-w); background: var(--surface); border-right: 1px solid var(--border); position: fixed; top: 0; left: 0; bottom: 0; z-index: 1000; display: flex; flex-direction: column; padding: 24px 16px; }
 .sb-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding: 0 8px; }
 .sb-icon { width: 32px; height: 32px; border-radius: var(--radius); background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; }
 .sb-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1; }
+.sb-ver { font-size: 11px; color: var(--ink-3); }
 
 .nav-group { margin-bottom: 24px; }
 .sb-sec-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--ink-4); letter-spacing: 0.05em; margin-bottom: 8px; display: block; padding-left: 8px; }
@@ -360,7 +373,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
         <label>Kata Sandi</label>
         <div class="pw-wrap">
           <input type="password" id="pass" class="inp" placeholder="••••••••" required>
-          <button type="button" class="pw-btn" onclick="togglePass()"><i class="fas fa-eye"></i></button>
+          <button type="button" class="pw-btn" onclick="togglePass()"><i class="fas fa-eye pw-icon"></i></button>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
@@ -551,6 +564,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
           <div class="card h-100">
             <div class="card-header">
               <div class="ch-title"><div class="ch-icon"><i class="fas fa-virus"></i></div><h4>Top Diagnosa</h4></div>
+              <button class="btn btn-outline-primary btn-sm ms-auto" onclick="analyzeWithAI()"><i class="fas fa-robot me-1"></i> AI Insights</button>
             </div>
             <div class="card-body" style="height: 260px; position: relative;">
               <canvas id="chartDiagnosa"></canvas>
@@ -588,7 +602,9 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
               
               <div class="col-md-2 col-4"><div class="fld mb-0"><label>Umur</label><input type="number" id="e-umur" class="inp" placeholder="0"></div></div>
               <div class="col-md-3 col-8"><div class="fld mb-0"><label>Kelamin</label><select id="e-jk" class="sel"><option>Laki-laki</option><option>Perempuan</option></select></div></div>
-              <div class="col-md-7 col-12"><div class="fld mb-0"><label>Desa</label><input class="inp" list="list-alamat" id="e-alamat" placeholder="Pilih..."><datalist id="list-alamat"><option value="Bukit Harapan"><option value="Cingkam"><option value="Rimo"><option value="Lae Butar"><option value="Blok VI"><option value="Suka Makmur"><option value="Sidorejo"><option value="Si Anjo-anjo"><option value="Blok 15"><option value="Sangga Beru"><option value="Tulaan"><option value="Silulusan"><option value="Gunung Lagan"><option value="Tanah Bara"><option value="Tunas Harapan"><option value="Pandan sari"><option value="Seping Baru"><option value="Perangusan"><option value="Sebatang"><option value="Blok 18"><option value="Labuhan kera"><option value="Penjaitan"><option value="Tanjung Betik"><option value="Pertampakan"><option value="Tanah Merah"><option value="Blok 31"><option value="Desa Luar"></datalist></div></div>
+              <div class="col-md-7 col-12"><div class="fld mb-0"><label>Desa</label><input class="inp" list="list-alamat" id="e-alamat" placeholder="Pilih...">
+                <datalist id="list-alamat"><option value="Bukit Harapan"><option value="Cingkam"><option value="Rimo"><option value="Lae Butar"><option value="Blok VI"><option value="Suka Makmur"><option value="Sidorejo"><option value="Si Anjo-anjo"><option value="Blok 15"><option value="Sangga Beru"><option value="Tulaan"><option value="Silulusan"><option value="Gunung Lagan"><option value="Tanah Bara"><option value="Tunas Harapan"><option value="Pandan sari"><option value="Seping Baru"><option value="Perangusan"><option value="Sebatang"><option value="Blok 18"><option value="Labuhan kera"><option value="Penjaitan"><option value="Tanjung Betik"><option value="Pertampakan"><option value="Tanah Merah"><option value="Blok 31"><option value="Desa Luar"></datalist>
+              </div></div>
               
               <div class="col-md-4"><div class="fld mb-0"><label>Kondisi</label><select id="e-keadaan" class="sel"><option>Normal</option><option>Hipertensi</option><option>Diabetes</option><option>Hamil</option><option>ODGJ</option><option>Disabilitas</option></select></div></div>
               <div class="col-md-4 col-6"><div class="fld mb-0"><label>Faskes</label><select id="e-faskes" class="sel"><option>Faskes Dalam</option><option>Faskes Luar</option></select></div></div>
@@ -601,81 +617,68 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
           <div class="fsec-hdr"><div class="fsec-num bg-danger-lt text-danger">2</div><div class="fsec-title">Klinis & Terapi</div></div>
           <div class="fsec-body">
             <div class="row g-3">
-              <div class="col-md-12"><div class="fld mb-0"><label>Diagnosa Utama <span class="text-danger">*</span></label><input class="inp" list="list-diagnosa-dl" id="e-diagnosa" placeholder="Diagnosa ICD-10..." required><datalist id="list-diagnosa-dl">
-  <option value="Abses">
-  <option value="Karies Gigi">
-  <option value="Mobiliti">
-  <option value="Periodontitis">
-  <option value="Persistensi">
-  <option value="Penyakit Rongga Mulut">
-  <option value="Pulpitis">
-  <option value="Impaksi">
-  <option value="Radix">
-  <option value="Ginggivitis">
-  <option value="Supernumarery Teeth">
-  <option value="Penyakit Kelenjar Ludah">
-  <option value="Keluhan Dento Fasial">
-</datalist></div></div>
-              <div class="col-md-12"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="e-terapi" placeholder="Tindakan..."><datalist id="list-terapi">
-  <option value="Premedikasi">
-  <option value="Pencabutan Gigi Tetap">
-  <option value="Pencabutan Gigi Susu">
-  <option value="DHE/Konsultasi">
-  <option value="Pengobatan Abses">
-  <option value="Tumpatan Gigi Tetap">
-  <option value="Tumpatan Gigi Susu">
-  <option value="Tambalan Sementara">
-  <option value="Rujukan">
-  <option value="Premedikasi Pengobatan Abses">
-</datalist></div></div>
+              <div class="col-md-12"><div class="fld mb-0"><label>Diagnosa Utama <span class="text-danger">*</span></label><input class="inp" list="list-diagnosa-dl" id="e-diagnosa" placeholder="Diagnosa ICD-10..." required>
+                <datalist id="list-diagnosa-dl">
+                  <option value="Abses"><option value="Karies Gigi"><option value="Mobiliti"><option value="Periodontitis"><option value="Persistensi"><option value="Penyakit Rongga Mulut"><option value="Pulpitis"><option value="Impaksi"><option value="Radix"><option value="Ginggivitis"><option value="Supernumarery Teeth"><option value="Penyakit Kelenjar Ludah"><option value="Keluhan Dento Fasial">
+                </datalist>
+              </div></div>
+              
+              <div class="col-md-12"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="e-terapi" placeholder="Tindakan...">
+                <datalist id="list-terapi">
+                  <option value="Premedikasi"><option value="Pencabutan Gigi Tetap"><option value="Pencabutan Gigi Susu"><option value="DHE/Konsultasi"><option value="Pengobatan Abses"><option value="Tumpatan Gigi Tetap"><option value="Tumpatan Gigi Susu"><option value="Tambalan Sementara"><option value="Rujukan"><option value="Premedikasi Pengobatan Abses">
+                </datalist>
+              </div></div>
+              
               <div class="col-md-12">
-  <div class="fld mb-0">
-    <label>Elemen Gigi (Pilih pada bagan)</label>
-    <div class="d-flex gap-2">
-      <input type="text" id="e-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
-      <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-e').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
-    </div>
-    
-    <div id="odonto-e" class="odontogram-box" style="display:none;">
-      <div class="odonto-title">GIGI TETAP (DEWASA)</div>
-      <div class="odonto-row top">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">11</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">28</div>
-        </div>
-      </div>
-      <div class="odonto-row mb-3">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">41</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">38</div>
-        </div>
-      </div>
-      
-      <div class="odonto-title">GIGI SUSU (ANAK)</div>
-      <div class="odonto-row top">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">51</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">65</div>
-        </div>
-      </div>
-      <div class="odonto-row">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">81</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">75</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-              <div class="col-md-6"><div class="fld mb-0"><label>Anastesi</label><input class="inp" list="list-anastesi" id="e-anastesi" placeholder="Bahan..."><datalist id="list-anastesi"><option value="Lidocain"><option value="Pehacain"><option value="Chloretil"><option value="Topikal Gel"><option value="Artikain"><option value="Mepivacain"></datalist></div></div>
+                <div class="fld mb-0">
+                  <label>Elemen Gigi (Pilih pada bagan)</label>
+                  <div class="d-flex gap-2">
+                    <input type="text" id="e-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
+                    <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-e').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
+                  </div>
+                  
+                  <div id="odonto-e" class="odontogram-box" style="display:none;">
+                    <div class="odonto-title">GIGI TETAP (DEWASA)</div>
+                    <div class="odonto-row top">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">11</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">28</div>
+                      </div>
+                    </div>
+                    <div class="odonto-row mb-3">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">41</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">38</div>
+                      </div>
+                    </div>
+                    
+                    <div class="odonto-title">GIGI SUSU (ANAK)</div>
+                    <div class="odonto-row top">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">51</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">65</div>
+                      </div>
+                    </div>
+                    <div class="odonto-row">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">81</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'e-gigi')">75</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"><div class="fld mb-0"><label>Anastesi</label><input class="inp" list="list-anastesi" id="e-anastesi" placeholder="Bahan...">
+                <datalist id="list-anastesi"><option value="Lidocain"><option value="Pehacain"><option value="Chloretil"><option value="Topikal Gel"><option value="Artikain"><option value="Mepivacain"></datalist>
+              </div></div>
             </div>
           </div>
         </div>
@@ -877,12 +880,12 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
             <h3 class="font-heading font-weight-800 text-primary mb-1" style="font-size:20px;">E-Register Gigi</h3>
             <p class="text-ink-4 mb-4" style="font-size:12px;">v5.4 • Compact Colorful Edition</p>
             <div class="bg-primary-lt p-3 rounded text-start mb-4 border border-primary-lt">
-              <h5 class="font-heading font-weight-700 text-primary mb-2" style="font-size:13px;"><i class="fas fa-heart text-danger me-2"></i> Dukung Pengembang</h5>
+              <h5 class="font-heading fw-bold text-primary mb-2" style="font-size:13px;"><i class="fas fa-heart text-danger me-2"></i> Dukung Pengembang</h5>
               <p class="text-ink-2 mb-3" style="font-size:11px;">Dukung via e-Wallet untuk pembaruan rutin.</p>
               <div class="d-flex justify-content-between align-items-center bg-surface border border-border p-2 rounded">
                 <div class="d-flex align-items-center gap-2">
                   <div style="width:32px;height:32px;border-radius:8px;background:var(--success-lt);color:var(--success);display:flex;align-items:center;justify-content:center;font-size:14px;"><i class="fas fa-wallet"></i></div>
-                  <div><div style="font-size:9px;font-weight:600;color:var(--ink-4);">E-WALLET</div><div id="donasi-number" class="mono font-weight-700 text-ink" style="font-size:13px;">0852 •••• 9990</div></div>
+                  <div><div style="font-size:9px;font-weight:600;color:var(--ink-4);">E-WALLET</div><div id="donasi-number" class="mono fw-bold text-ink" style="font-size:13px;">0852 •••• 9990</div></div>
                 </div>
                 <button class="btn btn-outline btn-xs px-2" style="width:auto;" onclick="revealAndCopy(this)"><i class="fas fa-eye"></i></button>
               </div>
@@ -908,7 +911,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
   <div class="offcanvas offcanvas-bottom" tabindex="-1" id="ocMenu" style="border-radius: 20px 20px 0 0; min-height: 40vh; border:none;">
     <div class="offcanvas-header justify-content-center border-0 pb-0 mt-2"><div style="width:36px;height:4px;background:var(--border-focus);border-radius:10px;"></div></div>
     <div class="offcanvas-body p-4">
-      <h5 class="font-heading font-weight-700 mb-3 fs-6">Menu Lainnya</h5>
+      <h5 class="font-heading fw-bold mb-3 fs-6">Menu Lainnya</h5>
       <div class="row g-2 mb-4">
         <div class="col-6"><button class="btn btn-outline btn-full text-start" style="height:42px;" onclick="nav('icd'); bsOC.hide()"><i class="fas fa-book-medical text-primary me-2"></i> ICD-10</button></div>
         <div class="col-6"><button class="btn btn-outline btn-full text-start" style="height:42px;" onclick="nav('obat'); bsOC.hide()"><i class="fas fa-pills text-success me-2"></i> Stok Obat</button></div>
@@ -937,7 +940,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
       <div class="modal-body p-0">
         <div class="p-3 border-bottom">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="font-heading font-weight-700 m-0 text-primary" style="font-size:13px;"><i class="fas fa-user-circle text-primary me-2"></i>Demografi</h6>
+            <h6 class="font-heading fw-bold m-0 text-primary" style="font-size:13px;"><i class="fas fa-user-circle text-primary me-2"></i>Demografi</h6>
             <span class="badge bg-primary-lt text-primary border border-primary px-2 py-1 rounded" id="prev-rm">RM: -</span>
           </div>
           <div class="row g-2 text-sm">
@@ -950,7 +953,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
           </div>
         </div>
         <div class="p-3 border-bottom bg-bg">
-          <h6 class="font-heading font-weight-700 mb-3 text-danger" style="font-size:13px;"><i class="fas fa-stethoscope text-danger me-2"></i>Klinis & Terapi</h6>
+          <h6 class="font-heading fw-bold mb-3 text-danger" style="font-size:13px;"><i class="fas fa-stethoscope text-danger me-2"></i>Klinis & Terapi</h6>
           <div class="row g-2">
             <div class="col-12"><div class="text-ink-4 fw-bold" style="font-size:10px;">DIAGNOSA</div><div class="fw-bold text-danger fs-6" id="prev-diagnosa">-</div></div>
             <div class="col-12"><div class="text-ink-4 fw-bold" style="font-size:10px;">TINDAKAN</div><div class="text-ink fw-medium" id="prev-terapi">-</div></div>
@@ -959,7 +962,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
           </div>
         </div>
         <div class="p-3">
-          <h6 class="font-heading font-weight-700 mb-3 text-success" style="font-size:13px;"><i class="fas fa-capsules text-success me-2"></i>Resep</h6>
+          <h6 class="font-heading fw-bold mb-3 text-success" style="font-size:13px;"><i class="fas fa-capsules text-success me-2"></i>Resep</h6>
           <div class="row g-2">
             <div class="col-12"><div class="text-ink-4 fw-bold" style="font-size:10px;">OBAT DIBERIKAN</div><div class="fw-bold text-success fs-6" id="prev-obat">-</div></div>
             <div class="col-12"><div class="text-ink-4 fw-bold" style="font-size:10px;">CATATAN</div><div class="text-ink fw-medium" id="prev-ket">-</div></div>
@@ -993,7 +996,7 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
               <div class="col-6 col-md-2"><div class="fld mb-0"><label>Bulan</label><input type="text" id="mp-bln" class="inp readonly" readonly></div></div>
               <div class="col-6 col-md-3"><div class="fld mb-0"><label>No. RM</label><input type="text" id="mp-rm" class="inp mono" placeholder="00-XX-XX"></div></div>
               <div class="col-md-3"><div class="fld mb-0"><label>Kondisi</label><select id="mp-keadaan" class="sel"><option>Normal</option><option>Hipertensi</option><option>Diabetes</option><option>Hamil</option><option>ODGJ</option><option>Disabilitas</option></select></div></div>
-              <div class="col-12 col-md-6"><div class="fld mb-0"><label>Nama Lengkap *</label><input type="text" id="mp-nama" class="inp font-weight-700" required></div></div>
+              <div class="col-12 col-md-6"><div class="fld mb-0"><label>Nama Lengkap *</label><input type="text" id="mp-nama" class="inp fw-bold" required></div></div>
               <div class="col-4 col-md-2"><div class="fld mb-0"><label>Umur</label><input type="number" id="mp-umur" class="inp" placeholder="0"></div></div>
               <div class="col-8 col-md-4"><div class="fld mb-0"><label>Kelamin</label><select id="mp-jk" class="sel"><option>Laki-laki</option><option>Perempuan</option></select></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Desa</label><input class="inp" list="list-alamat-m" id="mp-alamat" placeholder="Ketik atau pilih..."></div></div>
@@ -1010,52 +1013,52 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Diagnosa *</label><input class="inp" list="list-diagnosa-dl" id="mp-diagnosa" placeholder="Diagnosa..."></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Tindakan</label><input class="inp" list="list-terapi" id="mp-terapi" placeholder="Tindakan..."></div></div>
               <div class="col-12 col-md-12">
-  <div class="fld mb-0">
-    <label>Elemen Gigi</label>
-    <div class="d-flex gap-2">
-      <input type="text" id="mp-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
-      <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-mp').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
-    </div>
-    
-    <div id="odonto-mp" class="odontogram-box" style="display:none;">
-      <div class="odonto-title">GIGI TETAP (DEWASA)</div>
-      <div class="odonto-row top">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">11</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">28</div>
-        </div>
-      </div>
-      <div class="odonto-row mb-3">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">41</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">38</div>
-        </div>
-      </div>
-      
-      <div class="odonto-title">GIGI SUSU (ANAK)</div>
-      <div class="odonto-row top">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">51</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">65</div>
-        </div>
-      </div>
-      <div class="odonto-row">
-        <div class="odonto-quad right">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">81</div>
-        </div>
-        <div class="odonto-quad left">
-          <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">75</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                <div class="fld mb-0">
+                  <label>Elemen Gigi</label>
+                  <div class="d-flex gap-2">
+                    <input type="text" id="mp-gigi" class="inp mono flex-grow-1" placeholder="Pilih gigi..." readonly>
+                    <button type="button" class="btn btn-outline px-3" style="width:auto;" onclick="$('#odonto-mp').slideToggle()"><i class="fas fa-tooth text-primary"></i></button>
+                  </div>
+                  
+                  <div id="odonto-mp" class="odontogram-box" style="display:none;">
+                    <div class="odonto-title">GIGI TETAP (DEWASA)</div>
+                    <div class="odonto-row top">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">18</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">17</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">16</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">15</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">14</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">13</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">12</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">11</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">21</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">22</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">23</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">24</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">25</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">26</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">27</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">28</div>
+                      </div>
+                    </div>
+                    <div class="odonto-row mb-3">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">48</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">47</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">46</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">45</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">44</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">43</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">42</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">41</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">31</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">32</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">33</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">34</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">35</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">36</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">37</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">38</div>
+                      </div>
+                    </div>
+                    
+                    <div class="odonto-title">GIGI SUSU (ANAK)</div>
+                    <div class="odonto-row top">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">55</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">54</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">53</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">52</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">51</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">61</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">62</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">63</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">64</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">65</div>
+                      </div>
+                    </div>
+                    <div class="odonto-row">
+                      <div class="odonto-quad right">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">85</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">84</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">83</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">82</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">81</div>
+                      </div>
+                      <div class="odonto-quad left">
+                        <div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">71</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">72</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">73</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">74</div><div class="tooth-btn" onclick="toggleTooth(this, 'mp-gigi')">75</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="col-8 col-md-4"><div class="fld mb-0"><label>Anastesi</label><input class="inp" list="list-anastesi" id="mp-anastesi" placeholder="Bahan..."></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Obat</label><input type="text" id="mp-obat" class="inp" placeholder="Koma"></div></div>
               <div class="col-12 col-md-6"><div class="fld mb-0"><label>Keterangan</label><input type="text" id="mp-ket" class="inp" placeholder="Opsional..."></div></div>
@@ -1083,29 +1086,128 @@ table.dataTable tbody td { padding: 12px 16px !important; vertical-align: middle
   </div>
 </div>
 
-<!-- Modal ICD/Obat/Catpor/Staff/AI Sama Namun Disesuaikan Classnya -->
-<div class="modal fade" id="mdlRef" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-ink"><h5 class="modal-title text-white" id="mdlRefTitle">Referensi</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="hidden" id="rf-act"><input type="hidden" id="rf-rowid"><input type="hidden" id="rf-type"><div class="row g-2" id="rf-fields"><div class="col-12"><div class="fld mb-0"><label id="lbl-rf0">Kolom A</label><input type="text" id="rf-0" class="inp"></div></div><div class="col-12"><div class="fld mb-0"><label id="lbl-rf1">Kolom B</label><input type="text" id="rf-1" class="inp"></div></div><div class="col-12"><div class="fld mb-0"><label id="lbl-rf2">Kolom C</label><input type="text" id="rf-2" class="inp"></div></div><div class="col-md-6"><div class="fld mb-0"><label id="lbl-rf3">Kolom D</label><input type="text" id="rf-3" class="inp"></div></div><div class="col-md-6"><div class="fld mb-0"><label id="lbl-rf4">Kolom E</label><input type="text" id="rf-4" class="inp"></div></div><div class="col-12"><div class="fld mb-0"><label id="lbl-rf5">Kolom F</label><input type="text" id="rf-5" class="inp"></div></div></div></div><div class="modal-footer py-2"><button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-primary btn-sm" onclick="saveRef()">Simpan</button></div></div></div></div>
+<!-- Modals Referensi & Laporan -->
+<div class="modal fade" id="mdlRef" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-ink"><h5 class="modal-title text-white" id="mdlRefTitle">Referensi</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" id="rf-act"><input type="hidden" id="rf-rowid"><input type="hidden" id="rf-type">
+        <div class="row g-2" id="rf-fields">
+          <div class="col-12"><div class="fld mb-0"><label id="lbl-rf0">Kolom A</label><input type="text" id="rf-0" class="inp"></div></div>
+          <div class="col-12"><div class="fld mb-0"><label id="lbl-rf1">Kolom B</label><input type="text" id="rf-1" class="inp"></div></div>
+          <div class="col-12"><div class="fld mb-0"><label id="lbl-rf2">Kolom C</label><input type="text" id="rf-2" class="inp"></div></div>
+          <div class="col-md-6"><div class="fld mb-0"><label id="lbl-rf3">Kolom D</label><input type="text" id="rf-3" class="inp"></div></div>
+          <div class="col-md-6"><div class="fld mb-0"><label id="lbl-rf4">Kolom E</label><input type="text" id="rf-4" class="inp"></div></div>
+          <div class="col-12"><div class="fld mb-0"><label id="lbl-rf5">Kolom F</label><input type="text" id="rf-5" class="inp"></div></div>
+        </div>
+      </div>
+      <div class="modal-footer py-2">
+        <button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="saveRef()">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="modal fade" id="mdlCatpor" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content"><div class="modal-header bg-ink"><h5 class="modal-title text-white">Laporan Catpor</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="hidden" id="cp-act"><input type="hidden" id="cp-id"><div class="row g-2"><div class="col-md-2"><div class="fld mb-0"><label>No</label><input type="text" id="cp-0" class="inp"></div></div><div class="col-md-4"><div class="fld mb-0"><label>Kabupaten</label><input type="text" id="cp-1" class="inp"></div></div><div class="col-md-3"><div class="fld mb-0"><label>Kode</label><input type="text" id="cp-2" class="inp"></div></div><div class="col-md-3"><div class="fld mb-0"><label>Puskesmas</label><input type="text" id="cp-3" class="inp"></div></div></div><div class="p-3 bg-bg border rounded text-ink-3 mt-3 text-center" style="font-size:11px;">Sisa data numerik diisi di Excel.</div></div><div class="modal-footer py-2"><button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Batal</button><button onclick="saveCp()" class="btn btn-primary btn-sm">Simpan Form</button></div></div></div></div>
+<div class="modal fade" id="mdlCatpor" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-ink"><h5 class="modal-title text-white">Laporan Catpor</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" id="cp-act"><input type="hidden" id="cp-id">
+        <div class="row g-2">
+          <div class="col-md-2"><div class="fld mb-0"><label>No</label><input type="text" id="cp-0" class="inp"></div></div>
+          <div class="col-md-4"><div class="fld mb-0"><label>Kabupaten</label><input type="text" id="cp-1" class="inp"></div></div>
+          <div class="col-md-3"><div class="fld mb-0"><label>Kode</label><input type="text" id="cp-2" class="inp"></div></div>
+          <div class="col-md-3"><div class="fld mb-0"><label>Puskesmas</label><input type="text" id="cp-3" class="inp"></div></div>
+        </div>
+        <div class="p-3 bg-bg border rounded text-ink-3 mt-3 text-center" style="font-size:11px;">Sisa data numerik diisi di Excel.</div>
+      </div>
+      <div class="modal-footer py-2">
+        <button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Batal</button>
+        <button onclick="saveCp()" class="btn btn-primary btn-sm">Simpan Form</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="modal fade" id="mdlUser" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-ink"><h5 class="modal-title text-white" id="mdlUserTitle">Profil Staff</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="hidden" id="u-act"><input type="hidden" id="u-id"><div class="row g-2"><div class="col-md-3"><div class="fld mb-0"><label>ID</label><input type="text" id="u-uid" class="inp readonly mono" readonly></div></div><div class="col-md-5"><div class="fld mb-0"><label>Nama</label><input type="text" id="u-nm" class="inp"></div></div><div class="col-md-4"><div class="fld mb-0"><label>Sandi</label><input type="text" id="u-pw" class="inp"></div></div><div class="col-md-6"><div class="fld mb-0"><label>Pangkat/NIP</label><input type="text" id="u-pkt" class="inp"></div></div><div class="col-md-6"><div class="fld mb-0"><label>Jabatan</label><select id="u-role" class="sel"><option>Dokter Gigi</option><option>Perawat Gigi</option><option>Staff</option></select></div></div><div class="col-md-4"><div class="fld mb-0"><label>Lahir</label><input type="date" id="u-tgl" class="inp"></div></div><div class="col-md-2"><div class="fld mb-0"><label>Umur</label><input type="text" id="u-umr" class="inp"></div></div><div class="col-md-6"><div class="fld mb-0"><label>WhatsApp</label><input type="text" id="u-hp" class="inp"></div></div><div class="col-12"><div class="fld mb-0"><label>Alamat</label><input type="text" id="u-almt" class="inp"></div></div><div class="col-6"><div class="fld mb-0"><label>Masa Kerja</label><input type="text" id="u-mk" class="inp"></div></div><div class="col-6"><div class="fld mb-0"><label>Status</label><select id="u-sts" class="sel"><option>Aktif</option><option>Pending</option></select></div></div><input type="hidden" id="u-foto"></div></div><div class="modal-footer py-2"><button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Tutup</button><button onclick="saveUser()" class="btn btn-primary btn-sm">Perbarui</button></div></div></div></div>
+<div class="modal fade" id="mdlUser" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-ink"><h5 class="modal-title text-white" id="mdlUserTitle">Profil Staff</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="hidden" id="u-act"><input type="hidden" id="u-id">
+        <div class="row g-2">
+          <div class="col-md-3"><div class="fld mb-0"><label>ID</label><input type="text" id="u-uid" class="inp readonly mono" readonly></div></div>
+          <div class="col-md-5"><div class="fld mb-0"><label>Nama</label><input type="text" id="u-nm" class="inp"></div></div>
+          <div class="col-md-4"><div class="fld mb-0"><label>Sandi</label><input type="text" id="u-pw" class="inp"></div></div>
+          <div class="col-md-6"><div class="fld mb-0"><label>Pangkat/NIP</label><input type="text" id="u-pkt" class="inp"></div></div>
+          <div class="col-md-6"><div class="fld mb-0"><label>Jabatan</label><select id="u-role" class="sel"><option>Dokter Gigi</option><option>Perawat Gigi</option><option>Staff</option></select></div></div>
+          <div class="col-md-4"><div class="fld mb-0"><label>Lahir</label><input type="date" id="u-tgl" class="inp"></div></div>
+          <div class="col-md-2"><div class="fld mb-0"><label>Umur</label><input type="text" id="u-umr" class="inp"></div></div>
+          <div class="col-md-6"><div class="fld mb-0"><label>WhatsApp</label><input type="text" id="u-hp" class="inp"></div></div>
+          <div class="col-12"><div class="fld mb-0"><label>Alamat</label><input type="text" id="u-almt" class="inp"></div></div>
+          <div class="col-6"><div class="fld mb-0"><label>Masa Kerja</label><input type="text" id="u-mk" class="inp"></div></div>
+          <div class="col-6"><div class="fld mb-0"><label>Status</label><select id="u-sts" class="sel"><option>Aktif</option><option>Pending</option></select></div></div>
+          <input type="hidden" id="u-foto">
+        </div>
+      </div>
+      <div class="modal-footer py-2">
+        <button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Tutup</button>
+        <button onclick="saveUser()" class="btn btn-primary btn-sm">Perbarui</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="modal fade" id="mdlAI" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"><div class="modal-content"><div class="modal-header border-0 pb-0"><h5 class="modal-title"><i class="fas fa-robot text-primary me-2"></i> Analisis Cerdas Gemini</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body" style="font-size:13px; line-height:1.6;" id="ai-result-content"></div><div class="modal-footer border-0 pt-0 py-2"><button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Tutup</button></div></div></div></div>
+<div class="modal fade" id="mdlAI" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title"><i class="fas fa-robot text-primary me-2"></i> Analisis Cerdas Gemini</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="font-size:13px; line-height:1.6;" id="ai-result-content"></div>
+      <div class="modal-footer border-0 pt-0 py-2">
+        <button type="button" class="btn btn-outline btn-sm" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="modal fade" id="mdlRegister" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-ink"><h5 class="modal-title text-white">Daftar Akun Baru</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><form id="formRegister"><div class="fld"><label>Nama Lengkap (Sesuai KTP)</label><input type="text" id="reg-nama" class="inp" required></div><div class="fld"><label>Kata Sandi yang Diinginkan</label><input type="text" id="reg-pass" class="inp" required></div><div class="fld" style="margin-bottom:0;"><label>No. WhatsApp Aktif</label><input type="text" id="reg-hp" class="inp" required></div><div class="p-2 mb-3 mt-3 bg-warning-lt text-warning text-center rounded border" style="font-size:11px;"><i class="fas fa-shield-alt me-1"></i> Memerlukan persetujuan Admin.</div><button type="submit" class="btn btn-primary btn-full">Kirim Permohonan</button></form></div></div></div></div>
+<div class="modal fade" id="mdlRegister" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-ink"><h5 class="modal-title text-white">Daftar Akun Baru</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="formRegister">
+          <div class="fld"><label>Nama Lengkap (Sesuai KTP)</label><input type="text" id="reg-nama" class="inp" required></div>
+          <div class="fld"><label>Kata Sandi yang Diinginkan</label><input type="text" id="reg-pass" class="inp" required></div>
+          <div class="fld" style="margin-bottom:0;"><label>No. WhatsApp Aktif</label><input type="text" id="reg-hp" class="inp" required></div>
+          <div class="p-2 mb-3 mt-3 bg-warning-lt text-warning text-center rounded border" style="font-size:11px;"><i class="fas fa-shield-alt me-1"></i> Memerlukan persetujuan Admin.</div>
+          <button type="submit" class="btn btn-primary btn-full">Kirim Permohonan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════
-   SCRIPTS
+   SCRIPTS (Semua dependencies dipastikan ada)
 ═══════════════════════════════════════════════════════════════ -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Ditambahkan Library untuk Chart dan PDF -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <script>
 // ==========================================
-// KONFIGURASI API GAS
+// KONFIGURASI API GAS & MOCKUP
 // ==========================================
 const GAS_API_URL = "https://script.google.com/macros/s/AKfycbw2eZTDgAp0OK5nkDmCt1xkLJ92Okl7-blesWNATKMBxONrJxnH_H0XvnGw7Lycu6uWNg/exec";
 
@@ -1141,12 +1243,27 @@ function apiCall(methodName, args = []) {
 function generateMockData(method, args) {
   if (method === 'getDashboardStats') return { status:true, summary:{total:1250, today:14, L:520, P:730}, diagnosa:[{label:'Pulpitis',count:120},{label:'Karies',count:90},{label:'Abses',count:45}], desa:[{label:'Gunung Lagan',count:200},{label:'Rimo',count:150},{label:'Cingkam',count:80}], holidays:{}, onlineStaff: [curName || "Drg. Admin"] };
   if (method === 'processLogin') return { status:true, role:'Dokter Gigi', nama:'Drg. Akses Lokal' };
-  if (method === 'getDataDatabase') return { headers:['No','UID','Tanggal','Bulan','RM','Nama'], rows:[[1,"UID123","2026-04-16","April","RM-01","Pasien A"], [2,"UID456","2026-04-16","April","RM-02","Pasien B"]] };
+  if (method === 'getDataDatabase') return { headers:['No','UID','Tanggal','Bulan','RM','Nama','Umur','Kelamin','Kondisi','Desa','Faskes','Status','Diagnosa','Gigi','Terapi','Anastesi','Obat','Keterangan','PJ','Odontogram','Surat Sakit'], rows:[[1,"UID123","2026-04-16","April","RM-01","Pasien A",25,"Laki-laki","Normal","Rimo","Faskes Dalam","Baru","Karies Gigi","46","Tumpatan Gigi Tetap","Tidak Ada","Paracetamol","Aman","drg. Fakhrurrazi","Ada","Tidak Ada"], [2,"UID456","2026-04-16","April","RM-02","Pasien B",30,"Perempuan","Hamil","Gunung Lagan","Faskes Dalam","Lama","Pulpitis","11","Rujukan","Tidak Ada","Amoxicilin","","drg. Fakhrurrazi","Ada","Ada"]] };
   if (method === 'getUserData') return { headers:['UID','Nama','Password'], rows:[], isAdmin:true };
   if (method === 'getReadOnly') return { headers:['K1','K2','K3','K4','K5','K6'], rows:[] };
   if (method === 'getCatporData') return { headers:['No','Kabupaten','Kode','Puskesmas'], rows:[] };
   if (method === 'getStaffList') return ['Drg. Budi', 'Perawat Siti'];
   return { status: true, message: "Aksi sukses melalui Mockup Lokal" };
+}
+
+// ==========================================
+// MOCK FUNGSI AI (Ditambahkan agar tidak error)
+// ==========================================
+async function fetchGeminiAPI(prompt, type = 1) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      if (type === 2) {
+        resolve("Senyum sehat adalah investasi masa depan yang tak ternilai.");
+      } else {
+        resolve(`<div class="alert alert-info border-0 bg-primary-lt text-primary"><i class="fas fa-info-circle me-2"></i><strong>Analisis AI (Simulasi Lokal):</strong><br>1. <strong>Kontraindikasi:</strong> Perhatikan riwayat medis spesifik.<br>2. <strong>Edukasi:</strong> Jaga kebersihan mulut dengan menyikat gigi minimal 2x sehari.<br>3. <strong>Saran Resep:</strong> Berikan analgetik jika nyeri berlanjut.</div>`);
+      }
+    }, 1500);
+  });
 }
 
 // ==========================================
@@ -1157,14 +1274,12 @@ let chartObjects = {};
 const MONTHS = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 let isOffline = !navigator.onLine;
 
-
 async function loadAIQuote() {
   const cachedQuote = sessionStorage.getItem('ai_health_quote');
   if (cachedQuote) {
     $('#ai-quote').html(`<i class="fas fa-quote-left text-primary opacity-50 me-1" style="font-size:10px;"></i> ${cachedQuote}`);
     return;
   }
-  
   try {
     const prompt = "Tuliskan 1 kalimat mutiara motivasi sangat singkat (maksimal 10 kata) tentang pentingnya kesehatan gigi/senyum untuk pasien klinik. Berikan langsung kalimatnya saja.";
     const quote = await fetchGeminiAPI(prompt, 2);
@@ -1202,7 +1317,13 @@ async function analyzeWithAI() {
 
 $(document).ready(async () => {
   bsOC = new bootstrap.Offcanvas(document.getElementById('ocMenu'));
-  document.getElementById('e-tgl').valueAsDate = new Date();
+  
+  // Set default date to local timezone
+  const today = new Date();
+  const offset = today.getTimezoneOffset() * 60000;
+  const localISOTime = (new Date(today - offset)).toISOString().split('T')[0];
+  $('#e-tgl').val(localISOTime);
+  
   setBulan(); startClock(); initOfflineMode();
   
   try {
@@ -1310,7 +1431,7 @@ async function processLoginAPI(u, p, isVerify) {
       if (!initialPage || initialPage === 'laporan' || $(`#page-${initialPage}`).length === 0) initialPage = 'dashboard';
       nav(initialPage);
       
-      loadAIQuote(); // Load Quote after login
+      loadAIQuote();
     } else {
       localStorage.clear();
       if (isVerify) Swal.fire('Sesi Berakhir', 'Silakan masuk kembali.', 'info');
@@ -1430,6 +1551,8 @@ async function loadDash() {
 }
 
 function renderModernCharts(data) {
+  if (typeof Chart === 'undefined') return; // Pastikan Chart.js dimuat
+  
   Chart.defaults.font.family = "'Inter', sans-serif"; Chart.defaults.color = '#a1a1aa';
   
   if(chartObjects.tren) chartObjects.tren.destroy();
@@ -1499,58 +1622,248 @@ async function loadDB() {
   } catch(e) { hideLoader(); }
 }
 
-async function openAddPasien() { $('#mdlPasienTitle').text('Pasien Baru'); $('#mp-act').val('add'); $('#mp-rowid').val(''); $('#mdlPasien input:not([type=hidden]), #mdlPasien select').val('').prop('selectedIndex',0); document.getElementById('mp-tgl').valueAsDate = new Date(); mpSetBulan(); try { $('#mp-no').val(await apiCall('getLastNoPasien')); } catch(e){} new bootstrap.Modal('#mdlPasien').show(); }
-function editPasienModal(enc) { const { rowData: r, rowId: rid } = JSON.parse(decodeURIComponent(enc)); $('#mdlPasienTitle').text('Edit Pasien'); $('#mp-act').val('edit'); $('#mp-rowid').val(rid); $('#mp-no').val(r[0]); $('#mp-tgl').val(r[2]); $('#mp-bln').val(r[3]); $('#mp-rm').val(r[4]); $('#mp-nama').val(r[5]); $('#mp-umur').val(r[6]); $('#mp-jk').val(r[7]); $('#mp-keadaan').val(r[8]); $('#mp-alamat').val(r[9]); $('#mp-faskes').val(r[10]); $('#mp-jenis').val(r[11]); $('#mp-diagnosa').val(r[12]); $('#mp-gigi').val(r[13]); $('#mp-terapi').val(r[14]);// Sinkronisasi tombol Odontogram saat Edit Pasien
-  $('#odonto-mp .tooth-btn').removeClass('selected'); // Reset papan
+async function openAddPasien() { 
+  $('#mdlPasienTitle').text('Pasien Baru'); 
+  $('#mp-act').val('add'); 
+  $('#mp-rowid').val(''); 
+  $('#mdlPasien input:not([type=hidden]), #mdlPasien select').val('').prop('selectedIndex',0); 
+  
+  const today = new Date();
+  const offset = today.getTimezoneOffset() * 60000;
+  const localISOTime = (new Date(today - offset)).toISOString().split('T')[0];
+  $('#mp-tgl').val(localISOTime);
+  
+  mpSetBulan(); 
+  try { $('#mp-no').val(await apiCall('getLastNoPasien')); } catch(e){} 
+  new bootstrap.Modal('#mdlPasien').show(); 
+}
+
+function editPasienModal(enc) { 
+  const { rowData: r, rowId: rid } = JSON.parse(decodeURIComponent(enc)); 
+  $('#mdlPasienTitle').text('Edit Pasien'); 
+  $('#mp-act').val('edit'); $('#mp-rowid').val(rid); 
+  $('#mp-no').val(r[0]); $('#mp-tgl').val(r[2]); $('#mp-bln').val(r[3]); 
+  $('#mp-rm').val(r[4]); $('#mp-nama').val(r[5]); $('#mp-umur').val(r[6]); 
+  $('#mp-jk').val(r[7]); $('#mp-keadaan').val(r[8]); $('#mp-alamat').val(r[9]); 
+  $('#mp-faskes').val(r[10]); $('#mp-jenis').val(r[11]); $('#mp-diagnosa').val(r[12]); 
+  $('#mp-gigi').val(r[13]); $('#mp-terapi').val(r[14]);
+  
+  $('#odonto-mp .tooth-btn').removeClass('selected'); 
   if(r[13]) {
     let gigiArr = r[13].toString().split(',').map(s => s.trim());
     $('#odonto-mp .tooth-btn').each(function() {
       if(gigiArr.includes($(this).text())) {
-        $(this).addClass('selected'); // Nyalakan tombol yang sesuai
+        $(this).addClass('selected'); 
       }
     });
-  } $('#mp-anastesi').val(r[15]); $('#mp-obat').val(r[16]); $('#mp-ket').val(r[17]); $('#mp-pj').val(r[18]); $('#mp-odon').val(r[19]); $('#mp-surat').val(r[20]); new bootstrap.Modal('#mdlPasien').show(); }
-function previewPasienModal(enc) { const { rowData: r } = JSON.parse(decodeURIComponent(enc)); const sv = (val) => (val === undefined || val === null || String(val).trim() === '') ? '-' : val; $('#prev-rm').text('RM: ' + sv(r[4])); $('#prev-nama').text(sv(r[5])); $('#prev-umurjk').text(sv(r[6]) + ' Tahun / ' + sv(r[7])); $('#prev-tgl').text(sv(r[2])); $('#prev-alamat').text(sv(r[9])); $('#prev-kondisi').text(sv(r[8])); $('#prev-status').text(sv(r[11]) + ' - ' + sv(r[10])); $('#prev-diagnosa').text(sv(r[12])); $('#prev-terapi').text(sv(r[14])); $('#prev-gigi').text(sv(r[13])); $('#prev-anastesi').text(sv(r[15])); $('#prev-obat').text(sv(r[16])); $('#prev-ket').text(sv(r[17])); $('#prev-pj').text(sv(r[18])); $('#prev-odon').text(sv(r[19])); $('#prev-surat').text(sv(r[20])); $('#btn-edit-from-prev').off('click').on('click', function() { $('#mdlPreviewPasien').modal('hide'); editPasienModal(enc); }); new bootstrap.Modal('#mdlPreviewPasien').show(); }
+  } 
+  $('#mp-anastesi').val(r[15]); $('#mp-obat').val(r[16]); $('#mp-ket').val(r[17]); 
+  $('#mp-pj').val(r[18]); $('#mp-odon').val(r[19]); $('#mp-surat').val(r[20]); 
+  new bootstrap.Modal('#mdlPasien').show(); 
+}
+
+function previewPasienModal(enc) { 
+  const { rowData: r } = JSON.parse(decodeURIComponent(enc)); 
+  const sv = (val) => (val === undefined || val === null || String(val).trim() === '') ? '-' : val; 
+  $('#prev-rm').text('RM: ' + sv(r[4])); $('#prev-nama').text(sv(r[5])); 
+  $('#prev-umurjk').text(sv(r[6]) + ' Tahun / ' + sv(r[7])); $('#prev-tgl').text(sv(r[2])); 
+  $('#prev-alamat').text(sv(r[9])); $('#prev-kondisi').text(sv(r[8])); 
+  $('#prev-status').text(sv(r[11]) + ' - ' + sv(r[10])); $('#prev-diagnosa').text(sv(r[12])); 
+  $('#prev-terapi').text(sv(r[14])); $('#prev-gigi').text(sv(r[13])); 
+  $('#prev-anastesi').text(sv(r[15])); $('#prev-obat').text(sv(r[16])); 
+  $('#prev-ket').text(sv(r[17])); $('#prev-pj').text(sv(r[18])); 
+  $('#prev-odon').text(sv(r[19])); $('#prev-surat').text(sv(r[20])); 
+  
+  $('#btn-edit-from-prev').off('click').on('click', function() { 
+    $('#mdlPreviewPasien').modal('hide'); 
+    editPasienModal(enc); 
+  }); 
+  new bootstrap.Modal('#mdlPreviewPasien').show(); 
+}
 
 async function savePasien() {
   const act = $('#mp-act').val();
   const f = { no:$('#mp-no').val(), tanggal:$('#mp-tgl').val(), bulan:$('#mp-bln').val(), rm:$('#mp-rm').val(), nama:$('#mp-nama').val(), umur:$('#mp-umur').val(), jk:$('#mp-jk').val(), keadaan:$('#mp-keadaan').val(), alamat:$('#mp-alamat').val(), faskes:$('#mp-faskes').val(), jenis:$('#mp-jenis').val(), diagnosa:$('#mp-diagnosa').val(), gigi:$('#mp-gigi').val(), terapi:$('#mp-terapi').val(), anastesi:$('#mp-anastesi').val(), obat:$('#mp-obat').val(), ket:$('#mp-ket').val(), pj:$('#mp-pj').val(), odon:$('#mp-odon').val(), surat:$('#mp-surat').val() };
+  
   if (!f.nama) return Swal.fire('Peringatan','Nama pasien wajib diisi.','warning');
-  if (isOffline) { let q = JSON.parse(localStorage.getItem('ereg_off_queue') || '[]'); q.push({ act: act, f: f, rid: $('#mp-rowid').val() }); localStorage.setItem('ereg_off_queue', JSON.stringify(q)); bootstrap.Modal.getInstance('#mdlPasien').hide(); toast('Disimpan Offline.', 'info'); if(!$('#page-database').hasClass('d-none')) loadDB(); return; }
-  showLoader('Menyimpan...'); try { if (act === 'add') { await apiCall('addPasien', [f]); } else { await apiCall('editPasien', [f, parseInt($('#mp-rowid').val())]); } hideLoader(); bootstrap.Modal.getInstance('#mdlPasien').hide(); toast('Data diupdate!'); loadDB(); } catch(err) { hideLoader(); Swal.fire('Error', 'Jaringan error', 'error'); }
+  
+  if (isOffline) { 
+    let q = JSON.parse(localStorage.getItem('ereg_off_queue') || '[]'); 
+    q.push({ act: act, f: f, rid: $('#mp-rowid').val() }); 
+    localStorage.setItem('ereg_off_queue', JSON.stringify(q)); 
+    bootstrap.Modal.getInstance('#mdlPasien').hide(); 
+    toast('Disimpan Offline.', 'info'); 
+    if(!$('#page-database').hasClass('d-none')) loadDB(); 
+    return; 
+  }
+  
+  showLoader('Menyimpan...'); 
+  try { 
+    if (act === 'add') { 
+      await apiCall('addPasien', [f]); 
+    } else { 
+      await apiCall('editPasien', [f, parseInt($('#mp-rowid').val())]); 
+    } 
+    hideLoader(); 
+    bootstrap.Modal.getInstance('#mdlPasien').hide(); 
+    toast('Data diupdate!'); 
+    loadDB(); 
+  } catch(err) { 
+    hideLoader(); Swal.fire('Error', 'Jaringan error', 'error'); 
+  }
 }
-function deletePasienRow(rid) { confirm_del(async () => { showLoader('Menghapus...'); try { await apiCall('deletePasien', [rid]); hideLoader(); toast('Dihapus','info'); loadDB(); } catch(e){} }); }
+
+function deletePasienRow(rid) { 
+  confirm_del(async () => { 
+    showLoader('Menghapus...'); 
+    try { 
+      await apiCall('deletePasien', [rid]); 
+      hideLoader(); toast('Dihapus','info'); loadDB(); 
+    } catch(e){} 
+  }); 
+}
 
 // ==========================================
 // REFERENSI & ADMIN
 // ==========================================
 const REF_LABELS = { icd:['ICD-10','Deskripsi','Kategori','Ket 1','Ket 2','Ket 3'], obat:['Sediaan','Kategori','Satuan','Stok','Ket 1','Ket 2'] };
-async function loadRef(type) { const tblId = '#tbl-' + type; showLoader('Memuat...'); if ($.fn.DataTable.isDataTable(tblId)) { $(tblId).DataTable().destroy(); $(tblId).empty(); } try { const d = await apiCall('getReadOnly', [type]); hideLoader(); if(!d.headers) return; const th = '<thead><tr>'+d.headers.map(h=>`<th>${h}</th>`).join('')+'<th class="text-end">Aksi</th></tr></thead>'; $(tblId).html(th).DataTable({ data: d.rows.map(r => { const rid = r.pop(); const row = r.slice(0); const enc = encodeURIComponent(JSON.stringify({row, rid, type})); row.push(`<div class="tbl-actions justify-content-end"><button class="btn btn-outline btn-xs" onclick="modalRef('${type}','edit','${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="deleteRef('${type}',${rid})"><i class="fas fa-trash"></i></button></div>`); return row; }), responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" }); } catch(e) { hideLoader(); } }
-function modalRef(type, act, enc) { const labels = REF_LABELS[type] || []; labels.forEach((l,i) => $(`#lbl-rf${i}`).text(l)); $('#mdlRefTitle').text((type==='icd'?'ICD-10':'Obat') + (act==='add'?' (Baru)':' (Edit)')); $('#rf-act').val(act); $('#rf-type').val(type); $('#rf-rowid').val(''); for(let i=0;i<6;i++) $(`#rf-${i}`).val(''); if (act === 'edit' && enc) { const {row, rid} = JSON.parse(decodeURIComponent(enc)); $('#rf-rowid').val(rid); row.forEach((v,i) => $(`#rf-${i}`).val(v)); } new bootstrap.Modal('#mdlRef').show(); }
-async function saveRef() { const act=$('#rf-act').val(), type=$('#rf-type').val(), rid=parseInt($('#rf-rowid').val()); const vals = [0,1,2,3,4,5].map(i=>$(`#rf-${i}`).val()); showLoader('Menyimpan...'); try { await apiCall('crudReadOnly', [act, vals, rid, type]); hideLoader(); bootstrap.Modal.getInstance('#mdlRef').hide(); toast('Tersimpan!'); loadRef(type); } catch(e) { hideLoader(); } }
-function deleteRef(type, rid) { confirm_del(async () => { showLoader('Menghapus...'); try { await apiCall('crudReadOnly', ['delete', [], rid, type]); hideLoader(); loadRef(type); } catch(e){} }); }
 
-async function loadCatpor() { showLoader('Memuat...'); if ($.fn.DataTable.isDataTable('#tbl-catpor')) { $('#tbl-catpor').DataTable().destroy(); $('#tbl-catpor').empty(); } try { const d = await apiCall('getCatporData'); hideLoader(); const th = '<thead><tr>'+d.headers.slice(0,4).map(h=>`<th>${h}</th>`).join('')+'<th class="text-end">Aksi</th></tr></thead>'; $('#tbl-catpor').html(th).DataTable({ data: d.rows.map(r => { const id=r.pop(); const enc=encodeURIComponent(JSON.stringify(r)); const vis = r.slice(0,4); vis.push(`<div class="tbl-actions justify-content-end"><button class="btn btn-outline btn-xs" onclick="editCp(${id},'${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="delCp(${id})"><i class="fas fa-trash"></i></button></div>`); return vis; }), responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" }); } catch(e) { hideLoader(); } }
+async function loadRef(type) { 
+  const tblId = '#tbl-' + type; showLoader('Memuat...'); 
+  if ($.fn.DataTable.isDataTable(tblId)) { $(tblId).DataTable().destroy(); $(tblId).empty(); } 
+  try { 
+    const d = await apiCall('getReadOnly', [type]); hideLoader(); if(!d.headers) return; 
+    const th = '<thead><tr>'+d.headers.map(h=>`<th>${h}</th>`).join('')+'<th class="text-end">Aksi</th></tr></thead>'; 
+    $(tblId).html(th).DataTable({ 
+      data: d.rows.map(r => { 
+        const rid = r.pop(); const row = r.slice(0); const enc = encodeURIComponent(JSON.stringify({row, rid, type})); 
+        row.push(`<div class="tbl-actions justify-content-end"><button class="btn btn-outline btn-xs" onclick="modalRef('${type}','edit','${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="deleteRef('${type}',${rid})"><i class="fas fa-trash"></i></button></div>`); return row; 
+      }), 
+      responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" 
+    }); 
+  } catch(e) { hideLoader(); } 
+}
+
+function modalRef(type, act, enc) { 
+  const labels = REF_LABELS[type] || []; labels.forEach((l,i) => $(`#lbl-rf${i}`).text(l)); 
+  $('#mdlRefTitle').text((type==='icd'?'ICD-10':'Obat') + (act==='add'?' (Baru)':' (Edit)')); 
+  $('#rf-act').val(act); $('#rf-type').val(type); $('#rf-rowid').val(''); 
+  for(let i=0;i<6;i++) $(`#rf-${i}`).val(''); 
+  if (act === 'edit' && enc) { 
+    const {row, rid} = JSON.parse(decodeURIComponent(enc)); 
+    $('#rf-rowid').val(rid); row.forEach((v,i) => $(`#rf-${i}`).val(v)); 
+  } 
+  new bootstrap.Modal('#mdlRef').show(); 
+}
+
+async function saveRef() { 
+  const act=$('#rf-act').val(), type=$('#rf-type').val(), rid=parseInt($('#rf-rowid').val()); 
+  const vals = [0,1,2,3,4,5].map(i=>$(`#rf-${i}`).val()); 
+  showLoader('Menyimpan...'); 
+  try { 
+    await apiCall('crudReadOnly', [act, vals, rid, type]); 
+    hideLoader(); bootstrap.Modal.getInstance('#mdlRef').hide(); toast('Tersimpan!'); loadRef(type); 
+  } catch(e) { hideLoader(); } 
+}
+
+function deleteRef(type, rid) { 
+  confirm_del(async () => { showLoader('Menghapus...'); try { await apiCall('crudReadOnly', ['delete', [], rid, type]); hideLoader(); loadRef(type); } catch(e){} }); 
+}
+
+async function loadCatpor() { 
+  showLoader('Memuat...'); 
+  if ($.fn.DataTable.isDataTable('#tbl-catpor')) { $('#tbl-catpor').DataTable().destroy(); $('#tbl-catpor').empty(); } 
+  try { 
+    const d = await apiCall('getCatporData'); hideLoader(); 
+    const th = '<thead><tr>'+d.headers.slice(0,4).map(h=>`<th>${h}</th>`).join('')+'<th class="text-end">Aksi</th></tr></thead>'; 
+    $('#tbl-catpor').html(th).DataTable({ 
+      data: d.rows.map(r => { 
+        const id=r.pop(); const enc=encodeURIComponent(JSON.stringify(r)); const vis = r.slice(0,4); 
+        vis.push(`<div class="tbl-actions justify-content-end"><button class="btn btn-outline btn-xs" onclick="editCp(${id},'${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="delCp(${id})"><i class="fas fa-trash"></i></button></div>`); return vis; 
+      }), 
+      responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" 
+    }); 
+  } catch(e) { hideLoader(); } 
+}
+
 function modalCatpor(act) { $('#cp-act').val(act); $('#mdlCatpor input:not([type=hidden])').val(''); new bootstrap.Modal('#mdlCatpor').show(); }
-function editCp(id, str) { const r = JSON.parse(decodeURIComponent(str)); $('#cp-act').val('edit'); $('#cp-id').val(id); for(let i=0;i<4;i++) $('#cp-'+i).val(r[i]||''); new bootstrap.Modal('#mdlCatpor').show(); }
-async function saveCp() { const arr=[]; for(let i=0;i<48;i++) arr.push($('#cp-'+i).val()||''); showLoader('Menyimpan...'); try { await apiCall('crudCatpor', [$('#cp-act').val(), arr, $('#cp-id').val()]); hideLoader(); bootstrap.Modal.getInstance('#mdlCatpor').hide(); toast('Diperbarui!'); loadCatpor(); } catch(e) { hideLoader(); } }
+
+function editCp(id, str) { 
+  const r = JSON.parse(decodeURIComponent(str)); $('#cp-act').val('edit'); $('#cp-id').val(id); 
+  for(let i=0;i<4;i++) $('#cp-'+i).val(r[i]||''); 
+  new bootstrap.Modal('#mdlCatpor').show(); 
+}
+
+async function saveCp() { 
+  const arr=[]; for(let i=0;i<48;i++) arr.push($('#cp-'+i).val()||''); 
+  showLoader('Menyimpan...'); 
+  try { await apiCall('crudCatpor', [$('#cp-act').val(), arr, $('#cp-id').val()]); hideLoader(); bootstrap.Modal.getInstance('#mdlCatpor').hide(); toast('Diperbarui!'); loadCatpor(); } catch(e) { hideLoader(); } 
+}
+
 function delCp(id) { confirm_del(async () => { showLoader('Menghapus...'); try { await apiCall('crudCatpor', ['delete', [], id]); hideLoader(); loadCatpor(); } catch(e){} }); }
 
-async function loadUser() { showLoader('Verifikasi...'); const isAdmin = curRole === 'Dokter Gigi'; if (isAdmin) { $('#admin-panel').removeClass('d-none'); $('#staff-notice').addClass('d-none'); } else { $('#admin-panel').addClass('d-none'); $('#staff-notice').removeClass('d-none'); } if ($.fn.DataTable.isDataTable('#tbl-user')) { $('#tbl-user').DataTable().destroy(); $('#tbl-user').empty(); } try { const d = await apiCall('getUserData', [curRole]); hideLoader(); const th = '<thead><tr>'+d.headers.slice(0,5).map(h=>`<th>${h}</th>`).join('')+'<th>Status</th><th class="text-end">Aksi</th></tr></thead>'; $('#tbl-user').html(th).DataTable({ data: d.rows.map(r => { const id=r.pop(); const status=r[11]; const enc=encodeURIComponent(JSON.stringify(r)); const vis = r.slice(0,5); vis.push(status==='Aktif' ? `<span class="pill pill-aktif">Aktif</span>` : `<span class="pill pill-pending">Pending</span>`); let btn = '<div class="tbl-actions justify-content-end">'; if (isAdmin) { if(status==='Pending') btn += `<button class="btn btn-success btn-xs me-1" onclick="approveUser(${id})"><i class="fas fa-check"></i></button>`; btn += `<button class="btn btn-outline btn-xs" onclick="editUser(${id},'${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="delUser(${id})"><i class="fas fa-trash"></i></button>`; } btn += '</div>'; vis.push(btn); return vis; }), responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" }); } catch(e) { hideLoader(); } }
+async function loadUser() { 
+  showLoader('Verifikasi...'); const isAdmin = curRole === 'Dokter Gigi'; 
+  if (isAdmin) { $('#admin-panel').removeClass('d-none'); $('#staff-notice').addClass('d-none'); } 
+  else { $('#admin-panel').addClass('d-none'); $('#staff-notice').removeClass('d-none'); } 
+  if ($.fn.DataTable.isDataTable('#tbl-user')) { $('#tbl-user').DataTable().destroy(); $('#tbl-user').empty(); } 
+  try { 
+    const d = await apiCall('getUserData', [curRole]); hideLoader(); 
+    const th = '<thead><tr>'+d.headers.slice(0,5).map(h=>`<th>${h}</th>`).join('')+'<th>Status</th><th class="text-end">Aksi</th></tr></thead>'; 
+    $('#tbl-user').html(th).DataTable({ 
+      data: d.rows.map(r => { 
+        const id=r.pop(); const status=r[11]; const enc=encodeURIComponent(JSON.stringify(r)); const vis = r.slice(0,5); 
+        vis.push(status==='Aktif' ? `<span class="pill pill-aktif">Aktif</span>` : `<span class="pill pill-pending">Pending</span>`); 
+        let btn = '<div class="tbl-actions justify-content-end">'; 
+        if (isAdmin) { 
+          if(status==='Pending') btn += `<button class="btn btn-success btn-xs me-1" onclick="approveUser(${id})"><i class="fas fa-check"></i></button>`; 
+          btn += `<button class="btn btn-outline btn-xs" onclick="editUser(${id},'${enc}')"><i class="fas fa-pencil"></i></button><button class="btn btn-danger btn-xs" onclick="delUser(${id})"><i class="fas fa-trash"></i></button>`; 
+        } 
+        btn += '</div>'; vis.push(btn); return vis; 
+      }), 
+      responsive:true, pageLength:10, dom:"<'row mb-2'<'col-md-6'l><'col-md-6 d-flex justify-content-end'f>>rt<'row mt-3'<'col-md-5'i><'col-md-7 d-flex justify-content-end'p>>" 
+    }); 
+  } catch(e) { hideLoader(); } 
+}
+
 function approveUser(id) { Swal.fire({ title:'Setujui?', showCancelButton:true, confirmButtonText:'Ya' }).then(async r=>{ if(r.isConfirmed) { showLoader('Memproses...'); try { await apiCall('approveUser', [id, curRole]); hideLoader(); toast('Akses aktif!'); loadUser(); } catch(e){} } }); }
+
 function modalUser(act) { $('#mdlUserTitle').text(act==='add'?'Staff Baru':'Edit Staff'); $('#u-act').val(act); $('#mdlUser input:not([type=hidden])').val(''); new bootstrap.Modal('#mdlUser').show(); }
-function editUser(id,str) { const r=JSON.parse(decodeURIComponent(str)); $('#u-act').val('edit'); $('#u-id').val(id); $('#u-uid').val(r[0]); $('#u-nm').val(r[1]); $('#u-pw').val(r[2]); $('#u-pkt').val(r[3]); $('#u-role').val(r[4]); $('#u-tgl').val(r[5]); $('#u-umr').val(r[6]); $('#u-almt').val(r[7]); $('#u-hp').val(r[8]); $('#u-mk').val(r[10]); $('#u-sts').val(r[11]==='Aktif'?'Aktif':'Pending'); new bootstrap.Modal('#mdlUser').show(); }
-async function saveUser() { if (curRole !== 'Dokter Gigi') return; const d=[$('#u-uid').val(),$('#u-nm').val(),$('#u-pw').val(),$('#u-pkt').val(),$('#u-role').val(),$('#u-tgl').val(),$('#u-umr').val(),$('#u-almt').val(),$('#u-hp').val(),$('#u-foto').val(),$('#u-mk').val(),$('#u-sts').val()]; showLoader('Menyimpan...'); try { await apiCall('crudUser', [$('#u-act').val(), d, $('#u-id').val(), curRole]); hideLoader(); bootstrap.Modal.getInstance('#mdlUser').hide(); toast('Disimpan!'); loadUser(); } catch(e) { hideLoader(); } }
+
+function editUser(id,str) { 
+  const r=JSON.parse(decodeURIComponent(str)); $('#u-act').val('edit'); $('#u-id').val(id); 
+  $('#u-uid').val(r[0]); $('#u-nm').val(r[1]); $('#u-pw').val(r[2]); $('#u-pkt').val(r[3]); 
+  $('#u-role').val(r[4]); $('#u-tgl').val(r[5]); $('#u-umr').val(r[6]); $('#u-almt').val(r[7]); 
+  $('#u-hp').val(r[8]); $('#u-mk').val(r[10]); $('#u-sts').val(r[11]==='Aktif'?'Aktif':'Pending'); 
+  new bootstrap.Modal('#mdlUser').show(); 
+}
+
+async function saveUser() { 
+  if (curRole !== 'Dokter Gigi') return; 
+  const d=[$('#u-uid').val(),$('#u-nm').val(),$('#u-pw').val(),$('#u-pkt').val(),$('#u-role').val(),$('#u-tgl').val(),$('#u-umr').val(),$('#u-almt').val(),$('#u-hp').val(),$('#u-foto').val(),$('#u-mk').val(),$('#u-sts').val()]; 
+  showLoader('Menyimpan...'); try { await apiCall('crudUser', [$('#u-act').val(), d, $('#u-id').val(), curRole]); hideLoader(); bootstrap.Modal.getInstance('#mdlUser').hide(); toast('Disimpan!'); loadUser(); } catch(e) { hideLoader(); } 
+}
+
 function delUser(id) { confirm_del(async () => { showLoader('Menghapus...'); try { await apiCall('crudUser', ['delete', [], id, curRole]); hideLoader(); loadUser(); } catch(e){} }); }
 
 // ==========================================
 // INFOGRAFIS LENGKAP LOGIC
 // ==========================================
 let rawDBData = []; let igCharts = {};
-$('#info-periode').on('change', function() { if(this.value === 'daily') { $('#info-date').prop('disabled', false).val(new Date().toISOString().split('T')[0]); } else { $('#info-date').prop('disabled', true).val(''); } });
+$('#info-periode').on('change', function() { 
+  if(this.value === 'daily') { 
+    const localISOTime = new Date().toLocaleDateString('en-CA'); // Gets local YYYY-MM-DD
+    $('#info-date').prop('disabled', false).val(localISOTime); 
+  } else { 
+    $('#info-date').prop('disabled', true).val(''); 
+  } 
+});
 
 async function loadDBForInfo() {
-  if(rawDBData.length === 0) { showLoader('Menarik Data Analitik...'); try { const d = await apiCall('getDataDatabase'); if(d.rows) rawDBData = d.rows; hideLoader(); } catch(e) { hideLoader(); } }
+  if(rawDBData.length === 0) { 
+    showLoader('Menarik Data Analitik...'); 
+    try { const d = await apiCall('getDataDatabase'); if(d.rows) rawDBData = d.rows; hideLoader(); } catch(e) { hideLoader(); } 
+  }
   buildInfografis();
 }
 
@@ -1559,7 +1872,11 @@ function buildInfografis() {
   let filtered = rawDBData.filter(r => {
     let dStr = r[2] || ''; if(!dStr) return false;
     let d = new Date(dStr + "T00:00:00"); if(isNaN(d)) return false;
-    if(period === 'daily') { let target = specificDate || now.toISOString().split('T')[0]; return dStr.startsWith(target); } 
+    
+    if(period === 'daily') { 
+      let target = specificDate || now.toISOString().split('T')[0]; 
+      return dStr.startsWith(target); 
+    } 
     else if (period === 'week') { let startOfWeek = new Date(now); startOfWeek.setDate(now.getDate() - now.getDay()); startOfWeek.setHours(0,0,0,0); return d >= startOfWeek; } 
     else if (period === 'month') { return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear(); } 
     else if (period === 'semester') { let sem = now.getMonth() < 6 ? 0 : 1; let dSem = d.getMonth() < 6 ? 0 : 1; return sem === dSem && d.getFullYear() === now.getFullYear(); } 
@@ -1603,6 +1920,8 @@ function buildInfografis() {
 }
 
 function renderIGCharts(data) {
+  if (typeof Chart === 'undefined') return;
+
   Chart.defaults.font.family = "'Inter', sans-serif"; Chart.defaults.color = '#71717a';
   const createPie = (id, labels, dt, colors) => {
     if(igCharts[id]) igCharts[id].destroy();
@@ -1633,6 +1952,10 @@ function renderIGCharts(data) {
 }
 
 function downloadPDF() {
+  if (typeof html2pdf === 'undefined') {
+      Swal.fire('Error', 'Library PDF gagal dimuat. Pastikan Anda terhubung ke internet.', 'error');
+      return;
+  }
   const element = document.getElementById('pdf-content');
   const opt = { margin: 0.2, filename: `Infografis_Klinik_${new Date().toISOString().split('T')[0]}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true }, jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' } };
   Swal.fire({title:'Menyiapkan Laporan...', text:'Sistem sedang menggambar grafik PDF', allowOutsideClick:false, didOpen:()=>Swal.showLoading()});
